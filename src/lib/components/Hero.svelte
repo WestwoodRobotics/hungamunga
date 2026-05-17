@@ -13,7 +13,7 @@
 			</h1>
 			<p class="sub">
 				FTC Team 17113 - a Westwood Robotics team competing in
-				<span class="serif-i">FiT</span> Central GEMS, based in Austin, TX.
+				<span class="serif-i">FiT Central GEMS</span>, based in Austin, TX.
 			</p>
 			<div class="socials">
 				<a href="#" aria-label="Instagram" class="iconbtn">

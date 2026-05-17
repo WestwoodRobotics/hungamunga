@@ -1,9 +1,9 @@
 <script lang="ts">
 	const stats = [
 		{ n: '7', l: 'Seasons run' },
-		{ n: '20+', l: 'Students' },
+		{ n: '15+', l: 'Students' },
 		{ n: '2', l: 'FLL teams mentored' },
-		{ n: '150', u: '+ hrs', l: 'Outreach / year' }
+		{ n: '80', u: '+ hrs', l: 'Outreach / year' }
 	];
 </script>
 
