@@ -13,8 +13,8 @@
 	let showContent = $state(false);
 </script>
 
-{#if showContent}
-	<div id="content">
+
+	<div id="content" class:visible={showContent}>
 		<Nav />
 		<Hero />
 		<Stats />
@@ -66,16 +66,20 @@
 		<Contact />
 		<SiteFooter />
 	</div>
-{/if}
 
 <IntroAnimation onComplete={() => (showContent = true)} />
 
 <style>
 	#content {
 		min-height: 100vh;
-		animation: contentEnter 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 		font-size: 14px;
 		line-height: 1.55;
+		visibility: hidden;
+		opacity: 0;
+	}
+	#content.visible {
+		visibility: visible;
+		animation: contentEnter 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 	}
 	@keyframes contentEnter {
 		from { opacity: 0; transform: scale(1.04); }

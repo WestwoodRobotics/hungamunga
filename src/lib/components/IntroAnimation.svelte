@@ -1,16 +1,17 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { onMount, onDestroy } from 'svelte';
 
 	let { onComplete }: { onComplete?: () => void } = $props();
 
-	let introEl: HTMLDivElement = $state()!;
-	let crackCanvas: HTMLCanvasElement = $state()!;
+	let introEl: HTMLDivElement;
+	let crackCanvas: HTMLCanvasElement;
 	let showCracks = $state(false);
 	let irisOut = $state(false);
 	let done = $state(false);
 
 	function drawCracks(canvas: HTMLCanvasElement) {
-		const ctx = canvas.getContext('2d')!;
+		const ctx = canvas.getContext('2d');
+		if (!ctx) return;
 		const dpr = window.devicePixelRatio || 1;
 		canvas.width = window.innerWidth * dpr;
 		canvas.height = window.innerHeight * dpr;
@@ -96,26 +97,23 @@
 		}
 	}
 
+	const timeouts: ReturnType<typeof setTimeout>[] = [];
+
 	onMount(() => {
-		setTimeout(() => {
-			introEl.classList.add('screen-shake');
-			drawCracks(crackCanvas);
-			showCracks = true;
-			setTimeout(() => introEl.classList.remove('screen-shake'), 360);
-		}, 1050);
-
-		setTimeout(() => {
-			onComplete?.();
-		}, 1500);
-
-		setTimeout(() => {
-			irisOut = true;
-		}, 1600);
-
-		setTimeout(() => {
-			done = true;
-		}, 2700);
+		timeouts.push(
+			setTimeout(() => {
+				introEl.classList.add('screen-shake');
+				drawCracks(crackCanvas);
+				showCracks = true;
+				timeouts.push(setTimeout(() => introEl.classList.remove('screen-shake'), 360));
+			}, 1050),
+			setTimeout(() => { onComplete?.(); }, 1500),
+			setTimeout(() => { irisOut = true; }, 1600),
+			setTimeout(() => { done = true; }, 2700)
+		);
 	});
+
+	onDestroy(() => { timeouts.forEach(clearTimeout); });
 </script>
 
 {#if !done}
