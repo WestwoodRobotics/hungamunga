@@ -1,32 +1,25 @@
 <script lang="ts">
+	import Section from './Section.svelte';
 	import Brackets from './Brackets.svelte';
 </script>
 
-<section id="contact" class="block">
+<Section id="contact" marker="05">
+	{#snippet title()}Get in <span class="serif-i">touch.</span>{/snippet}
 	<div class="contactcard">
 		<Brackets />
 		<div class="contact-grid">
-			<div>
-				<span class="sec-marker">§ 05</span>
-				<h2 class="contact-h">Get in <span class="serif-i">touch.</span></h2>
-				<p class="sub">
-					Interested in sponsoring, mentoring, or bringing us out for a demo? Reach out — we
-					read everything.
-				</p>
-			</div>
+			<p class="sub">
+				Interested in sponsoring, mentoring, or bringing us out for a demo? Reach out — we
+				read everything.
+			</p>
 			<a class="cta" href="mailto:team17113@gmail.com">
 				Email the team <span class="arr">-&gt;</span>
 			</a>
 		</div>
 	</div>
-</section>
+</Section>
 
 <style>
-	.block {
-		max-width: 1180px;
-		margin: 0 auto;
-		padding: 56px 28px 88px;
-	}
 	.contactcard {
 		position: relative;
 		border-radius: 18px;
@@ -41,21 +34,6 @@
 		grid-template-columns: 1fr auto;
 		gap: 32px;
 		align-items: center;
-	}
-	.sec-marker {
-		font-family: 'Instrument Serif', Georgia, serif;
-		font-style: italic;
-		color: var(--accent);
-		font-size: 26px;
-		display: inline-block;
-		margin-bottom: 12px;
-	}
-	.contact-h {
-		font-family: inherit;
-		font-weight: 500;
-		font-size: clamp(24px, 3vw, 32px);
-		margin: 0 0 12px;
-		letter-spacing: -0.005em;
 	}
 	.sub { max-width: 480px; margin: 0; color: var(--muted); font-size: 14px; line-height: 1.65; }
 	.cta {

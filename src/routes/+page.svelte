@@ -13,6 +13,14 @@
 	let showContent = $state(false);
 </script>
 
+<svelte:head>
+	<title>FTC Team 17113 — Hunga Munga Robotics</title>
+	<meta name="description" content="FTC Team 17113 Hunga Munga — a Westwood Robotics team competing in FiT Central GEMS, building robots and engineers in Austin, TX." />
+	<meta property="og:title" content="FTC Team 17113 — Hunga Munga Robotics" />
+	<meta property="og:description" content="FTC Team 17113 Hunga Munga — a Westwood Robotics team competing in FiT Central GEMS, building robots and engineers in Austin, TX." />
+	<meta property="og:url" content="https://team17113.com" />
+	<meta property="og:type" content="website" />
+</svelte:head>
 
 	<div id="content" class:visible={showContent}>
 		<Nav />

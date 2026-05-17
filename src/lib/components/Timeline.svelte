@@ -13,7 +13,7 @@
 		<div class="t-node">
 			<div class="t-month">{n.month}</div>
 			<span class="t-dot" class:active={n.active}></span>
-			<h4>{n.title}</h4>
+			<h3>{n.title}</h3>
 			<p>{n.body}</p>
 		</div>
 	{/each}
@@ -58,7 +58,7 @@
 		background: var(--accent);
 		box-shadow: 0 0 0 4px rgba(217, 74, 44, 0.18), var(--shadow-raised-sm);
 	}
-	.t-node h4 {
+	.t-node h3 {
 		font-family: inherit;
 		font-weight: 500;
 		font-size: 16px;
