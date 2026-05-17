@@ -3,14 +3,14 @@
 		{ n: '7', l: 'Seasons run' },
 		{ n: '15+', l: 'Students' },
 		{ n: '2', l: 'FLL teams mentored' },
-		{ n: '80', u: '+ hrs', l: 'Outreach / year' }
+		{ n: '80+ hrs', l: 'Outreach / year' }
 	];
 </script>
 
 <div class="stats">
 	{#each stats as s}
 		<div>
-			<span class="stat-n">{s.n}{#if s.u}<span class="stat-u">{s.u}</span>{/if}</span>
+			<span class="stat-n">{s.n}</span>
 			<span class="stat-l">{s.l}</span>
 		</div>
 	{/each}
@@ -50,7 +50,6 @@
 		line-height: 1;
 		color: var(--accent);
 	}
-	.stat-u { font-size: 16px; opacity: 0.7; margin-left: 2px; }
 	.stat-l {
 		font-size: 10.5px;
 		letter-spacing: 0.14em;

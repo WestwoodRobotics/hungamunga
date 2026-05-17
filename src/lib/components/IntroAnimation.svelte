@@ -98,6 +98,11 @@
 		}
 	}
 
+	const T_SHAKE = 1050;
+	const T_SHAKE_OFF = 360;
+	const T_IRIS = 1500;
+	const T_DONE = T_IRIS + 1200;
+
 	const timeouts: ReturnType<typeof setTimeout>[] = [];
 
 	onMount(() => {
@@ -108,11 +113,10 @@
 				introEl.classList.add('screen-shake');
 				drawCracks(crackCanvas);
 				showCracks = true;
-				timeouts.push(setTimeout(() => introEl.classList.remove('screen-shake'), 360));
-			}, 1050),
-			setTimeout(() => { onComplete?.(); }, 1500),
-			setTimeout(() => { irisOut = true; }, 1600),
-			setTimeout(() => { done = true; }, 2700)
+				timeouts.push(setTimeout(() => introEl.classList.remove('screen-shake'), T_SHAKE_OFF));
+			}, T_SHAKE),
+			setTimeout(() => { irisOut = true; onComplete?.(); }, T_IRIS),
+			setTimeout(() => { done = true; }, T_DONE)
 		);
 	});
 
