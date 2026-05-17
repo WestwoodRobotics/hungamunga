@@ -8,18 +8,19 @@
 	let showCracks = $state(false);
 	let irisOut = $state(false);
 	let done = $state(false);
+	let vw = 0, vh = 0;
 
 	function drawCracks(canvas: HTMLCanvasElement) {
 		const ctx = canvas.getContext('2d');
 		if (!ctx) return;
 		const dpr = window.devicePixelRatio || 1;
-		canvas.width = window.innerWidth * dpr;
-		canvas.height = window.innerHeight * dpr;
+		canvas.width = vw * dpr;
+		canvas.height = vh * dpr;
 		ctx.scale(dpr, dpr);
 
-		const ox = window.innerWidth / 2;
-		const oy = window.innerHeight / 2;
-		const reach = Math.hypot(window.innerWidth, window.innerHeight) * 0.6;
+		const ox = vw / 2;
+		const oy = vh / 2;
+		const reach = Math.hypot(vw, vh) * 0.6;
 
 		ctx.lineCap = 'round';
 		ctx.lineJoin = 'round';
@@ -100,6 +101,8 @@
 	const timeouts: ReturnType<typeof setTimeout>[] = [];
 
 	onMount(() => {
+		vw = window.innerWidth;
+		vh = window.innerHeight;
 		timeouts.push(
 			setTimeout(() => {
 				introEl.classList.add('screen-shake');
@@ -133,10 +136,10 @@
 		overflow: hidden;
 		background: var(--bg);
 		z-index: 100;
-		will-change: clip-path, transform;
 		clip-path: circle(150% at 50% 50%);
 	}
 	#intro.iris-out {
+		will-change: clip-path, transform;
 		animation: irisReveal 1.1s cubic-bezier(0.65, 0, 0.2, 1) forwards;
 	}
 	@keyframes irisReveal {
