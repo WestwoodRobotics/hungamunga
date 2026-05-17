@@ -1,2 +1,56 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
+
+@font-face {
+	font-family: 'JetBrains Mono';
+	font-style: normal;
+	font-weight: 400 700;
+	font-display: swap;
+	src: url('/fonts/jetbrains-mono.woff2') format('woff2');
+}
+@font-face {
+	font-family: 'Instrument Serif';
+	font-style: italic;
+	font-weight: 400;
+	font-display: swap;
+	src: url('/fonts/instrument-serif-italic.woff2') format('woff2');
+}
+
+:root {
+	--bg: #131318;
+	--bg-2: #16161c;
+	--panel: #1a1a20;
+	--panel-hi: #1f1f26;
+	--ink: #e8e8ea;
+	--ink-dim: #c9c9cd;
+	--muted: rgba(232, 232, 234, 0.5);
+	--accent: #d94a2c;
+	--line: rgba(255, 255, 255, 0.05);
+	--line-strong: rgba(255, 255, 255, 0.1);
+
+	--shadow-raised:
+		10px 10px 24px rgba(0, 0, 0, 0.45),
+		-6px -6px 18px rgba(255, 255, 255, 0.018);
+	--shadow-raised-sm:
+		6px 6px 14px rgba(0, 0, 0, 0.4),
+		-3px -3px 10px rgba(255, 255, 255, 0.015);
+	--shadow-inset:
+		inset 4px 4px 10px rgba(0, 0, 0, 0.5),
+		inset -3px -3px 8px rgba(255, 255, 255, 0.02);
+}
+
+body {
+	background: var(--bg);
+	color: var(--ink);
+	font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+}
+
+.serif,
+.serif-i {
+	font-family: 'Instrument Serif', Georgia, serif;
+	font-style: italic;
+	font-weight: 400;
+	color: var(--accent);
+}
+.muted { color: var(--muted); }
+.arr { color: var(--accent); font-weight: 500; }

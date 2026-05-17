@@ -1,286 +1,96 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import IntroAnimation from '$lib/components/IntroAnimation.svelte';
+	import Nav from '$lib/components/Nav.svelte';
+	import Hero from '$lib/components/Hero.svelte';
+	import Stats from '$lib/components/Stats.svelte';
+	import Section from '$lib/components/Section.svelte';
+	import Card from '$lib/components/Card.svelte';
+	import Timeline from '$lib/components/Timeline.svelte';
+	import Sponsors from '$lib/components/Sponsors.svelte';
+	import Contact from '$lib/components/Contact.svelte';
+	import SiteFooter from '$lib/components/SiteFooter.svelte';
 
-	let pageState = $state<'intro' | 'content'>('intro');
-	let introEl: HTMLDivElement = $state()!;
-	let logoEl: HTMLImageElement = $state()!;
-	let crackCanvas: HTMLCanvasElement = $state()!;
-	let showCracks = $state(false);
-	let irisOut = $state(false);
 	let showContent = $state(false);
-
-	function drawCracks(canvas: HTMLCanvasElement) {
-		const ctx = canvas.getContext('2d')!;
-		const dpr = window.devicePixelRatio || 1;
-		canvas.width = window.innerWidth * dpr;
-		canvas.height = window.innerHeight * dpr;
-		ctx.scale(dpr, dpr);
-
-		const ox = window.innerWidth / 2;
-		const oy = window.innerHeight / 2;
-		const reach = Math.hypot(window.innerWidth, window.innerHeight) * 0.6;
-
-		ctx.lineCap = 'round';
-		ctx.lineJoin = 'round';
-
-		const primaryCount = 8;
-		const angleStep = (Math.PI * 2) / primaryCount;
-		const baseAngle = Math.random() * Math.PI * 2;
-		const primaryAngles: number[] = [];
-		for (let i = 0; i < primaryCount; i++) {
-			const angle = baseAngle + i * angleStep + (Math.random() - 0.5) * 0.18;
-			primaryAngles.push(angle);
-			const length = reach * (0.78 + Math.random() * 0.22);
-			drawCrackBranch(ctx, ox, oy, angle, length, 4.2, 0.95, 0);
-		}
-
-		for (let i = 0; i < primaryCount; i++) {
-			const angle = primaryAngles[i] + angleStep / 2 + (Math.random() - 0.5) * 0.15;
-			const length = reach * (0.4 + Math.random() * 0.25);
-			drawCrackBranch(ctx, ox, oy, angle, length, 2.4, 0.7, 0);
-		}
-	}
-
-	function drawCrackBranch(
-		ctx: CanvasRenderingContext2D,
-		x: number,
-		y: number,
-		angle: number,
-		length: number,
-		baseWidth: number,
-		baseAlpha: number,
-		depth: number
-	) {
-		const segments = 6 + Math.floor(Math.random() * 3);
-		let cx = x;
-		let cy = y;
-		let remainingLength = length;
-		let currentAngle = angle;
-
-		const points: [number, number][] = [[cx, cy]];
-		for (let s = 0; s < segments; s++) {
-			const segLen = (remainingLength / (segments - s)) * (0.75 + Math.random() * 0.5);
-			currentAngle += (Math.random() - 0.5) * 0.28;
-			cx += Math.cos(currentAngle) * segLen;
-			cy += Math.sin(currentAngle) * segLen;
-			points.push([cx, cy]);
-			remainingLength -= segLen;
-		}
-
-		for (let s = 0; s < points.length - 1; s++) {
-			const t = s / (points.length - 1);
-			const w = baseWidth * (1 - t * 0.75);
-			const a = baseAlpha * (1 - t * 0.4);
-			ctx.beginPath();
-			ctx.moveTo(points[s][0], points[s][1]);
-			ctx.lineTo(points[s + 1][0], points[s + 1][1]);
-			ctx.strokeStyle = `rgba(245, 245, 250, ${a})`;
-			ctx.lineWidth = w;
-			ctx.stroke();
-		}
-
-		if (depth < 2 && baseWidth > 1.2) {
-			const branches = depth === 0 ? 2 : 1;
-			for (let b = 0; b < branches; b++) {
-				const idx = Math.floor(points.length * (0.4 + Math.random() * 0.4));
-				const [bx, by] = points[idx];
-				const branchAngle =
-					currentAngle + (Math.random() > 0.5 ? 1 : -1) * (0.4 + Math.random() * 0.5);
-				drawCrackBranch(
-					ctx,
-					bx,
-					by,
-					branchAngle,
-					length * (0.35 + Math.random() * 0.2),
-					baseWidth * 0.55,
-					baseAlpha * 0.85,
-					depth + 1
-				);
-			}
-		}
-	}
-
-	onMount(() => {
-		setTimeout(() => {
-			introEl.classList.add('screen-shake');
-			drawCracks(crackCanvas);
-			showCracks = true;
-			setTimeout(() => introEl.classList.remove('screen-shake'), 360);
-		}, 1050);
-
-		setTimeout(() => {
-			showContent = true;
-		}, 1500);
-
-		setTimeout(() => {
-			irisOut = true;
-		}, 1600);
-
-		setTimeout(() => {
-			pageState = 'content';
-		}, 2700);
-	});
 </script>
 
 {#if showContent}
 	<div id="content">
-		<!-- page content -->
+		<Nav />
+		<Hero />
+		<Stats />
+
+		<Section id="robot" marker="01">
+			{#snippet title()}From sketch <span class="serif-i">to</span> scoring.{/snippet}
+			<div class="grid">
+				<Card idx="01.A" title="Mechanical">
+					CAD in Onshape, prototype in the Makerspace. Custom builds each season's game.
+				</Card>
+				<Card idx="01.B" title="Software">
+					Java on the Control Hub. Autonomous routines tuned with vision, odometry, and the occasional 2 AM debug session.
+				</Card>
+				<Card idx="01.C" title="Strategy">
+					Scouting, match analysis, alliance selection. Every decision is backed by data we collected, not vibes.
+				</Card>
+			</div>
+		</Section>
+
+		<Section id="season" marker="02">
+			{#snippet title()}How a <span class="serif-i">season</span> runs.{/snippet}
+			<Timeline />
+		</Section>
+
+		<Section id="outreach" marker="03">
+			{#snippet title()}More than <span class="serif-i">competition.</span>{/snippet}
+			<div class="grid">
+				<Card idx="03.A" title="FLL mentoring">
+					We coach two local FIRST Lego League teams through their season, from build to judging.
+				</Card>
+				<Card idx="03.B" title="School demos">
+					Bringing the robot to elementary and middle schools to show students what FIRST looks like up close.
+				</Card>
+				<Card idx="03.C" title="Open shop">
+					Sharing CAD, code, and engineering notebooks with rookie teams who ask. Pay it forward.
+				</Card>
+			</div>
+		</Section>
+
+		<Section id="sponsors" marker="04">
+			{#snippet title()}Powered <span class="serif-i">by</span> our sponsors.{/snippet}
+			<p class="sub">
+				Every season, our sponsors make the robot, the travel, and the outreach possible. If
+				you'd like to support FTC 17113, we'd love to talk.
+			</p>
+			<Sponsors />
+		</Section>
+
+		<Contact />
+		<SiteFooter />
 	</div>
 {/if}
 
-{#if pageState === 'intro'}
-	<div id="intro" bind:this={introEl} class:iris-out={irisOut}>
-		<img src="/favicon.png" alt="Hunga Munga logo" id="logo" bind:this={logoEl} />
-		<canvas id="crack-canvas" bind:this={crackCanvas} class:visible={showCracks}></canvas>
-	</div>
-{/if}
+<IntroAnimation onComplete={() => (showContent = true)} />
 
 <style>
-	#intro {
-		position: fixed;
-		inset: 0;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		overflow: hidden;
-		background: #1a1a1a;
-		z-index: 100;
-		will-change: clip-path, transform;
-		clip-path: circle(150% at 50% 50%);
-	}
-
-	#intro.iris-out {
-		animation: irisReveal 1.1s cubic-bezier(0.65, 0, 0.2, 1) forwards;
-	}
-
-	@keyframes irisReveal {
-		0% {
-			clip-path: circle(150% at 50% 50%);
-			transform: scale(1);
-		}
-		100% {
-			clip-path: circle(0% at 50% 50%);
-			transform: scale(1.4);
-		}
-	}
-
-	#logo {
-		width: 140px;
-		position: relative;
-		z-index: 4;
-		animation: logoDrop 1.05s linear forwards;
-		transform-origin: center bottom;
-	}
-
-	@keyframes logoDrop {
-		0% {
-			transform: translateY(-110vh) scale(1, 1);
-			opacity: 0;
-			animation-timing-function: cubic-bezier(0.55, 0, 0.85, 0.2);
-		}
-		12% {
-			opacity: 1;
-		}
-		60% {
-			transform: translateY(0) scale(1, 1);
-			opacity: 1;
-			animation-timing-function: cubic-bezier(0.3, 0, 0.2, 1);
-		}
-		66% {
-			transform: translateY(0) scale(1.18, 0.78);
-		} /* impact squash */
-		74% {
-			transform: translateY(-12px) scale(0.94, 1.08);
-			animation-timing-function: cubic-bezier(0.5, 0, 0.6, 1);
-		} /* rebound up + stretch */
-		82% {
-			transform: translateY(0) scale(1.06, 0.94);
-		} /* second, smaller squash */
-		90% {
-			transform: translateY(-3px) scale(0.98, 1.02);
-		} /* tiny second rebound */
-		100% {
-			transform: translateY(0) scale(1, 1);
-		}
-	}
-
-	@keyframes screenShake {
-		0%,
-		100% {
-			transform: translate(0, 0);
-		}
-		10% {
-			transform: translate(-9px, -8px);
-		}
-		20% {
-			transform: translate(11px, 7px);
-		}
-		30% {
-			transform: translate(-13px, 10px);
-		}
-		40% {
-			transform: translate(13px, -9px);
-		}
-		50% {
-			transform: translate(-7px, 13px);
-		}
-		60% {
-			transform: translate(13px, 5px);
-		}
-		70% {
-			transform: translate(-11px, -11px);
-		}
-		80% {
-			transform: translate(9px, 13px);
-		}
-		90% {
-			transform: translate(-11px, -7px);
-		}
-	}
-
-	:global(.screen-shake) {
-		animation: screenShake 0.32s ease-in-out !important;
-	}
-
-	#crack-canvas {
-		position: absolute;
-		inset: 0;
-		width: 100%;
-		height: 100%;
-		z-index: 3;
-		pointer-events: none;
-		opacity: 0;
-		clip-path: circle(0% at 50% 50%);
-	}
-
-	#crack-canvas.visible {
-		opacity: 1;
-		animation: crackPropagate 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-	}
-
-	@keyframes crackPropagate {
-		0% {
-			clip-path: circle(0% at 50% 50%);
-		}
-		100% {
-			clip-path: circle(95% at 50% 50%);
-		}
-	}
-
 	#content {
 		min-height: 100vh;
 		animation: contentEnter 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-		transform-origin: center center;
+		font-size: 14px;
+		line-height: 1.55;
 	}
-
 	@keyframes contentEnter {
-		from {
-			opacity: 0;
-			transform: scale(1.04);
-		}
-		to {
-			opacity: 1;
-			transform: scale(1);
-		}
+		from { opacity: 0; transform: scale(1.04); }
+		to { opacity: 1; transform: scale(1); }
+	}
+	.grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+		gap: 16px;
+	}
+	.sub {
+		max-width: 560px;
+		margin: 0 0 8px;
+		color: var(--muted);
+		font-size: 14px;
+		line-height: 1.65;
 	}
 </style>
