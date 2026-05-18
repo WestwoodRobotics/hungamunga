@@ -5,7 +5,9 @@ const config = {
 	compilerOptions: {
 		runes: ({ filename }) => (filename.split(/[/\\]/).includes('node_modules') ? undefined : true)
 	},
-	kit: { adapter: adapter() }
+	kit: {
+		adapter: adapter({ fallback: '404.html' })
+	}
 };
 
 export default config;
