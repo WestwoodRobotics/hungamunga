@@ -44,16 +44,6 @@ body {
 	font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
 }
 
-.serif,
-.serif-i {
-	font-family: 'Instrument Serif', Georgia, serif;
-	font-style: italic;
-	font-weight: 400;
-	color: var(--accent);
-}
-.muted { color: var(--muted); }
-.arr { color: var(--accent); font-weight: 500; }
-
 @media (prefers-reduced-motion: reduce) {
 	*, *::before, *::after {
 		animation-duration: 0.01ms !important;

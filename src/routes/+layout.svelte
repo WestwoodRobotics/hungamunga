@@ -9,4 +9,5 @@
 <svelte:head>
 	<link rel="icon" href={favicon} />
 </svelte:head>
+<a class="skip-link" href="#robot">Skip to content</a>
 {@render children()}

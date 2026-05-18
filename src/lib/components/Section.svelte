@@ -5,13 +5,13 @@
 		marker,
 		title,
 		children
-	}: { id?: string; marker: string; title?: Snippet; children: Snippet } = $props();
+	}: { id?: string; marker: string; title: Snippet; children: Snippet } = $props();
 </script>
 
 <section id={id} class="block">
 	<header class="blockhead2">
 		<span class="sec-marker">§ {marker}</span>
-		{#if title}<h2>{@render title()}</h2>{/if}
+		<h2>{@render title()}</h2>
 		<span class="sec-rule"></span>
 	</header>
 	{@render children()}
