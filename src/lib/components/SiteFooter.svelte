@@ -1,6 +1,13 @@
+<script lang="ts">
+	import { SPEC_VERSION } from '../config';
+</script>
+
+
+
+
 <footer class="foot">
 	<div>© 2026 · FTC 17113 · Hunga Munga</div>
-	<div class="muted">v0.0.1</div>
+	<div class="muted">{SPEC_VERSION}</div>
 	<div class="muted">FIRST Tech Challenge</div>
 </footer>
 

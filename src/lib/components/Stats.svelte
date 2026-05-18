@@ -28,7 +28,7 @@
 		box-shadow: var(--shadow-inset);
 	}
 	.stats > div {
-		padding: 22px 22px;
+		padding: 22px;
 		display: flex;
 		flex-direction: column;
 		gap: 8px;

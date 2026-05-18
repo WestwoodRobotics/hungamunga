@@ -1,9 +1,12 @@
 <script lang="ts">
+	import { SEASON_END_MONTH } from '$lib/config';
+
+	const currentMonth = new Date().getMonth();
 	const nodes = [
-		{ month: 'SEP', title: 'Kickoff', body: 'FIRST drops the new game; we run strategy and lock down a robot concept.' },
-		{ month: 'OCT', title: 'Build Season', body: 'CAD, prototype, iterate. Subteams ship mechanisms in parallel and integrate on the chassis.' },
-		{ month: 'NOV', title: 'Code + Drive', body: 'Autonomous gets dialed in. Drive team logs hours on the field until muscle memory takes over.' },
-		{ month: 'DEC', title: 'Compete', body: 'Qualifiers → regionals → states. Iterate between every event. Goal: Worlds in Houston.', active: true }
+		{ month: 'SEP', title: 'Kickoff', body: 'FIRST drops the new game; we run strategy and lock down a robot concept.', idx: 8 },
+		{ month: 'OCT', title: 'Build', body: 'CAD, prototype, iterate. Subteams ship designs in parallel and integrate on the chassis.', idx: 9 },
+		{ month: 'NOV', title: 'Practice', body: 'Autonomous gets dialed in. Drive team logs hours until it feels easy.', idx: 10 },
+		{ month: 'DEC', title: 'Compete', body: 'League Meets → LCs → Area. Iterate till Worlds', idx: SEASON_END_MONTH }
 	];
 </script>
 
@@ -12,7 +15,7 @@
 	{#each nodes as n}
 		<div class="t-node">
 			<div class="t-month">{n.month}</div>
-			<span class="t-dot" class:active={n.active}></span>
+			<span class="t-dot" class:active={currentMonth >= n.idx}></span>
 			<h3>{n.title}</h3>
 			<p>{n.body}</p>
 		</div>

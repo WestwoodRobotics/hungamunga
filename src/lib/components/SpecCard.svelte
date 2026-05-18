@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Brackets from './Brackets.svelte';
+	import { SPEC_VERSION } from '$lib/config';
 
 	const specs = [
 		['NAME', 'Hunga Munga'],
@@ -13,7 +14,7 @@
 <aside class="spec-card">
 	<Brackets />
 	<div class="spec-head">
-		<span>TEAM_SPEC</span><span class="muted">v.26.05</span>
+		<span>TEAM_SPEC</span><span class="muted">{SPEC_VERSION}</span>
 	</div>
 	<dl class="spec">
 		{#each specs as [k, v]}

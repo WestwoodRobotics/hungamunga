@@ -58,12 +58,14 @@
 		let remainingLength = length;
 		let currentAngle = angle;
 		const points: [number, number][] = [[cx, cy]];
+		const angles: number[] = [currentAngle];
 		for (let s = 0; s < segments; s++) {
 			const segLen = (remainingLength / (segments - s)) * (0.75 + Math.random() * 0.5);
 			currentAngle += (Math.random() - 0.5) * 0.28;
 			cx += Math.cos(currentAngle) * segLen;
 			cy += Math.sin(currentAngle) * segLen;
 			points.push([cx, cy]);
+			angles.push(currentAngle);
 			remainingLength -= segLen;
 		}
 		for (let s = 0; s < points.length - 1; s++) {
@@ -83,7 +85,7 @@
 				const idx = Math.floor(points.length * (0.4 + Math.random() * 0.4));
 				const [bx, by] = points[idx];
 				const branchAngle =
-					currentAngle + (Math.random() > 0.5 ? 1 : -1) * (0.4 + Math.random() * 0.5);
+					angles[idx] + (Math.random() > 0.5 ? 1 : -1) * (0.4 + Math.random() * 0.5);
 				drawCrackBranch(
 					ctx,
 					bx,
