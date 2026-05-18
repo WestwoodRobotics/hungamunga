@@ -67,6 +67,7 @@
 		font-size: clamp(34px, 5.8vw, 62px);
 		line-height: 1.04;
 		letter-spacing: -0.015em;
+		word-spacing: -0.22em;
 		margin: 0 0 22px;
 	}
 	.title :global(.serif) { font-size: 0.95em; }

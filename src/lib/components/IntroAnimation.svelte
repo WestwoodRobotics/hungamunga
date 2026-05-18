@@ -140,6 +140,7 @@
 		onclick={skip} onkeydown={(e) => (e.key === 'Enter' || e.key === ' ' || e.key === 'Escape') && skip()}>
 		<img src="/favicon.png" alt="Hunga Munga logo" id="logo" />
 		<canvas id="crack-canvas" bind:this={crackCanvas} class:visible={showCracks}></canvas>
+		<span class="skip-hint">tap to skip</span>
 	</div>
 {/if}
 
@@ -169,6 +170,9 @@
 		z-index: 4;
 		animation: logoDrop 1.05s linear forwards;
 		transform-origin: center bottom;
+		user-select: none;
+		-webkit-user-select: none;
+		pointer-events: none;
 	}
 	@keyframes logoDrop {
 		0%   { transform: translateY(-110vh) scale(1, 1); opacity: 0;
@@ -197,6 +201,17 @@
 	}
 	:global(.screen-shake) {
 		animation: screenShake 0.32s ease-in-out !important;
+	}
+	.skip-hint {
+		position: absolute;
+		bottom: 28px;
+		left: 50%;
+		transform: translateX(-50%);
+		font-size: 11px;
+		letter-spacing: 0.18em;
+		color: rgba(255,255,255,0.28);
+		pointer-events: none;
+		z-index: 5;
 	}
 	#crack-canvas {
 		position: absolute;

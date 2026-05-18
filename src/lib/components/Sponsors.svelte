@@ -3,30 +3,30 @@
 		{
 			name: 'Gold',
 			amount: '$1,000+',
-			perks: ['Large logo on robot & website', 'Named in all competition materials', 'Shoutout at every event', 'End-of-season impact report']
+			perks: ['Logo on robot & website', 'Named at every event', 'Season impact report']
 		},
 		{
 			name: 'Silver',
 			amount: '$500',
-			perks: ['Logo on website & notebook', 'Named in competition materials', 'End-of-season impact report']
+			perks: ['Logo on website', 'Named in notebook', 'Season impact report']
 		},
 		{
 			name: 'Bronze',
 			amount: '$250',
-			perks: ['Name on website & notebook', 'End-of-season thank-you']
+			perks: ['Name on website', 'Name in notebook']
 		},
 		{
 			name: 'Community',
 			amount: 'Any',
-			perks: ['Name in our engineering notebook', 'Our sincere thanks']
+			perks: ['Name in notebook', 'Our thanks']
 		}
 	];
 </script>
 
 <div class="sponsor-wrap">
 	<div class="tiers">
-		{#each tiers as t}
-			<div class="tier">
+		{#each tiers as t, i}
+			<div class="tier" class:featured={i === 0}>
 				<div class="tier-head">
 					<span class="tier-name">{t.name}</span>
 					<span class="tier-amt">{t.amount}</span>
@@ -40,9 +40,8 @@
 		{/each}
 	</div>
 	<p class="sponsor-note">
-		Sponsorships are processed through Westwood High School / FIRST, a 501(c)(3) organization —
-		donations may be tax-deductible. Funds go directly to registration fees, field elements, parts, and travel.
-		<a href="mailto:team17113@gmail.com">Reach out to discuss →</a>
+		Processed through FIRST / Westwood HS — a 501(c)(3). Funds go to registration, parts, and travel.
+		<a href="mailto:team17113@gmail.com">Get in touch →</a>
 	</p>
 	<div class="s-strip">
 		<div class="s-cell">Your logo here</div>
@@ -53,27 +52,31 @@
 </div>
 
 <style>
-	.sponsor-wrap { margin-top: 28px; display: flex; flex-direction: column; gap: 24px; }
+	.sponsor-wrap { margin-top: 28px; display: flex; flex-direction: column; gap: 20px; }
 	.tiers {
 		display: grid;
 		grid-template-columns: repeat(4, 1fr);
-		gap: 12px;
+		gap: 10px;
 	}
 	.tier {
 		background: var(--panel);
 		border-radius: 12px;
-		padding: 20px;
+		padding: 18px;
 		box-shadow: var(--shadow-raised-sm);
 		display: flex;
 		flex-direction: column;
-		gap: 14px;
+		gap: 12px;
+	}
+	.tier.featured {
+		background: var(--panel-hi);
+		border: 1px solid rgba(217, 74, 44, 0.2);
 	}
 	.tier-head { display: flex; justify-content: space-between; align-items: baseline; }
-	.tier-name { font-size: 12px; letter-spacing: 0.14em; color: #fff; text-transform: uppercase; }
-	.tier-amt { font-size: 10.5px; letter-spacing: 0.1em; color: var(--accent); }
-	.tier-perks { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 7px; }
+	.tier-name { font-size: 11px; letter-spacing: 0.16em; color: #fff; text-transform: uppercase; }
+	.tier-amt { font-size: 11px; letter-spacing: 0.08em; color: var(--accent); }
+	.tier-perks { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 6px; }
 	.tier-perks li {
-		font-size: 12px;
+		font-size: 11.5px;
 		color: var(--muted);
 		line-height: 1.5;
 		padding-left: 12px;
@@ -83,15 +86,15 @@
 		content: '—';
 		position: absolute;
 		left: 0;
-		color: var(--line);
+		color: var(--line-strong);
 		font-size: 10px;
 	}
 	.sponsor-note {
 		margin: 0;
-		font-size: 12.5px;
+		font-size: 12px;
 		color: var(--muted);
-		line-height: 1.65;
-		max-width: 640px;
+		line-height: 1.6;
+		max-width: 560px;
 	}
 	.sponsor-note a { color: var(--accent); text-decoration: none; }
 	.sponsor-note a:hover { text-decoration: underline; }
@@ -105,16 +108,16 @@
 		gap: 8px;
 	}
 	.s-cell {
-		min-height: 90px;
+		min-height: 80px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		padding: 18px;
+		padding: 16px;
 		border-radius: 10px;
 		background: var(--panel);
 		color: var(--muted);
-		font-size: 10.5px;
-		letter-spacing: 0.18em;
+		font-size: 10px;
+		letter-spacing: 0.2em;
 		text-transform: uppercase;
 		box-shadow: var(--shadow-raised-sm);
 	}

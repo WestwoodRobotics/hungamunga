@@ -15,6 +15,7 @@
 		background: var(--panel);
 		border-radius: 14px;
 		box-shadow: var(--shadow-raised-sm);
+		min-width: 0;
 		transition: box-shadow 0.22s ease, transform 0.22s ease;
 	}
 	.card:hover {

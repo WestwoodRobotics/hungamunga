@@ -8,10 +8,10 @@
 		{ month: 'DEC', title: 'League Meets', body: 'League play begins. Score data in, robot tuned between events.', idx: 11 }
 	];
 	const spring = [
-		{ month: 'JAN', title: 'League Champs', body: 'Top league finishers advance. Robot locked, drive reps maxed.', idx: 0 },
-		{ month: 'FEB', title: 'States', body: 'FiT Central GEMS State Championship. Judging, quals, and elimination rounds.', idx: 1 },
-		{ month: 'MAR', title: 'Worlds Prep', body: 'If qualified — full audit, media kit, and travel logistics.', idx: 2 },
-		{ month: 'APR', title: 'Worlds', body: 'FIRST World Championship in Houston. Compete, connect, repeat.', idx: 3 }
+		{ month: 'JAN', title: 'League Champs', body: 'Top league finishers advance. Robot polish from here on out.', idx: 0 },
+		{ month: 'FEB', title: 'Regionals', body: 'FiT Regionals. Most exciting?', idx: 1 },
+		{ month: 'MAR', title: 'Worlds Prep', body: 'Redesign for the meta, software grind.', idx: 2 },
+		{ month: 'APR', title: 'Worlds', body: 'FIRST World Championship in Houston. Compete, sleep, repeat.', idx: 3 }
 	];
 </script>
 
@@ -60,7 +60,7 @@
 		background: var(--bg-2);
 		box-shadow: var(--shadow-inset);
 	}
-	.t-node { position: relative; padding: 32px 16px 0 0; }
+	.t-node { position: relative; padding: 32px 16px 0 22px; min-width: 0; }
 	.t-month {
 		font-size: 10.5px;
 		letter-spacing: 0.2em;

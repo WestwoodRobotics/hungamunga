@@ -6,8 +6,9 @@ body {
 .serif-i {
 	font-family: 'Instrument Serif', Georgia, serif;
 	font-style: italic;
-	font-weight: 400;
+	font-weight: 450;
 	color: var(--accent);
+	word-spacing: 0;
 }
 .muted { color: var(--muted); }
 .arr { color: var(--accent); font-weight: 500; }
