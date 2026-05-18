@@ -41,13 +41,13 @@
 	</div>
 	<p class="sponsor-note">
 		Processed through Westwood Robotics - a 501(c)(3). Funds go to registration, parts, and travel.
-		<a href="mailto:INSERT HUNGA EMAIL@gmail.com">Get in touch →</a>
+		<a href="mailto:hungamunga17113@gmail.com">Get in touch →</a>
 	</p>
 	<div class="s-strip">
-		<div class="s-cell">Your logo here</div>
-		<div class="s-cell">Your logo here</div>
-		<div class="s-cell">Your logo here</div>
-		<div class="s-cell">Your logo here</div>
+		<div class="s-cell">Your logo could be here</div>
+		<div class="s-cell">Your logo could be here</div>
+		<div class="s-cell">Your logo could be here</div>
+		<div class="s-cell">Your logo could be here</div>
 	</div>
 </div>
 
