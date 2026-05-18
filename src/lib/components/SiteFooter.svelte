@@ -8,7 +8,7 @@
 <footer class="foot">
 	<div>© 2026 · FTC 17113 · Hunga Munga</div>
 	<div class="muted">{SPEC_VERSION}</div>
-	<div class="muted">FIRST Tech Challenge</div>
+	<a class="muted foot-link" href="https://www.firstinspires.org/robotics/ftc" target="_blank" rel="noopener noreferrer">FIRST Tech Challenge</a>
 </footer>
 
 <style>
@@ -35,6 +35,8 @@
 		background: var(--line);
 	}
 	.foot > :last-child { text-align: right; }
+	.foot-link { text-decoration: none; transition: color 0.15s ease; }
+	.foot-link:hover { color: var(--ink); }
 
 	@media (max-width: 860px) {
 		.foot { grid-template-columns: 1fr; }

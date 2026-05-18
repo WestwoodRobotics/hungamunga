@@ -62,6 +62,22 @@
 			</div>
 		</Section>
 
+		<Section id="team" marker="—">
+			{#snippet title()}Who <span class="serif-i">we are.</span>{/snippet}
+			<div class="grid">
+				<Card idx="T.1" title="Software">
+					Java on REV Control Hub. We write autonomous routines using vision, odometry, and state machines.
+				</Card>
+				<Card idx="T.2" title="Hardware">
+					Starts on paper, moves to CAD in Onshape, and gets prototyped in the Makerspace. Designs are iterated until they hold up in a match.
+				</Card>
+				<Card idx="T.3" title="Design & Strategy">
+					Scouting data, alliance strategy, robot analysis, and logistics.
+				</Card>
+			</div>
+			<p class="team-note">~15 students · Austin, TX · Founded 2019 · Westwood High School</p>
+		</Section>
+
 		<Section id="results" marker="04">
 			{#snippet title()}Competition <span class="serif-i">highlights - 2025</span>{/snippet}
 			<div class="grid">
@@ -119,5 +135,12 @@
 		color: var(--muted);
 		font-size: 14px;
 		line-height: 1.65;
+	}
+	.team-note {
+		margin: 20px 0 0;
+		font-size: 11px;
+		letter-spacing: 0.14em;
+		color: var(--muted);
+		text-transform: uppercase;
 	}
 </style>

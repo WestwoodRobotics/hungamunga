@@ -13,7 +13,7 @@
 			</h1>
 			<p class="sub">
 				FTC Team 17113 - a Westwood Robotics team competing in
-				<span class="serif-i">FiT Central GEMS</span>, based in Austin, TX.
+				<abbr class="serif-i" title="FIRST in Texas Central — Greater East Metro South; our regional conference">FiT Central GEMS</abbr>, based in Austin, TX.
 			</p>
 			<div class="socials">
 				<a href="https://www.instagram.com/hungamunga17113/" aria-label="Instagram" class="iconbtn" target="_blank" rel="noopener noreferrer">
@@ -71,6 +71,7 @@
 	}
 	.title :global(.serif) { font-size: 0.95em; }
 	.sub { max-width: 560px; margin: 0; color: var(--muted); font-size: 14px; line-height: 1.65; }
+	.sub abbr { text-underline-offset: 3px; text-decoration-style: dotted; cursor: help; }
 	.socials { display: inline-flex; gap: 10px; margin-top: 28px; }
 	.iconbtn {
 		display: inline-flex;

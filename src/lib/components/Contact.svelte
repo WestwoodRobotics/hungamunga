@@ -13,7 +13,7 @@
 				read everything.
 			</p>
 			<a class="cta" href="mailto:team17113@gmail.com">
-				Email the team <span class="arr">-&gt;</span>
+				Email the team →
 			</a>
 		</div>
 	</div>

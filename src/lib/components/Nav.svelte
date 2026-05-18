@@ -25,7 +25,7 @@
 			<a href={l.href}><span class="navnum">{l.n}</span> {l.label}</a>
 		{/each}
 	</div>
-	<a class="navcta" href="#contact">Get in touch <span class="arr">-&gt;</span></a>
+	<a class="navcta" href="#contact">Get in touch →</a>
 	<button class="hamburger" aria-label="Toggle menu" aria-expanded={open} onclick={() => (open = !open)}>
 		<span class:open></span>
 		<span class:open></span>
