@@ -9,11 +9,10 @@
 		<Brackets />
 		<div class="contact-grid">
 			<p class="sub">
-				Interested in sponsoring, mentoring, or bringing us out for a demo? Reach out — we
-				read everything.
+				Interested in sponsoring, mentoring, or bringing us out for a demo? Reach out, we'd love to hear from you!
 			</p>
 			<a class="cta" href="mailto:team17113@gmail.com">
-				Email the team →
+				Email Us →
 			</a>
 		</div>
 	</div>

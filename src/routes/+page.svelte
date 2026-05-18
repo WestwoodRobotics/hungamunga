@@ -42,45 +42,52 @@
 			</div>
 		</Section>
 
-		<Section id="season" marker="02">
-			{#snippet title()}How a <span class="serif-i">season</span> runs.{/snippet}
-			<Timeline />
-		</Section>
+		<div class="band band--ruled">
+			<Section id="season" marker="02">
+				{#snippet title()}How a <span class="serif-i">season</span> runs.{/snippet}
+				<Timeline />
+			</Section>
+		</div>
 
-		<Section id="outreach" marker="03">
+		<Section id="outreach" marker="03" variant="stacked">
 			{#snippet title()}More than <span class="serif-i">competition.</span>{/snippet}
-			<div class="grid">
-				<Card idx="03.A" title="FLL mentoring">
-					We coach two local FIRST Lego League teams through their season, from build to judging.
-				</Card>
-				<Card idx="03.B" title="School demos">
-					Bringing the robot to elementary and middle schools to show students what FIRST looks like up close.
-				</Card>
-				<Card idx="03.C" title="Open shop">
-					Sharing CAD, code, and engineering notebooks with rookie teams who ask. Pay it forward.
-				</Card>
-			</div>
+			<ol class="outreach-list">
+				<li>
+					<span class="ol-n">01</span>
+					<div><strong>FLL mentoring</strong><p>We coach two local FIRST Lego League teams through their season, from build to judging.</p></div>
+				</li>
+				<li>
+					<span class="ol-n">02</span>
+					<div><strong>School demos</strong><p>Bringing the robot to elementary and middle schools to show students what FIRST looks like up close.</p></div>
+				</li>
+				<li>
+					<span class="ol-n">03</span>
+					<div><strong>Open shop</strong><p>Sharing CAD, code, and engineering notebooks with rookie teams who ask. Pay it forward.</p></div>
+				</li>
+			</ol>
 		</Section>
 
-		<Section id="team" marker="—">
-			{#snippet title()}Who <span class="serif-i">we are.</span>{/snippet}
-			<div class="grid">
-				<Card idx="T.1" title="Software">
-					Java on REV Control Hub. We write autonomous routines using vision, odometry, and state machines.
-				</Card>
-				<Card idx="T.2" title="Hardware">
-					Starts on paper, moves to CAD in Onshape, and gets prototyped in the Makerspace. Designs are iterated until they hold up in a match.
-				</Card>
-				<Card idx="T.3" title="Design & Strategy">
-					Scouting data, alliance strategy, robot analysis, and logistics.
-				</Card>
-			</div>
-			<p class="team-note">~15 students · Austin, TX · Founded 2019 · Westwood High School</p>
-		</Section>
+		<div class="band">
+			<Section id="team" marker="—" variant="minimal">
+				{#snippet title()}Who <span class="serif-i">we are.</span>{/snippet}
+				<div class="grid">
+					<Card idx="T.1" title="Software">
+						Java on REV Control Hub. We write autonomous routines using vision, odometry, and state machines.
+					</Card>
+					<Card idx="T.2" title="Hardware">
+						Starts on paper, moves to CAD in Onshape, and gets prototyped in the Makerspace. Designs are iterated until they hold up in a match.
+					</Card>
+					<Card idx="T.3" title="Design & Strategy">
+						Scouting data, alliance strategy, robot analysis, and logistics.
+					</Card>
+				</div>
+				<p class="team-note">~15 students · Austin, TX · Founded 2019 · Westwood High School</p>
+			</Section>
+		</div>
 
 		<Section id="results" marker="04">
 			{#snippet title()}Competition <span class="serif-i">highlights - 2025</span>{/snippet}
-			<div class="grid">
+			<div class="grid-results">
 				<Card idx="04.A" title="Control Award 2nd Place">
 					Honored for our software design and engineering notebook. Judges cited our use of intelligent control and odometry in autonomous.
 				</Card>
@@ -93,14 +100,16 @@
 			</div>
 		</Section>
 
-		<Section id="sponsors" marker="05">
-			{#snippet title()}Powered <span class="serif-i">by</span> our sponsors.{/snippet}
-			<p class="sub">
-				Every season, our sponsors make the robot, the travel, and the outreach possible. If
-				you'd like to support FTC Team 17113, we'd love to talk.
-			</p>
-			<Sponsors />
-		</Section>
+		<div class="band">
+			<Section id="sponsors" marker="05">
+				{#snippet title()}Powered <span class="serif-i">by</span> our sponsors.{/snippet}
+				<p class="sub">
+					Every season, our sponsors make the robot, the travel, and the outreach possible. If
+					you'd like to support FTC Team 17113, we'd love to talk.
+				</p>
+				<Sponsors />
+			</Section>
+		</div>
 
 		<Contact />
 		<SiteFooter />
@@ -124,11 +133,34 @@
 		from { opacity: 0; transform: scale(1.04); }
 		to { opacity: 1; transform: scale(1); }
 	}
+	.band { background: var(--bg-2); }
+	.band--ruled {
+		border-top: 1px solid var(--line-strong);
+		border-bottom: 1px solid var(--line-strong);
+	}
 	.grid {
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 		gap: 16px;
 	}
+	.grid-results {
+		display: grid;
+		grid-template-columns: 2fr 1fr 1fr;
+		gap: 16px;
+	}
+	.outreach-list { list-style: none; margin: 0; padding: 0; }
+	.outreach-list li {
+		display: grid;
+		grid-template-columns: 48px 1fr;
+		gap: 24px;
+		padding: 28px 0;
+		border-bottom: 1px solid var(--line);
+		align-items: start;
+	}
+	.outreach-list li:first-child { border-top: 1px solid var(--line); }
+	.ol-n { font-size: 10.5px; letter-spacing: 0.18em; color: var(--accent); padding-top: 3px; }
+	.outreach-list strong { display: block; font-weight: 500; font-size: 16px; color: #fff; margin-bottom: 6px; }
+	.outreach-list p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.65; }
 	.sub {
 		max-width: 560px;
 		margin: 0 0 8px;
@@ -142,5 +174,8 @@
 		letter-spacing: 0.14em;
 		color: var(--muted);
 		text-transform: uppercase;
+	}
+	@media (max-width: 860px) {
+		.grid-results { grid-template-columns: 1fr; }
 	}
 </style>

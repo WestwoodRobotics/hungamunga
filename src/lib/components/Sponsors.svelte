@@ -2,18 +2,18 @@
 	const tiers = [
 		{
 			name: 'Gold',
-			amount: '$1,000+',
-			perks: ['Logo on robot & website', 'Named at every event', 'Season impact report']
+			amount: '$500+',
+			perks: ['Logo on robot, team shirt & website', 'Name in notebook']
 		},
 		{
 			name: 'Silver',
-			amount: '$500',
-			perks: ['Logo on website', 'Named in notebook', 'Season impact report']
+			amount: '$250-$499',
+			perks: ['Logo on team shirt & website', 'Named in notebook']
 		},
 		{
 			name: 'Bronze',
-			amount: '$250',
-			perks: ['Name on website', 'Name in notebook']
+			amount: '$100-$249',
+			perks: ['Logo on website', 'Name in notebook']
 		},
 		{
 			name: 'Community',
@@ -40,8 +40,8 @@
 		{/each}
 	</div>
 	<p class="sponsor-note">
-		Processed through FIRST / Westwood HS — a 501(c)(3). Funds go to registration, parts, and travel.
-		<a href="mailto:team17113@gmail.com">Get in touch →</a>
+		Processed through Westwood Robotics - a 501(c)(3). Funds go to registration, parts, and travel.
+		<a href="mailto:INSERT HUNGA EMAIL@gmail.com">Get in touch →</a>
 	</p>
 	<div class="s-strip">
 		<div class="s-cell">Your logo here</div>
