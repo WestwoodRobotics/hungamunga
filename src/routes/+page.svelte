@@ -62,11 +62,26 @@
 			</div>
 		</Section>
 
-		<Section id="sponsors" marker="04">
+		<Section id="results" marker="04">
+			{#snippet title()}Competition <span class="serif-i">highlights - 2025</span>{/snippet}
+			<div class="grid">
+				<Card idx="04.A" title="Control Award 2nd Place">
+					Honored for our software design and engineering notebook. Judges cited our use of intelligent control and odometry in autonomous.
+				</Card>
+				<Card idx="04.B" title="Finalist Alliance Captain">
+					Finals at the FiT Central GEMS League Championship, winning against top-ranked teams along the way.
+				</Card>
+				<Card idx="04.C" title="7 seasons, counting">
+					Founded in 2019, qualifying for League Tournament every season, with two trips to the Regional Championship.
+				</Card>
+			</div>
+		</Section>
+
+		<Section id="sponsors" marker="05">
 			{#snippet title()}Powered <span class="serif-i">by</span> our sponsors.{/snippet}
 			<p class="sub">
 				Every season, our sponsors make the robot, the travel, and the outreach possible. If
-				you'd like to support FTC 17113, we'd love to talk.
+				you'd like to support FTC Team 17113, we'd love to talk.
 			</p>
 			<Sponsors />
 		</Section>

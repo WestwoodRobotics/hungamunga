@@ -107,6 +107,15 @@
 
 	const timeouts: ReturnType<typeof setTimeout>[] = [];
 
+	function skip() {
+		if (done) return;
+		timeouts.forEach(clearTimeout);
+		timeouts.length = 0;
+		irisOut = true;
+		onComplete?.();
+		timeouts.push(setTimeout(() => { done = true; }, 1200));
+	}
+
 	onMount(() => {
 		vw = window.innerWidth;
 		vh = window.innerHeight;
@@ -126,7 +135,9 @@
 </script>
 
 {#if !done}
-	<div id="intro" bind:this={introEl} class:iris-out={irisOut}>
+	<div id="intro" bind:this={introEl} class:iris-out={irisOut}
+		role="button" tabindex="0" aria-label="Skip intro"
+		onclick={skip} onkeydown={(e) => (e.key === 'Enter' || e.key === ' ' || e.key === 'Escape') && skip()}>
 		<img src="/favicon.png" alt="Hunga Munga logo" id="logo" />
 		<canvas id="crack-canvas" bind:this={crackCanvas} class:visible={showCracks}></canvas>
 	</div>

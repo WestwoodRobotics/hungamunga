@@ -16,13 +16,13 @@
 				<span class="serif-i">FiT Central GEMS</span>, based in Austin, TX.
 			</p>
 			<div class="socials">
-				<a href="#" aria-label="Instagram" class="iconbtn" target="_blank" rel="noopener noreferrer">
+				<a href="https://www.instagram.com/hungamunga17113/" aria-label="Instagram" class="iconbtn" target="_blank" rel="noopener noreferrer">
 					<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
 				</a>
-				<a href="#" aria-label="YouTube" class="iconbtn" target="_blank" rel="noopener noreferrer">
+				<a href="https://www.youtube.com/@westwoodhunga" aria-label="YouTube" class="iconbtn" target="_blank" rel="noopener noreferrer">
 					<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M23 7.1s-.2-1.5-.9-2.2c-.8-.9-1.8-.9-2.2-1C16.8 3.5 12 3.5 12 3.5s-4.8 0-7.9.4c-.4.1-1.4.1-2.2 1C1.2 5.6 1 7.1 1 7.1S.8 8.8.8 10.6v1.7c0 1.8.2 3.5.2 3.5s.2 1.5.9 2.2c.8.9 1.9.8 2.4.9 1.7.2 7.7.4 7.7.4s4.8 0 7.9-.4c.4-.1 1.4-.1 2.2-1 .7-.7.9-2.2.9-2.2s.2-1.7.2-3.5v-1.7c0-1.8-.2-3.5-.2-3.5zM9.8 14.4V8.2l6.2 3.1-6.2 3.1z"/></svg>
 				</a>
-				<a href="#" aria-label="GitHub" class="iconbtn" target="_blank" rel="noopener noreferrer">
+				<a href="https://github.com/WestwoodRobotics" aria-label="GitHub" class="iconbtn" target="_blank" rel="noopener noreferrer">
 					<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.55v-1.94c-3.2.7-3.87-1.54-3.87-1.54-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.25 3.34.96.1-.74.4-1.25.72-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.47.11-3.06 0 0 .96-.31 3.16 1.18a10.95 10.95 0 0 1 5.75 0c2.2-1.49 3.16-1.18 3.16-1.18.62 1.59.23 2.77.11 3.06.74.81 1.18 1.84 1.18 3.1 0 4.42-2.7 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.66.8.55A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
 				</a>
 			</div>

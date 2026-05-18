@@ -1,28 +1,48 @@
 <script lang="ts">
-	import { SEASON_END_MONTH } from '$lib/config';
-
 	const currentMonth = new Date().getMonth();
-	const nodes = [
+
+	const fall = [
 		{ month: 'SEP', title: 'Kickoff', body: 'FIRST drops the new game; we run strategy and lock down a robot concept.', idx: 8 },
 		{ month: 'OCT', title: 'Build', body: 'CAD, prototype, iterate. Subteams ship designs in parallel and integrate on the chassis.', idx: 9 },
 		{ month: 'NOV', title: 'Practice', body: 'Autonomous gets dialed in. Drive team logs hours until it feels easy.', idx: 10 },
-		{ month: 'DEC', title: 'Compete', body: 'League Meets → LCs → Area. Iterate till Worlds', idx: SEASON_END_MONTH }
+		{ month: 'DEC', title: 'League Meets', body: 'League play begins. Score data in, robot tuned between events.', idx: 11 }
+	];
+	const spring = [
+		{ month: 'JAN', title: 'League Champs', body: 'Top league finishers advance. Robot locked, drive reps maxed.', idx: 0 },
+		{ month: 'FEB', title: 'States', body: 'FiT Central GEMS State Championship. Judging, quals, and elimination rounds.', idx: 1 },
+		{ month: 'MAR', title: 'Worlds Prep', body: 'If qualified — full audit, media kit, and travel logistics.', idx: 2 },
+		{ month: 'APR', title: 'Worlds', body: 'FIRST World Championship in Houston. Compete, connect, repeat.', idx: 3 }
 	];
 </script>
 
-<div class="timeline">
-	<div class="t-track" aria-hidden="true"></div>
-	{#each nodes as n}
-		<div class="t-node">
-			<div class="t-month">{n.month}</div>
-			<span class="t-dot" class:active={currentMonth >= n.idx}></span>
-			<h3>{n.title}</h3>
-			<p>{n.body}</p>
+<div class="tl-wrap">
+	{#each [{ label: 'Fall', nodes: fall }, { label: 'Spring', nodes: spring }] as phase (phase.label)}
+		<div class="tl-phase">
+			<div class="tl-phase-label">{phase.label}</div>
+			<div class="timeline">
+				<div class="t-track" aria-hidden="true"></div>
+				{#each phase.nodes as n}
+					<div class="t-node">
+						<div class="t-month">{n.month}</div>
+						<span class="t-dot" class:active={currentMonth >= n.idx && currentMonth <= (phase.label === 'Fall' ? 11 : 3)}></span>
+						<h3>{n.title}</h3>
+						<p>{n.body}</p>
+					</div>
+				{/each}
+			</div>
 		</div>
 	{/each}
 </div>
 
 <style>
+	.tl-wrap { display: flex; flex-direction: column; gap: 32px; }
+	.tl-phase-label {
+		font-size: 10px;
+		letter-spacing: 0.22em;
+		color: var(--muted);
+		text-transform: uppercase;
+		margin-bottom: 12px;
+	}
 	.timeline {
 		position: relative;
 		display: grid;
