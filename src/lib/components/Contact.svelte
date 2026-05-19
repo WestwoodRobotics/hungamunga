@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Section from './Section.svelte';
+	import { CLUB_EMAIL } from '$lib/config';
 </script>
 
 <Section id="contact" marker="07" kicker="Write to us">
@@ -10,12 +11,12 @@
 				Interested in sponsoring, mentoring, or bringing us out for a demo? Reach out — we'd love to hear from you.
 			</p>
 			<dl class="meta">
-				<div><dt>Email</dt><dd>team17113@gmail.com</dd></div>
+				<div><dt>Email</dt><dd>{CLUB_EMAIL}</dd></div>
 				<div><dt>Location</dt><dd>Austin, Texas</dd></div>
 				<div><dt>Response</dt><dd>Within 48 hours</dd></div>
 			</dl>
 		</div>
-		<a class="cta" href="mailto:team17113@gmail.com">
+		<a class="cta" href="mailto:{CLUB_EMAIL}">
 			<span class="cta-label">Email us</span>
 			<span class="cta-arrow">→</span>
 		</a>

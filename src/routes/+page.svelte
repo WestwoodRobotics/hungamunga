@@ -10,6 +10,8 @@
 	import Contact from '$lib/components/Contact.svelte';
 	import SiteFooter from '$lib/components/SiteFooter.svelte';
 
+	import { MEMBERS } from '$lib/config';
+
 	let showContent = $state(false);
 
 	onMount(() => {
@@ -101,10 +103,10 @@
 	<div class="band reveal">
 		<Section id="team" marker="04" kicker="The roster">
 			{#snippet title()}Who we are.{/snippet}
-			<div class="team-grid">
+			<div class="team-wrap">
 				<div class="team-lead">
 					<p class="lede">
-						<span class="lede-em">15 students.</span> One pit. Seven seasons of figuring out how to make an 18-by-18-inch box move with intent.
+						<span class="lede-em">15 students.</span> One pit. Seven seasons of figuring out how to make an 18-by-18-inch box move.
 					</p>
 					<div class="team-meta">
 						<span>Austin, TX</span>
@@ -112,16 +114,18 @@
 						<span>Westwood High</span>
 					</div>
 				</div>
-				<div class="team-cards">
-					<Card idx="4" title="Build leads" variant="plate">
-						Two students who own the robot from first sketch to field-ready — CAD, fabrication, and every last bolt torqued at 11 PM.
-					</Card>
-					<Card idx="3" title="Drive team" variant="plate">
-						Driver, operator, coach. Practiced every meeting the last six weeks of build season. Responsible for what happens when the match clock starts.
-					</Card>
-					<Card idx="5" title="Business & outreach" variant="plate">
-						Engineering notebook, sponsor relations, FLL mentoring, and every demo we've ever run. The team's face off the field.
-					</Card>
+				<div class="members-grid">
+					{#each MEMBERS as member (member.name)}
+						<div class="member-card">
+							{#if member.pfp}
+								<img class="member-avatar" src={member.pfp} alt={member.name} />
+							{:else}
+								<div class="member-avatar"></div>
+							{/if}
+							<span class="member-name">{member.name}</span>
+							<span class="member-role">{member.role}</span>
+						</div>
+					{/each}
 				</div>
 			</div>
 		</Section>
@@ -251,11 +255,45 @@
 		white-space: nowrap;
 	}
 
-	.team-grid {
+	.team-wrap { display: flex; flex-direction: column; gap: 48px; }
+	.members-grid {
 		display: grid;
-		grid-template-columns: 1.1fr 1fr;
-		gap: 96px;
-		align-items: start;
+		grid-template-columns: repeat(5, 1fr);
+		gap: 20px;
+	}
+	.member-card {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 10px;
+		padding: 24px 16px;
+		background: var(--glass-bg);
+		border: 1px solid var(--glass-border);
+		border-radius: 14px;
+		text-align: center;
+		transition: background var(--t-base), border-color var(--t-base);
+	}
+	.member-card:hover { background: var(--glass-bg-2); border-color: var(--line-accent-2); }
+	.member-avatar {
+		width: 64px;
+		height: 64px;
+		border-radius: 50%;
+		background: var(--accent-2-dim);
+		border: 2px solid var(--line-accent-2);
+		object-fit: cover;
+	}
+	.member-name {
+		font-family: 'Space Grotesk', sans-serif;
+		font-weight: 500;
+		font-size: 14px;
+		color: var(--ink);
+		letter-spacing: -0.01em;
+	}
+	.member-role {
+		font-size: 11px;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: var(--accent);
 	}
 	.lede {
 		margin: 0 0 32px;
@@ -281,7 +319,6 @@
 		margin-left: 24px;
 		color: var(--muted);
 	}
-	.team-cards { display: grid; gap: 28px; }
 
 	.results { display: flex; flex-direction: column; gap: 20px; }
 	.r-hero, .r-row {
@@ -356,13 +393,13 @@
 
 	@media (max-width: 1080px) {
 		.trio { gap: 32px; }
-		.team-grid { gap: 56px; }
+		.members-grid { grid-template-columns: repeat(4, 1fr); }
 	}
 	@media (max-width: 760px) {
 		.trio { grid-template-columns: 1fr; gap: 0; }
 		.outreach li { grid-template-columns: 1fr; gap: 14px; padding: 24px 22px; }
 		.o-tag { justify-self: flex-start; }
-		.team-grid { grid-template-columns: 1fr; gap: 48px; }
+		.members-grid { grid-template-columns: repeat(3, 1fr); }
 		.r-hero, .r-row { grid-template-columns: 1fr; gap: 14px; padding: 28px 22px; }
 		.r-hero { padding: 36px 22px; }
 	}
