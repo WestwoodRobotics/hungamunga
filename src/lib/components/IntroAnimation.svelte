@@ -3,8 +3,8 @@
 
 	let { onComplete }: { onComplete?: () => void } = $props();
 
-	let introEl: HTMLDivElement;
-	let crackCanvas: HTMLCanvasElement;
+	let introEl: HTMLDivElement | undefined = $state();
+	let crackCanvas: HTMLCanvasElement | undefined = $state();
 	let showCracks = $state(false);
 	let irisOut = $state(false);
 	let done = $state(false);
@@ -75,7 +75,7 @@
 			ctx.beginPath();
 			ctx.moveTo(points[s][0], points[s][1]);
 			ctx.lineTo(points[s + 1][0], points[s + 1][1]);
-			ctx.strokeStyle = `rgba(232, 232, 234, ${a})`;
+			ctx.strokeStyle = `rgba(236, 230, 212, ${a * 0.55})`;
 			ctx.lineWidth = w;
 			ctx.stroke();
 		}
@@ -121,10 +121,10 @@
 		vh = window.innerHeight;
 		timeouts.push(
 			setTimeout(() => {
-				introEl.classList.add('screen-shake');
-				drawCracks(crackCanvas);
+				introEl?.classList.add('screen-shake');
+				if (crackCanvas) drawCracks(crackCanvas);
 				showCracks = true;
-				timeouts.push(setTimeout(() => introEl.classList.remove('screen-shake'), T_SHAKE_OFF));
+				timeouts.push(setTimeout(() => introEl?.classList.remove('screen-shake'), T_SHAKE_OFF));
 			}, T_SHAKE),
 			setTimeout(() => { irisOut = true; onComplete?.(); }, T_IRIS),
 			setTimeout(() => { done = true; }, T_DONE)
@@ -209,7 +209,9 @@
 		transform: translateX(-50%);
 		font-size: 11px;
 		letter-spacing: 0.18em;
-		color: rgba(255,255,255,0.28);
+		color: rgba(236, 230, 212, 0.55);
+		font-family: 'Instrument Serif', Georgia, serif;
+		font-style: italic;
 		pointer-events: none;
 		z-index: 5;
 	}

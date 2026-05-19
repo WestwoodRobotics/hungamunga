@@ -3,65 +3,98 @@
 	let {
 		id,
 		marker,
+		kicker,
 		title,
-		children,
-		variant = 'default'
-	}: { id?: string; marker: string; title: Snippet; children: Snippet; variant?: 'default' | 'stacked' | 'minimal' } = $props();
+		variant = 'default',
+		children
+	}: { id?: string; marker: string; kicker?: string; title: Snippet; variant?: 'default' | 'margin'; children: Snippet } = $props();
 </script>
 
-<section id={id} class="block">
-	<header class="blockhead2" class:stacked={variant === 'stacked'} class:minimal={variant === 'minimal'}>
-		<span class="sec-marker">{marker}</span>
+<section id={id} class="block block--{variant}">
+	<header class="head">
+		<div class="eyebrow">
+			<span class="marker">{marker}</span>
+			{#if kicker}<span class="kicker">{kicker}</span>{/if}
+		</div>
 		<h2>{@render title()}</h2>
-		{#if variant !== 'minimal'}<span class="sec-rule"></span>{/if}
 	</header>
-	{@render children()}
+
+	<div class="body">{@render children()}</div>
 </section>
 
 <style>
 	.block {
-		max-width: 1180px;
+		position: relative;
+		max-width: 1280px;
 		margin: 0 auto;
-		padding: 88px 28px;
+		padding: 120px 56px 140px;
 	}
-	.blockhead2 {
-		display: grid;
-		grid-template-columns: auto auto 1fr;
-		align-items: end;
-		gap: 18px;
-		margin-bottom: 32px;
+
+	.head {
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
+		align-items: flex-start;
+		margin-bottom: 72px;
+		padding-bottom: 28px;
+		border-bottom: 1px solid var(--line-strong);
 	}
-	.blockhead2.stacked {
-		grid-template-columns: 1fr;
-		grid-template-rows: auto auto auto;
-		gap: 10px;
+
+	.eyebrow {
+		display: inline-flex;
+		align-items: baseline;
+		gap: 14px;
 	}
-	.blockhead2.minimal {
-		grid-template-columns: auto 1fr;
-		gap: 18px;
+	.marker {
+		font-family: 'Space Grotesk', sans-serif;
+		font-size: 11px;
+		font-weight: 500;
+		letter-spacing: 0.04em;
+		color: var(--accent);
 	}
-	.sec-marker {
+	.kicker {
 		font-size: 11px;
 		letter-spacing: 0.18em;
-		color: var(--accent);
-		line-height: 1;
-		align-self: center;
+		text-transform: uppercase;
+		color: var(--accent-2-hi);
 	}
-	.stacked .sec-marker { font-size: 10.5px; align-self: auto; }
-	.blockhead2 h2 {
-		font-family: inherit;
-		font-weight: 500;
-		font-size: clamp(24px, 3.2vw, 34px);
-		letter-spacing: -0.005em;
-		word-spacing: -0.22em;
+
+	.head h2 {
 		margin: 0;
+		font-family: 'Space Grotesk', sans-serif;
+		font-weight: 500;
+		font-size: clamp(36px, 5.4vw, 72px);
+		line-height: 1;
+		letter-spacing: -0.035em;
+		color: var(--ink);
+		max-width: 18ch;
 	}
-	.stacked h2 { font-size: clamp(28px, 4vw, 42px); }
-	.sec-rule {
-		display: block;
-		height: 1px;
-		background: var(--line);
-		margin: 0 0 10px 0;
+
+		.block--margin {
+		display: grid;
+		grid-template-columns: 280px 1fr;
+		gap: 80px;
+		align-items: start;
 	}
-	.stacked .sec-rule { margin: 4px 0 0; }
+	.block--margin .head {
+		margin-bottom: 0;
+		padding-bottom: 0;
+		border-bottom: none;
+		position: sticky;
+		top: 96px;
+	}
+	.block--margin .head h2 {
+		font-size: clamp(28px, 3.2vw, 40px);
+	}
+
+	@media (max-width: 1080px) {
+		.block { padding: 96px 32px 112px; }
+		.block--margin { grid-template-columns: 220px 1fr; gap: 48px; }
+	}
+	@media (max-width: 760px) {
+		.block { padding: 72px 24px 88px; }
+		.head { margin-bottom: 48px; }
+		.block--margin { grid-template-columns: 1fr; gap: 32px; }
+		.block--margin .head { position: static; margin-bottom: 32px; }
+	}
 </style>

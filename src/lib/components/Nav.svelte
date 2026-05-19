@@ -8,24 +8,20 @@
 	];
 
 	let open = $state(false);
-
 	function close() { open = false; }
 </script>
 
 <nav class="topnav">
 	<a class="brand" href="#top" aria-label="Team 17113 home">
-		<img src="/favicon.png" alt="" />
-		<div class="brand-text">
-			<span class="brand-num">17113</span>
-			<span class="brand-name">HUNGA <span class="serif-i">MUNGA</span></span>
-		</div>
+		<span class="brand-num">17113</span>
+		<span class="brand-name">Hunga Munga</span>
 	</a>
 	<div class="navlinks">
 		{#each links as l}
-			<a href={l.href}><span class="navnum">{l.n}</span> {l.label}</a>
+			<a href={l.href}><span class="navnum">{l.n}</span><span>{l.label}</span></a>
 		{/each}
 	</div>
-	<a class="navcta" href="#contact">Get in touch →</a>
+	<a class="navcta" href="#contact">Contact <span class="arr">→</span></a>
 	<button class="hamburger" aria-label="Toggle menu" aria-expanded={open} onclick={() => (open = !open)}>
 		<span class:open></span>
 		<span class:open></span>
@@ -38,9 +34,9 @@
 	<div class="drawer" role="dialog" aria-label="Navigation">
 		<div class="drawer-links">
 			{#each links as l}
-				<a href={l.href} onclick={close}><span class="navnum">{l.n}</span> {l.label}</a>
+				<a href={l.href} onclick={close}><span class="navnum">{l.n}</span>{l.label}</a>
 			{/each}
-			<a class="drawer-cta" href="#contact" onclick={close}>Get in touch →</a>
+			<a class="drawer-cta" href="#contact" onclick={close}>Contact →</a>
 		</div>
 	</div>
 {/if}
@@ -53,60 +49,73 @@
 		display: flex;
 		align-items: center;
 		gap: 32px;
-		padding: 18px 28px;
-		background: rgba(19, 19, 24, 0.72);
-		backdrop-filter: blur(14px);
-		-webkit-backdrop-filter: blur(14px);
+		padding: 18px 56px;
+		background: rgba(28, 30, 34, 0.55);
+		backdrop-filter: var(--glass-blur);
+		-webkit-backdrop-filter: var(--glass-blur);
+		border-bottom: 1px solid var(--glass-border);
+		box-shadow: 0 1px 0 rgba(255,255,255,0.05) inset;
 	}
-	.topnav::after {
-		content: '';
-		position: absolute;
-		left: 28px;
-		right: 28px;
-		bottom: 0;
-		height: 1px;
-		background: var(--line);
+	.brand { display: inline-flex; align-items: baseline; gap: 12px; color: var(--ink); text-decoration: none; margin-right: auto; }
+	.brand-num {
+		font-family: 'Instrument Serif', Georgia, serif;
+		font-style: italic;
+		font-size: 28px;
+		color: var(--accent);
+		line-height: 1;
 	}
-	.brand { display: inline-flex; align-items: center; gap: 12px; color: var(--ink); text-decoration: none; margin-right: auto; }
-	.brand img { width: 28px; height: 28px; filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5)); }
-	.brand-text { display: flex; flex-direction: column; line-height: 1; gap: 3px; }
-	.brand-num { font-size: 12px; letter-spacing: 0.16em; color: var(--accent); }
-	.brand-name { font-size: 13px; letter-spacing: 0.05em; color: var(--ink); }
+	.brand-name {
+		font-family: 'Space Grotesk', sans-serif;
+		font-size: 11px;
+		font-weight: 400;
+		letter-spacing: 0.06em;
+		color: var(--ink-dim);
+	}
 	.navlinks { display: flex; gap: 28px; align-items: center; }
 	.navlinks a {
 		position: relative;
-		color: var(--ink-dim);
+		display: inline-flex;
+		align-items: baseline;
+		gap: 6px;
+		color: var(--ink-2);
 		text-decoration: none;
-		font-size: 12px;
-		letter-spacing: 0.06em;
+		font-size: 13px;
 		padding: 6px 0;
-		transition: color 0.15s ease;
+		transition: color var(--t-fast);
 	}
 	.navlinks a::after {
 		content: '';
 		position: absolute;
 		left: 0; right: 100%; bottom: 0;
-		height: 1px; background: var(--accent);
-		transition: right 0.25s ease;
+		height: 1px; background: var(--accent-2);
+		transition: right var(--t-base);
 	}
-	.navlinks a:hover { color: #fff; }
+	.navlinks a:hover { color: var(--ink); }
 	.navlinks a:hover::after { right: 0; }
-	.navnum { color: var(--accent); margin-right: 6px; font-size: 10px; letter-spacing: 0.1em; }
-	.navcta {
-		display: inline-flex;
-		align-items: center;
-		gap: 8px;
-		color: var(--accent);
-		text-decoration: none;
-		font-size: 12px;
-		letter-spacing: 0.06em;
-		padding: 10px 16px;
-		border-radius: 10px;
-		background: var(--panel);
-		box-shadow: var(--shadow-raised-sm);
-		transition: box-shadow 0.18s ease, transform 0.18s ease;
+	.navnum {
+		font-family: 'Instrument Serif', Georgia, serif;
+		font-style: italic;
+		font-size: 13px;
+		color: var(--ink-dim);
 	}
-	.navcta:hover { transform: translateY(1px); box-shadow: var(--shadow-inset); }
+	.navcta {
+		text-decoration: none;
+		font-size: 13px;
+		padding: 10px 18px;
+		background: var(--glass-bg-2);
+		color: var(--ink);
+		border: 1px solid var(--glass-border);
+		backdrop-filter: var(--glass-blur);
+		-webkit-backdrop-filter: var(--glass-blur);
+		box-shadow: var(--glass-shadow);
+		border-radius: 14px;
+		font-family: 'Space Grotesk', sans-serif;
+		font-weight: 500;
+		transition: background var(--t-fast), border-color var(--t-fast);
+	}
+	.navcta :global(.arr) { color: var(--accent); margin-left: 4px; }
+	.navcta:hover { background: var(--accent); border-color: var(--accent); }
+	.navcta:hover :global(.arr) { color: var(--bg); }
 
 	.hamburger {
 		display: none;
@@ -116,67 +125,58 @@
 		width: 36px;
 		height: 36px;
 		padding: 6px;
-		background: var(--panel);
-		border: none;
-		border-radius: 8px;
-		box-shadow: var(--shadow-raised-sm);
+		background: transparent;
+		border: 1px solid var(--ink);
 		cursor: pointer;
 	}
 	.hamburger span {
 		display: block;
 		height: 1.5px;
-		background: var(--ink-dim);
-		border-radius: 2px;
-		transition: transform 0.2s ease, opacity 0.2s ease;
+		background: var(--ink);
+		transition: transform var(--t-fast), opacity var(--t-fast);
 	}
 	.hamburger span.open:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
 	.hamburger span.open:nth-child(2) { opacity: 0; }
 	.hamburger span.open:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
 	.drawer-backdrop {
-		position: fixed;
-		inset: 0;
-		z-index: 9;
-		background: rgba(0,0,0,0.5);
-		backdrop-filter: blur(2px);
+		position: fixed; inset: 0; z-index: 9;
+		background: rgba(10, 16, 26, 0.55);
+		backdrop-filter: blur(6px);
+		-webkit-backdrop-filter: blur(6px);
 	}
 	.drawer {
 		position: fixed;
-		top: 0;
-		right: 0;
-		bottom: 0;
+		top: 0; right: 0; bottom: 0;
 		z-index: 11;
-		width: 240px;
-		background: var(--bg);
-		border-left: 1px solid var(--line);
-		padding: 80px 24px 32px;
-		display: flex;
-		flex-direction: column;
-		animation: drawerIn 0.22s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+		width: 260px;
+		background: rgba(35, 38, 44, 0.85);
+		backdrop-filter: var(--glass-blur);
+		-webkit-backdrop-filter: var(--glass-blur);
+		border-left: 1px solid var(--glass-border);
+		padding: 80px 28px 32px;
+		animation: drawerIn 0.22s var(--ease-out-expo) forwards;
 	}
-	@keyframes drawerIn {
-		from { transform: translateX(100%); }
-		to { transform: translateX(0); }
-	}
-	.drawer-links { display: flex; flex-direction: column; gap: 4px; }
+	@keyframes drawerIn { from { transform: translateX(100%); } to { transform: translateX(0); } }
+	.drawer-links { display: flex; flex-direction: column; gap: 2px; }
 	.drawer-links a {
-		color: var(--ink-dim);
-		text-decoration: none;
-		font-size: 14px;
-		letter-spacing: 0.06em;
-		padding: 12px 8px;
-		border-radius: 8px;
-		transition: background 0.15s ease, color 0.15s ease;
+		display: flex; gap: 14px; align-items: baseline;
+		color: var(--ink); text-decoration: none;
+		font-size: 16px; padding: 14px 0;
+		border-bottom: 1px solid var(--line);
 	}
-	.drawer-links a:hover { background: var(--panel); color: #fff; }
 	.drawer-cta {
-		margin-top: 16px;
-		color: var(--accent) !important;
-		border: 1px solid var(--line);
-		text-align: center;
+		margin-top: 20px;
+		background: var(--accent);
+		color: var(--bg) !important;
+		padding: 14px 18px !important;
+		justify-content: center;
+		border-bottom: none !important;
+		border-radius: 14px;
 	}
 
-	@media (max-width: 720px) {
+	@media (max-width: 760px) {
+		.topnav { padding: 16px 24px; }
 		.navlinks, .navcta { display: none; }
 		.hamburger { display: flex; }
 	}

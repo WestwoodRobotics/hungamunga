@@ -1,95 +1,233 @@
 <script lang="ts">
-	import SpecCard from './SpecCard.svelte';
 </script>
 
 <section class="hero">
-	<div class="watermark" aria-hidden="true">17113</div>
-	<div class="hero-grid">
-		<div class="hero-text">
-			<div class="eyebrow">FTC Robotics Team</div>
-			<h1 class="title">
-				Building <span class="serif">robots,</span><br />
-				building <span class="serif">engineers.</span>
-			</h1>
-			<p class="sub">
-				FTC Team 17113 - a Westwood Robotics team competing in
-				<abbr class="serif-i" title="FIRST in Texas Central — Greater East Metro South; our regional conference">FiT Central GEMS</abbr>, based in Austin, TX.
-			</p>
-			<div class="socials">
-				<a href="https://www.instagram.com/hungamunga17113/" aria-label="Instagram" class="iconbtn" target="_blank" rel="noopener noreferrer">
-					<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-				</a>
-				<a href="https://www.youtube.com/@westwoodhunga" aria-label="YouTube" class="iconbtn" target="_blank" rel="noopener noreferrer">
-					<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M23 7.1s-.2-1.5-.9-2.2c-.8-.9-1.8-.9-2.2-1C16.8 3.5 12 3.5 12 3.5s-4.8 0-7.9.4c-.4.1-1.4.1-2.2 1C1.2 5.6 1 7.1 1 7.1S.8 8.8.8 10.6v1.7c0 1.8.2 3.5.2 3.5s.2 1.5.9 2.2c.8.9 1.9.8 2.4.9 1.7.2 7.7.4 7.7.4s4.8 0 7.9-.4c.4-.1 1.4-.1 2.2-1 .7-.7.9-2.2.9-2.2s.2-1.7.2-3.5v-1.7c0-1.8-.2-3.5-.2-3.5zM9.8 14.4V8.2l6.2 3.1-6.2 3.1z"/></svg>
-				</a>
-				<a href="https://github.com/WestwoodRobotics" aria-label="GitHub" class="iconbtn" target="_blank" rel="noopener noreferrer">
-					<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.55v-1.94c-3.2.7-3.87-1.54-3.87-1.54-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.25 3.34.96.1-.74.4-1.25.72-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.47.11-3.06 0 0 .96-.31 3.16 1.18a10.95 10.95 0 0 1 5.75 0c2.2-1.49 3.16-1.18 3.16-1.18.62 1.59.23 2.77.11 3.06.74.81 1.18 1.84 1.18 3.1 0 4.42-2.7 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.66.8.55A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
-				</a>
+	<div class="cover">
+		<div class="cover-grid">
+			<div class="col-side">
+				<p class="standfirst">
+					A Westwood Robotics team competing in <span class="serif-i">FiT&nbsp;Central&nbsp;GEMS</span> — building the machines, and the people who build them.
+				</p>
+				<div class="byline">
+					<span>Austin, TX</span>
+					<span>·</span>
+					<span>FTC 17113</span>
+					<span>·</span>
+					<span>est. 2019</span>
+				</div>
+			</div>
+
+			<div class="col-title">
+				<h1 class="title">
+					<span class="ln">Building</span>
+					<span class="ln serif">robots,</span>
+					<span class="ln">building</span>
+					<span class="ln serif">engineers.</span>
+				</h1>
 			</div>
 		</div>
-		<SpecCard />
+
+		<span class="ghost-imprint" aria-hidden="true">17113</span>
+
+	<aside class="margin-note" aria-hidden="true">
+			<span class="mn-num">07</span>
+			<span class="mn-label">seasons</span>
+		</aside>
 	</div>
+
+	<footer class="colophon">
+		<div class="cph-item">
+			<span class="cph-k">Roster</span>
+			<span class="cph-v">~15 students</span>
+		</div>
+		<div class="cph-item">
+			<span class="cph-k">Field</span>
+			<span class="cph-v">FiT Central GEMS</span>
+		</div>
+		<div class="cph-item">
+			<span class="cph-k">Outreach</span>
+			<span class="cph-v">2 FLL teams · 80 hr/yr</span>
+		</div>
+		<div class="cph-item cph-soc">
+			<a href="https://www.instagram.com/hungamunga17113/" target="_blank" rel="noopener noreferrer">Instagram</a>
+			<a href="https://www.youtube.com/@westwoodhunga" target="_blank" rel="noopener noreferrer">YouTube</a>
+			<a href="https://github.com/WestwoodRobotics" target="_blank" rel="noopener noreferrer">GitHub</a>
+		</div>
+	</footer>
 </section>
 
 <style>
 	.hero {
 		position: relative;
-		max-width: 1180px;
-		margin: 0 auto;
-		padding: 88px 28px 56px;
-		overflow: hidden;
+		min-height: 100svh;
+		display: grid;
+		grid-template-rows: 1fr auto;
+		padding: 0;
 	}
-	.watermark {
+
+	.ghost-imprint {
 		position: absolute;
-		top: -40px;
-		right: -30px;
-		pointer-events: none;
-		user-select: none;
+		right: -2%;
+		top: 50%;
+		transform: translateY(-50%) rotate(-6deg);
 		font-family: 'Instrument Serif', Georgia, serif;
 		font-style: italic;
-		font-size: clamp(220px, 34vw, 440px);
+		font-size: clamp(180px, 24vw, 360px);
 		line-height: 0.85;
-		color: rgba(217, 74, 44, 0.05);
+		color: transparent;
+		-webkit-text-stroke: 1px rgba(255, 252, 245, 0.055);
+		background: linear-gradient(160deg, rgba(255,252,245,0.07) 0%, rgba(255,252,245,0.02) 100%);
+		-webkit-background-clip: text;
+		background-clip: text;
+		pointer-events: none;
+		user-select: none;
+		white-space: nowrap;
 		z-index: 0;
+		letter-spacing: -0.04em;
 	}
-	.hero-grid {
+
+	.cover {
 		position: relative;
-		z-index: 1;
+		display: flex;
+		align-items: stretch;
+		padding: 0 56px;
+	}
+	.cover-grid {
+		flex: 1;
 		display: grid;
-		grid-template-columns: minmax(0, 1.4fr) minmax(260px, 0.9fr);
-		gap: 56px;
-		align-items: end;
+		grid-template-columns: 280px 1fr;
+		gap: 80px;
+		padding: 56px 0 60px;
 	}
-	.eyebrow { font-size: 11px; letter-spacing: 0.18em; color: var(--accent); margin-bottom: 18px; }
+
+	.col-side {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		gap: 32px;
+		padding-top: 12px;
+	}
+	.standfirst {
+		margin: 0;
+		font-size: 14px;
+		line-height: 1.65;
+		color: var(--ink-2);
+		max-width: 280px;
+	}
+	.byline {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 10px;
+		font-size: 10px;
+		letter-spacing: 0.24em;
+		text-transform: uppercase;
+		color: var(--muted);
+	}
+
+	.col-title {
+		display: flex;
+		align-items: flex-end;
+	}
 	.title {
-		font-family: inherit;
+		margin: 0;
+		font-family: 'Space Grotesk', sans-serif;
 		font-weight: 500;
-		font-size: clamp(34px, 5.8vw, 62px);
-		line-height: 1.04;
-		letter-spacing: -0.015em;
-		word-spacing: -0.22em;
-		margin: 0 0 22px;
+		font-size: clamp(72px, 11.5vw, 168px);
+		line-height: 0.92;
+		letter-spacing: -0.05em;
+		color: var(--ink);
 	}
-	.title :global(.serif) { font-size: 0.95em; }
-	.sub { max-width: 560px; margin: 0; color: var(--muted); font-size: 14px; line-height: 1.65; }
-	.sub abbr { text-underline-offset: 3px; text-decoration-style: dotted; cursor: help; }
-	.socials { display: inline-flex; gap: 10px; margin-top: 28px; }
-	.iconbtn {
+	.title .ln { display: block; }
+	.title .ln.serif {
+		font-family: 'Instrument Serif', Georgia, serif;
+		font-style: italic;
+		font-weight: 400;
+		font-size: 1.04em;
+		letter-spacing: -0.035em;
+		color: var(--accent);
+		padding-left: 0.6em;
+	}
+
+	.margin-note {
+		position: absolute;
+		top: 56px;
+		right: 56px;
 		display: inline-flex;
 		align-items: center;
-		justify-content: center;
-		width: 40px;
-		height: 40px;
-		border-radius: 10px;
-		background: var(--panel);
-		color: var(--ink-dim);
-		text-decoration: none;
-		box-shadow: var(--shadow-raised-sm);
-		transition: box-shadow 0.18s ease, color 0.18s ease, transform 0.18s ease;
+		gap: 14px;
+		padding: 14px 20px;
+		background: var(--glass-bg);
+		border: 1px solid var(--glass-border);
+		backdrop-filter: var(--glass-blur);
+		-webkit-backdrop-filter: var(--glass-blur);
+		box-shadow: var(--glass-shadow);
+		border-radius: 14px;
 	}
-	.iconbtn:hover { color: #fff; transform: translateY(1px); box-shadow: var(--shadow-inset); }
+	.mn-num {
+		font-family: 'Instrument Serif', Georgia, serif;
+		font-style: italic;
+		font-size: 48px;
+		color: var(--accent);
+		line-height: 0.9;
+	}
+	.mn-label {
+		font-size: 10px;
+		letter-spacing: 0.24em;
+		text-transform: uppercase;
+		color: var(--ink-dim);
+		text-align: left;
+		line-height: 1.4;
+	}
 
-	@media (max-width: 860px) {
-		.hero-grid { grid-template-columns: 1fr; gap: 36px; }
+	.colophon {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 18px;
+		margin: 0 56px 32px;
+		padding: 20px 28px;
+		background: var(--glass-bg);
+		border: 1px solid var(--glass-border);
+		backdrop-filter: var(--glass-blur);
+		-webkit-backdrop-filter: var(--glass-blur);
+		box-shadow: var(--glass-shadow);
+		border-radius: var(--r-lg);
+		font-size: 11px;
+	}
+	.cph-item { display: flex; flex-direction: column; gap: 6px; }
+	.cph-k {
+		font-size: 10px;
+		letter-spacing: 0.2em;
+		text-transform: uppercase;
+		color: var(--accent-2-hi);
+	}
+	.cph-v { color: var(--ink-2); letter-spacing: 0.02em; }
+	.cph-soc { flex-direction: row; gap: 18px; align-items: center; justify-content: flex-end; }
+	.cph-soc a {
+		color: var(--ink-2);
+		text-decoration: none;
+		font-size: 11px;
+		letter-spacing: 0.04em;
+		border-bottom: 1px solid var(--line-strong);
+		padding-bottom: 2px;
+		transition: color var(--t-fast), border-color var(--t-fast);
+	}
+	.cph-soc a:hover { color: var(--accent); border-color: var(--accent); }
+
+	@media (max-width: 1200px) {
+		.margin-note { display: none; }
+	}
+	@media (max-width: 1080px) {
+		.cover { padding-left: 32px; padding-right: 32px; }
+		.colophon { margin-left: 32px; margin-right: 32px; }
+		.cover-grid { grid-template-columns: 220px 1fr; gap: 48px; padding-top: 40px; }
+	}
+	@media (max-width: 760px) {
+		.cover { padding-left: 24px; padding-right: 24px; }
+		.colophon { margin-left: 24px; margin-right: 24px; }
+		.cover-grid { grid-template-columns: 1fr; gap: 32px; padding: 32px 0 48px; }
+		.margin-note { display: none; }
+		.title { font-size: clamp(52px, 14vw, 96px); }
+		.colophon { grid-template-columns: 1fr 1fr; gap: 18px; }
+		.cph-soc { grid-column: 1 / -1; justify-content: flex-start; }
 	}
 </style>
