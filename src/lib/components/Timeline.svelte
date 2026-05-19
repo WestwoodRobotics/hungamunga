@@ -71,18 +71,6 @@
 		height: 1px;
 		background: linear-gradient(90deg, transparent, var(--line-accent-2) 15%, var(--line-accent-2) 85%, transparent);
 	}
-	.t-node::before {
-		content: '';
-		position: absolute;
-		top: -22px;
-		left: 22px;
-		width: 14px;
-		height: 14px;
-		border-radius: 50%;
-		background: var(--bg-2);
-		border: 2px solid var(--accent-2);
-		box-shadow: 0 0 0 3px var(--accent-2-dim);
-	}
 	.t-node {
 		position: relative;
 		padding: 26px 22px;
