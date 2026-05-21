@@ -14,14 +14,14 @@
 		}
 
 		const seq = [
-			setTimeout(() => { step = 1; }, 500),
-			setTimeout(() => { step = 2; }, 2000),
-			setTimeout(() => { step = 3; }, 2700),
+			setTimeout(() => { step = 1; }, 300),
+			setTimeout(() => { step = 2; }, 1000),
+			setTimeout(() => { step = 3; }, 1400),
 			setTimeout(() => {
 				done = true;
 				sessionStorage.setItem('introPlayed', 'true');
 				onComplete?.();
-			}, 3500)
+			}, 1800)
 		];
 
 		return () => seq.forEach(clearTimeout);
@@ -30,7 +30,7 @@
 
 {#if !done}
 	<div 
-		class="fixed inset-0 z-[100] flex items-center justify-center bg-background overflow-hidden transition-opacity duration-1000 {step === 3 ? 'opacity-0 pointer-events-none' : 'opacity-100'}"
+		class="fixed inset-0 z-intro flex items-center justify-center bg-background overflow-hidden transition-opacity duration-500 {step === 3 ? 'opacity-0 pointer-events-none' : 'opacity-100'}"
 	>
 
 		

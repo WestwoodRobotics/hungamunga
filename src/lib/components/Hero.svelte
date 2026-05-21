@@ -21,6 +21,9 @@
 			src="/favicon.png"
 			alt=""
 			aria-hidden="true"
+			width="1200"
+			height="1600"
+			fetchpriority="low"
 			style="
 				height: 100%;
 				width: auto;

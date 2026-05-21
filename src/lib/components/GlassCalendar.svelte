@@ -50,16 +50,6 @@
 		className
 	)}
 >
-	<style>
-		.scrollbar-hide::-webkit-scrollbar {
-			display: none;
-		}
-		.scrollbar-hide {
-			-ms-overflow-style: none;
-			scrollbar-width: none;
-		}
-	</style>
-
 	<div class="flex items-center justify-between border-b border-white/5 pb-4">
 		<div class="flex items-center space-x-1 p-1 bg-black/20 rounded-[14px] border border-white/5">
 			<button class="px-3 py-1 bg-white/10 rounded-[10px] text-xs font-medium tracking-wide text-white shadow-sm transition-colors">

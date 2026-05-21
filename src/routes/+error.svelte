@@ -42,7 +42,7 @@
 	}
 
 	h1 {
-		font-family: 'Instrument Serif', Georgia, serif;
+		font-family: var(--font-heading);
 		font-style: italic;
 		font-weight: 400;
 		font-size: 2.75rem;
