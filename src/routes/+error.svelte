@@ -24,18 +24,18 @@
 	}
 
 	.card {
-		background: var(--panel);
-		border: 1px solid var(--line-strong);
+		background: rgba(255, 255, 255, 0.02);
+		border: 1px solid rgba(255, 255, 255, 0.08);
 		border-radius: 4px;
 		padding: 3rem 3.5rem;
 		max-width: 480px;
 		width: 100%;
-		box-shadow: var(--shadow-raised);
+		box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 	}
 
 	.code {
 		font-size: 0.7rem;
-		color: var(--muted);
+		color: rgba(255, 255, 255, 0.35);
 		letter-spacing: 0.12em;
 		text-transform: uppercase;
 		margin-bottom: 1rem;
@@ -46,14 +46,14 @@
 		font-style: italic;
 		font-weight: 400;
 		font-size: 2.75rem;
-		color: var(--accent);
+		color: #dcdfe4;
 		line-height: 1.1;
 		margin-bottom: 1.25rem;
 	}
 
 	p {
 		font-size: 0.8rem;
-		color: var(--ink-dim);
+		color: #9a9ea6;
 		line-height: 1.7;
 		margin-bottom: 2rem;
 	}
@@ -63,15 +63,15 @@
 		align-items: center;
 		gap: 0.5rem;
 		font-size: 0.75rem;
-		color: var(--ink);
+		color: #dcdfe4;
 		text-decoration: none;
-		border: 1px solid var(--line-strong);
+		border: 1px solid rgba(255, 255, 255, 0.08);
 		border-radius: 3px;
 		padding: 0.55rem 1rem;
 		transition: border-color 0.15s, color 0.15s;
 	}
 	a:hover {
-		border-color: var(--accent);
-		color: var(--accent);
+		border-color: rgba(255, 255, 255, 0.2);
+		color: #ffffff;
 	}
 </style>

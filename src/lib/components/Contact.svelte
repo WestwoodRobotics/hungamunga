@@ -35,11 +35,11 @@
 		</div>
 		
 		<div class="lg:justify-self-end flex items-end">
-			<GlassButton variant="primary" size="lg" class="group px-12">
-				<a href={eHref} class="flex items-center gap-4 py-2">
+			<GlassButton variant="primary" size="lg" class="group px-12" href={eHref}>
+				<span class="flex items-center gap-4 py-2">
 					<span class="text-base tracking-widest">Send Message</span>
 					<span class="transition-transform duration-500 group-hover:translate-x-2">-></span>
-				</a>
+				</span>
 			</GlassButton>
 		</div>
 	</div>

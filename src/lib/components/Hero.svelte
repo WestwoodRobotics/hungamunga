@@ -60,12 +60,8 @@
 				</p>
 				
 				<div class="flex gap-4">
-					<GlassButton variant="primary">
-						<a href="#robot">The Build</a>
-					</GlassButton>
-					<GlassButton variant="default">
-						<a href="#season">Season</a>
-					</GlassButton>
+					<GlassButton variant="primary" href="#robot">The Build</GlassButton>
+					<GlassButton variant="default" href="#season">Season</GlassButton>
 				</div>
 			</div>
 		</div>

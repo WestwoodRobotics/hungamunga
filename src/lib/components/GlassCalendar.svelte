@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { cn } from '$lib/utils';
-	import { Settings, Plus, Edit2, ChevronLeft, ChevronRight } from 'lucide-svelte';
+	import { Settings, ChevronLeft, ChevronRight } from 'lucide-svelte';
 	import { format, addMonths, subMonths, isSameDay, isToday, getDate, getDaysInMonth, startOfMonth } from 'date-fns';
 	import { slide } from 'svelte/transition';
 

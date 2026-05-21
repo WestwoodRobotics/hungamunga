@@ -32,15 +32,21 @@
 		variant?: Variant;
 		size?: Size;
 		class?: string;
+		href?: string;
 		children?: Snippet;
 	}
 
-	let { variant = 'default', size = 'default', class: className, children, ...rest }: Props = $props();
+	let { variant = 'default', size = 'default', class: className, href, children, ...rest }: Props = $props();
+
+	const cls = cn(glassButtonVariants({ variant, size }), "group active:scale-95", className);
 </script>
 
-<button class={cn(glassButtonVariants({ variant, size }), "group active:scale-95", className)} {...rest}>
-
-	<span class="relative z-10 block font-sans">
-		{@render children?.()}
-	</span>
-</button>
+{#if href}
+	<a {href} class={cls}>
+		<span class="relative z-10 block font-sans">{@render children?.()}</span>
+	</a>
+{:else}
+	<button class={cls} {...rest}>
+		<span class="relative z-10 block font-sans">{@render children?.()}</span>
+	</button>
+{/if}

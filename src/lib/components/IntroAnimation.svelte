@@ -7,17 +7,23 @@
 	let step = $state(0);
 
 	onMount(() => {
+		if (sessionStorage.getItem('introPlayed')) {
+			done = true;
+			onComplete?.();
+			return;
+		}
+
 		const seq = [
 			setTimeout(() => { step = 1; }, 500),
 			setTimeout(() => { step = 2; }, 2000),
 			setTimeout(() => { step = 3; }, 2700),
-			setTimeout(() => { 
-				done = true; 
+			setTimeout(() => {
+				done = true;
 				sessionStorage.setItem('introPlayed', 'true');
-				onComplete?.(); 
+				onComplete?.();
 			}, 3500)
 		];
-		
+
 		return () => seq.forEach(clearTimeout);
 	});
 </script>
