@@ -17,7 +17,7 @@
 				</div>
 				<ul class="flex flex-col gap-4">
 					{#each t.perks as p}
-						<li class="text-xs text-white/50 leading-relaxed font-sans text-justify">
+						<li class="text-xs text-white/50 leading-relaxed font-sans">
 							{p}
 						</li>
 					{/each}

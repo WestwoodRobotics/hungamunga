@@ -4,8 +4,7 @@
 	import Hero from '$lib/components/Hero.svelte';
 	import Section from '$lib/components/Section.svelte';
 	import Card from '$lib/components/Card.svelte';
-	import GlassCalendar from '$lib/components/GlassCalendar.svelte';
-	import Sponsors from '$lib/components/Sponsors.svelte';
+import Sponsors from '$lib/components/Sponsors.svelte';
 	import Contact from '$lib/components/Contact.svelte';
 	import SiteFooter from '$lib/components/SiteFooter.svelte';
 
@@ -13,7 +12,6 @@
 	import { reveal } from '$lib/actions';
 
 	let showContent = $state(false);
-	const showTeam = MEMBERS.some(m => m.pfp);
 </script>
 
 <svelte:head>
@@ -53,32 +51,24 @@
 	<div use:reveal>
 		<Section id="season" marker="02" kicker="A calendar">
 			{#snippet title()}Season<br/> Timeline.{/snippet}
-			<div class="flex flex-col xl:flex-row gap-16 items-center xl:items-start">
-				<div class="flex-none">
-					<GlassCalendar />
-				</div>
-				<div class="flex-1 space-y-8">
-					<p class="text-sm text-white/70 leading-relaxed max-w-md">
-						Our season runs from the September kickoff through the spring championships. It's a continuous process of designing, building, and testing.
-					</p>
-					<div class="flat-panel p-8 flex flex-col gap-4">
-						<div class="flex items-center justify-between py-2 border-b border-white/5">
-							<span class="text-[11px] font-sans font-medium uppercase text-white/50">September</span>
-							<span class="text-sm text-white/90">Season Kickoff & Prototyping</span>
+			<div class="flex flex-col gap-6 max-w-2xl">
+				<p class="text-sm text-white/70 leading-relaxed">
+					Our season runs from the September kickoff through the spring championships — a continuous cycle of designing, building, and testing.
+				</p>
+				<div class="flat-panel p-8 flex flex-col gap-0">
+					{#each [
+						{ month: 'September', event: 'Season Kickoff & Prototyping' },
+						{ month: 'October', event: 'Robot Design & Build Phase' },
+						{ month: 'November', event: 'First League Meet' },
+						{ month: 'December', event: 'Iteration & Driver Practice' },
+						{ month: 'January', event: 'Final Refinements' },
+						{ month: 'February', event: 'League Championship' },
+					] as row (row.month)}
+						<div class="flex items-center justify-between py-3 border-b border-white/5 last:border-0">
+							<span class="text-[11px] font-sans font-medium uppercase tracking-widest text-white/40 w-28 shrink-0">{row.month}</span>
+							<span class="text-sm text-white/90 text-right">{row.event}</span>
 						</div>
-						<div class="flex items-center justify-between py-2 border-b border-white/5">
-							<span class="text-[11px] font-sans font-medium uppercase text-white/50">November</span>
-							<span class="text-sm text-white/90">First League Meet</span>
-						</div>
-						<div class="flex items-center justify-between py-2 border-b border-white/5">
-							<span class="text-[11px] font-sans font-medium uppercase text-white/50">January</span>
-							<span class="text-sm text-white/90">Final Refinements</span>
-						</div>
-						<div class="flex items-center justify-between py-2">
-							<span class="text-[11px] font-sans font-medium uppercase text-white/50">February</span>
-							<span class="text-sm text-white/90">League Championship</span>
-						</div>
-					</div>
+					{/each}
 				</div>
 			</div>
 		</Section>
@@ -107,7 +97,6 @@
 		</Section>
 	</div>
 
-	{#if showTeam}
 	<div use:reveal>
 		<Section id="team" marker="04" kicker="The roster">
 			{#snippet title()}The<br/> Team.{/snippet}
@@ -118,9 +107,11 @@
 			<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
 				{#each MEMBERS as member (member.name)}
 					<div class="flat-panel p-6 flex flex-col items-center text-center group">
-						<div class="w-20 h-20 mb-6 overflow-hidden bg-white/5 rounded-[16px] filter grayscale opacity-70 group-hover:opacity-100 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500 shadow-inner">
+						<div class="w-20 h-20 mb-6 overflow-hidden bg-white/5 rounded-[16px] flex items-center justify-center grayscale opacity-70 group-hover:opacity-100 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500">
 							{#if member.pfp}
 								<img src={member.pfp} alt={member.name} class="w-full h-full object-cover" />
+							{:else}
+								<span class="font-heading text-2xl font-light text-white/40">{member.name.charAt(0)}</span>
 							{/if}
 						</div>
 						<span class="font-sans text-sm font-medium tracking-wide text-white">{member.name}</span>
@@ -130,7 +121,6 @@
 			</div>
 		</Section>
 	</div>
-	{/if}
 
 	<div use:reveal>
 		<Section id="results" marker="05" kicker="Last season" variant="wide">

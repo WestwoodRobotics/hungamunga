@@ -19,8 +19,8 @@
 </script>
 
 {#if variant === 'wide'}
-<section {id} class="relative py-32 border-t border-white/5">
-	<div class="max-w-7xl mx-auto px-8 flex flex-col gap-16">
+<section {id} class="relative py-32 border-t border-white/5 isolate">
+	<div class="max-w-7xl mx-auto px-4 md:px-8 flex flex-col gap-16">
 		<div class="flex flex-col sm:flex-row sm:items-end gap-6 pb-12 border-b border-white/5">
 			<div class="flex items-center gap-6 flex-1">
 				<span class="font-sans text-xs tracking-widest text-primary font-medium">{marker}</span>
@@ -37,8 +37,8 @@
 	</div>
 </section>
 {:else}
-<section {id} class="relative py-32 border-t border-white/5">
-	<div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row gap-16">
+<section {id} class="relative py-32 border-t border-white/5 isolate">
+	<div class="max-w-7xl mx-auto px-4 md:px-8 flex flex-col md:flex-row gap-16">
 
 		<div class="md:w-1/3 flex flex-col justify-start pt-4">
 			<div class="sticky top-32 flex items-center gap-6">

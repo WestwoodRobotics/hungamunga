@@ -36,7 +36,7 @@
 	</div>
 
 	
-	<div class="max-w-7xl mx-auto px-8 w-full relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+	<div class="max-w-7xl mx-auto px-4 md:px-8 w-full relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
 		
 		<div class="lg:col-span-3 hidden lg:flex flex-col justify-between h-full py-12 border-l border-white/5 pl-8">
 			<div class="flex flex-col gap-2">

@@ -5,6 +5,15 @@
 
 	let done = $state(false);
 	let step = $state(0);
+	let timers: ReturnType<typeof setTimeout>[] = [];
+
+	function skip() {
+		if (done) return;
+		timers.forEach(clearTimeout);
+		done = true;
+		sessionStorage.setItem('introPlayed', 'true');
+		onComplete?.();
+	}
 
 	onMount(() => {
 		if (sessionStorage.getItem('introPlayed')) {
@@ -13,24 +22,24 @@
 			return;
 		}
 
-		const seq = [
+		timers = [
 			setTimeout(() => { step = 1; }, 300),
 			setTimeout(() => { step = 2; }, 1000),
 			setTimeout(() => { step = 3; }, 1400),
-			setTimeout(() => {
-				done = true;
-				sessionStorage.setItem('introPlayed', 'true');
-				onComplete?.();
-			}, 1800)
+			setTimeout(skip, 1800)
 		];
 
-		return () => seq.forEach(clearTimeout);
+		return () => timers.forEach(clearTimeout);
 	});
 </script>
 
 {#if !done}
-	<div 
+	<div
 		class="fixed inset-0 z-intro flex items-center justify-center bg-background overflow-hidden transition-opacity duration-500 {step === 3 ? 'opacity-0 pointer-events-none' : 'opacity-100'}"
+		onclick={skip}
+		role="button"
+		tabindex="-1"
+		aria-label="Skip intro"
 	>
 
 		
@@ -57,15 +66,11 @@
 			</div>
 		</div>
 		
-		<button 
+		<button
 			class="absolute bottom-8 right-8 text-[10px] uppercase tracking-widest text-white/30 hover:text-white transition-colors"
-			onclick={() => {
-				done = true;
-				sessionStorage.setItem('introPlayed', 'true');
-				onComplete?.();
-			}}
+			onclick={(e) => { e.stopPropagation(); skip(); }}
 		>
-			Skip Intro
+			click anywhere to skip
 		</button>
 		
 
