@@ -54,7 +54,7 @@
 			
 			<h1 class="text-6xl md:text-[7rem] xl:text-[9rem] font-heading font-light tracking-tighter text-white leading-[0.9] mb-12 relative z-10">
 				Engineering <br />
-				<span class="text-white/50 italic font-serif tracking-normal">in</span> Motion.
+				<span class="text-white/50 italic tracking-normal">in</span> Motion.
 			</h1>
 			
 			<div class="flex flex-col sm:flex-row items-start sm:items-center gap-10">

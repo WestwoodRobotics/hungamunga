@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { Menu, X } from 'lucide-svelte';
-	
+
 	let scrolled = $state(false);
 	let mobileMenuOpen = $state(false);
 
@@ -22,27 +22,27 @@
 </script>
 
 <div class="fixed top-0 w-full z-nav px-6 transition-all duration-500 {scrolled ? 'pt-4' : 'pt-8'} pointer-events-none">
-	<nav class="max-w-4xl mx-auto liquid-panel liquid-panel-blur flex items-center justify-between px-6 py-3 pointer-events-auto shadow-2xl relative">
+	<nav class="max-w-4xl mx-auto liquid-panel liquid-panel-blur grid grid-cols-3 items-center px-6 py-3 pointer-events-auto shadow-2xl relative">
 		<a href="/" class="flex items-baseline gap-3 group">
 			<span class="font-sans text-sm tracking-widest text-white/90 font-medium group-hover:text-white transition-colors">17113</span>
 			<span class="font-heading text-sm font-light tracking-wide text-white/70 hidden sm:block group-hover:text-white transition-colors">Hunga Munga</span>
 		</a>
 
-		<div class="hidden md:flex items-center space-x-8">
+		<div class="hidden md:flex items-center justify-center space-x-8">
 			<a href="#robot" class="text-[11px] font-sans tracking-widest uppercase text-white/70 hover:text-white transition-colors font-medium">The Build</a>
 			<a href="#season" class="text-[11px] font-sans tracking-widest uppercase text-white/70 hover:text-white transition-colors font-medium">Season</a>
 			<a href="#team" class="text-[11px] font-sans tracking-widest uppercase text-white/70 hover:text-white transition-colors font-medium">Roster</a>
 			<a href="#sponsors" class="text-[11px] font-sans tracking-widest uppercase text-white/70 hover:text-white transition-colors font-medium">Sponsors</a>
 		</div>
 
-		<div class="hidden md:block">
+		<div class="hidden md:flex justify-end">
 			<a href="#contact" class="text-[11px] font-sans tracking-widest uppercase text-white bg-white/10 hover:bg-white/20 px-4 py-2 rounded-full transition-colors font-medium border border-white/5">
 				Contact
 			</a>
 		</div>
 
-		<button 
-			class="md:hidden text-white p-1" 
+		<button
+			class="md:hidden text-white p-1 col-start-3 justify-self-end"
 			onclick={() => mobileMenuOpen = !mobileMenuOpen}
 			aria-label="Toggle menu"
 		>
