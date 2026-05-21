@@ -5,7 +5,7 @@
 	import type { HTMLButtonAttributes } from 'svelte/elements';
 
 	const glassButtonVariants = tv({
-		base: 'relative isolate cursor-pointer transition-all duration-400 flex items-center justify-center outline-none border rounded-[1.25rem] overflow-hidden',
+		base: 'relative isolate cursor-pointer flex items-center justify-center outline-none border overflow-hidden',
 		variants: {
 			size: {
 				default: 'px-6 py-3 text-sm font-medium tracking-wide',
@@ -38,15 +38,15 @@
 
 	let { variant = 'default', size = 'default', class: className, href, children, ...rest }: Props = $props();
 
-	const cls = cn(glassButtonVariants({ variant, size }), "group active:scale-95", className);
+	const cls = $derived(cn(glassButtonVariants({ variant, size }), "group active:scale-95", className));
 </script>
 
 {#if href}
-	<a {href} class={cls}>
+	<a {href} class={cls} style="transition: none;">
 		<span class="relative z-10 block font-sans">{@render children?.()}</span>
 	</a>
 {:else}
-	<button class={cls} {...rest}>
+	<button class={cls} style="transition: none;" {...rest}>
 		<span class="relative z-10 block font-sans">{@render children?.()}</span>
 	</button>
 {/if}

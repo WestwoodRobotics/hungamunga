@@ -7,42 +7,27 @@
 	];
 </script>
 
-<div class="flex flex-col gap-6">
-	<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-		{#each tiers as t, i}
-			<div class="liquid-panel p-8 flex flex-col gap-8 {i === 0 ? 'bg-primary/10 border-primary/30' : ''}">
-				<div class="flex items-baseline justify-between border-b border-white/5 pb-4">
-					<span class="font-sans text-sm tracking-widest uppercase text-white font-medium">{t.name}</span>
-					<span class="text-xs font-sans font-medium text-primary">{t.amount}</span>
-				</div>
-				<ul class="flex flex-col gap-4">
-					{#each t.perks as p}
-						<li class="text-xs text-white/50 leading-relaxed font-sans">
-							{p}
-						</li>
-					{/each}
-				</ul>
+<div class="flex flex-col gap-8">
+	<div class="w-full border-t-2 border-b-2" style="border-color: rgba(255,255,255,0.2);">
+		<div class="grid border-b-2" style="grid-template-columns: 8rem 8rem 1fr; border-color: rgba(255,255,255,0.2);">
+			<span class="mono-label px-6 py-3 border-r" style="border-color: var(--color-rule);">Tier</span>
+			<span class="mono-label px-6 py-3 border-r" style="border-color: var(--color-rule);">Investment</span>
+			<span class="mono-label px-6 py-3">Inclusions</span>
+		</div>
+		{#each tiers as t (t.name)}
+			<div
+				class="grid border-b last:border-0 hover:bg-white/6 {t.name === 'Gold' ? 'bg-primary/5' : ''}"
+				style="grid-template-columns: 8rem 8rem 1fr; border-color: var(--color-rule); transition: none;"
+			>
+				<span class="px-6 py-4 border-r font-sans text-sm font-medium text-white" style="border-color: var(--color-rule);">{t.name}</span>
+				<span class="px-6 py-4 border-r" style="font-family: var(--font-mono); font-size: 11px; color: var(--color-primary); border-color: var(--color-rule);">{t.amount}</span>
+				<span class="px-6 py-4 text-sm" style="color: rgba(229,229,229,0.7);">{t.perks.join(' · ')}</span>
 			</div>
 		{/each}
 	</div>
-	
-	<div class="liquid-panel p-12 grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center mt-8">
-		<div class="text-white/20 text-[11px] font-sans font-medium tracking-widest uppercase hover:text-white/40 transition-colors cursor-pointer text-center w-full">
-			Future Partner
-		</div>
-		<div class="text-white/20 text-[11px] font-sans font-medium tracking-widest uppercase hover:text-white/40 transition-colors cursor-pointer text-center w-full">
-			Your Logo
-		</div>
-		<div class="text-white/20 text-[11px] font-sans font-medium tracking-widest uppercase hover:text-white/40 transition-colors cursor-pointer text-center w-full">
-			Sponsor Level
-		</div>
-		<div class="text-white/20 text-[11px] font-sans font-medium tracking-widest uppercase hover:text-white/40 transition-colors cursor-pointer text-center w-full">
-			Join Us
-		</div>
-	</div>
-	
-	<p class="text-white/40 text-[11px] font-sans font-medium uppercase tracking-widest mt-8">
-		Processed through Westwood Robotics — a 501(c)(3). 
-		<a href="mailto:hungamunga17113@gmail.com" class="text-white/60 hover:text-white transition-colors ml-4 border-b border-white/20 hover:border-white pb-1">Inquire</a>
+
+	<p class="mono-label" style="color: rgba(229,229,229,0.4);">
+		Processed through Westwood Robotics, a 501(c)(3).
+		<a href="mailto:hungamunga17113@gmail.com" class="text-link ml-4" style="color: rgba(229,229,229,0.6);">Inquire</a>
 	</p>
 </div>

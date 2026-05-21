@@ -1,18 +1,41 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import GlassButton from './GlassButton.svelte';
+	import { magnetic } from '$lib/actions';
+
+	let section: HTMLElement;
+	let line1: HTMLSpanElement;
+	let line2: HTMLSpanElement;
+	let subtitleRef: HTMLParagraphElement;
+
+	onMount(async () => {
+		const { gsap } = await import('gsap');
+		const { ScrollTrigger } = await import('gsap/ScrollTrigger');
+		gsap.registerPlugin(ScrollTrigger);
+
+		const base = { trigger: section, start: 'top top', end: 'bottom top', scrub: true };
+		gsap.to(line1, { yPercent: -35, ease: 'none', scrollTrigger: base });
+		gsap.to(line2, { yPercent: -20, ease: 'none', scrollTrigger: base });
+		gsap.to(subtitleRef, { yPercent: -8, ease: 'none', scrollTrigger: base });
+	});
 </script>
 
-<section class="relative min-h-screen flex items-center pt-32 pb-12 overflow-hidden border-b border-white/5">
+<section
+	bind:this={section}
+	id="hero"
+	class="relative min-h-screen flex items-start overflow-hidden border-b"
+	style="border-color: var(--color-rule); padding-left: max(4vw, 2rem); padding-top: clamp(6rem, 12vh, 9rem); z-index: var(--z-glass);"
+>
+	<!-- robot image -->
 	<div
 		class="absolute pointer-events-none select-none"
 		style="
-			height: 92vh;
+			height: 90vh;
 			width: auto;
-			right: -2vw;
-			top: 50%;
-			transform: translateY(-46%);
-			-webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0.6) 30%, rgba(0,0,0,0) 95%), linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 10%, rgba(0,0,0,1) 90%, rgba(0,0,0,0) 100%);
-			mask-image: linear-gradient(to right, rgba(0,0,0,0.6) 30%, rgba(0,0,0,0) 95%), linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 10%, rgba(0,0,0,1) 90%, rgba(0,0,0,0) 100%);
+			right: -5%;
+			bottom: 0;
+			-webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0.4) 20%, rgba(0,0,0,0) 90%), linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 8%, rgba(0,0,0,1) 92%, rgba(0,0,0,0) 100%);
+			mask-image: linear-gradient(to right, rgba(0,0,0,0.4) 20%, rgba(0,0,0,0) 90%), linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 8%, rgba(0,0,0,1) 92%, rgba(0,0,0,0) 100%);
 			-webkit-mask-composite: intersect;
 			mask-composite: intersect;
 		"
@@ -24,50 +47,50 @@
 			width="1200"
 			height="1600"
 			fetchpriority="low"
-			style="
-				height: 100%;
-				width: auto;
-				display: block;
-				opacity: 0.09;
-				mix-blend-mode: screen;
-				filter: saturate(0) brightness(2);
-			"
+			style="height: 100%; width: auto; display: block; opacity: 0.08; mix-blend-mode: screen; filter: saturate(0) brightness(2);"
 		/>
 	</div>
 
-	
-	<div class="max-w-7xl mx-auto px-4 md:px-8 w-full relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-		
-		<div class="lg:col-span-3 hidden lg:flex flex-col justify-between h-full py-12 border-l border-white/5 pl-8">
-			<div class="flex flex-col gap-2">
-				<span class="text-[10px] font-sans uppercase tracking-[0.2em] text-white/40">Location</span>
-				<span class="text-xs font-sans uppercase tracking-widest text-white/80 font-medium">Austin, TX</span>
-			</div>
-			
-			<div class="flex flex-col gap-2 mt-auto">
-				<span class="text-[10px] font-sans uppercase tracking-[0.2em] text-white/40">League</span>
-				<span class="text-xs font-sans uppercase tracking-widest text-white/80 font-medium">FiT Central GEMS</span>
-			</div>
-		</div>
+	<div class="relative flex flex-col gap-10 pb-24" style="z-index: var(--z-glass);">
+		<h1 style="font-family: var(--font-heading);">
+			<span
+				bind:this={line1}
+				class="block text-white"
+				style="font-size: var(--text-hero); line-height: 0.88; letter-spacing: -0.04em;"
+			>Engineering</span>
+			<span
+				bind:this={line2}
+				class="block text-white"
+				style="font-size: var(--text-hero-sub); line-height: 0.88; letter-spacing: -0.04em;"
+			><em>in</em> Motion.</span>
+		</h1>
 
-		<div class="lg:col-span-9 flex flex-col items-start relative">
-			
-			<h1 class="text-6xl md:text-[7rem] xl:text-[9rem] font-heading font-light tracking-tighter text-white leading-[0.9] mb-12 relative z-10">
-				Engineering <br />
-				<span class="text-white/50 italic tracking-normal">in</span> Motion.
-			</h1>
-			
-			<div class="flex flex-col sm:flex-row items-start sm:items-center gap-10">
-				<p class="text-sm text-white/70 font-sans leading-relaxed text-justify max-w-sm relative pl-6 before:content-[''] before:absolute before:left-0 before:top-2 before:bottom-2 before:w-px before:bg-primary/50">
-					Seven seasons of building, competing, and growing. We are a student-led robotics team focused on technical excellence and community impact.
-				</p>
-				
-				<div class="flex gap-4">
-					<GlassButton variant="primary" href="#robot">The Build</GlassButton>
-					<GlassButton variant="default" href="#season">Season</GlassButton>
-				</div>
-			</div>
+		<p
+			bind:this={subtitleRef}
+			class="text-sm leading-relaxed"
+			style="max-width: 36ch; color: rgba(229,229,229,0.7);"
+		>
+			FTC Team 17113. Seven seasons, one makerspace, fifteen members. Building robots, building engineers.
+		</p>
+
+		<div class="flex gap-4 flex-wrap">
+			<span use:magnetic>
+				<GlassButton variant="primary" href="#robot">The Build</GlassButton>
+			</span>
+			<span use:magnetic>
+				<GlassButton variant="default" href="#season">Season</GlassButton>
+			</span>
 		</div>
-		
+	</div>
+
+	<div
+		class="absolute mono-label flex gap-6 flex-wrap"
+		style="bottom: 2rem; left: max(4vw, 2rem); color: rgba(229,229,229,0.4);"
+	>
+		<span>Location / Austin, TX</span>
+		<span>—</span>
+		<span>League / FiT Central GEMS</span>
+		<span>—</span>
+		<span style="color: var(--color-primary);">17113</span>
 	</div>
 </section>

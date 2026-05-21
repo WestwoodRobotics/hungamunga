@@ -3,19 +3,33 @@
 	import Nav from '$lib/components/Nav.svelte';
 	import Hero from '$lib/components/Hero.svelte';
 	import Section from '$lib/components/Section.svelte';
-	import Card from '$lib/components/Card.svelte';
-import Sponsors from '$lib/components/Sponsors.svelte';
+	import Sponsors from '$lib/components/Sponsors.svelte';
 	import Contact from '$lib/components/Contact.svelte';
 	import SiteFooter from '$lib/components/SiteFooter.svelte';
 
 	import { MEMBERS } from '$lib/config';
 	import { reveal } from '$lib/actions';
 
+	const timeline = [
+		{ month: 'Sep', event: 'Kickoff — game reveal, field teardown, first cardboard prototypes', status: 'done' },
+		{ month: 'Oct', event: 'Build phase — drivetrain locked in week 3, two arm iterations scrapped', status: 'done' },
+		{ month: 'Nov', event: 'League Meet 1 — autonomous failed in match 2. Fixed overnight.', status: 'done' },
+		{ month: 'Dec', event: 'Iteration. Vision tuning. 600+ driver practice cycles.', status: 'done' },
+		{ month: 'Jan', event: 'Final refinements — weight cut, cable management, endgame hang added', status: 'done' },
+		{ month: 'Feb', event: 'League Championship', status: 'active' },
+	];
+
+	const outreach = [
+		{ n: 'I', title: 'FLL Mentoring', desc: 'Mentoring local FIRST Lego League teams, helping younger students build their first robots and prepare for competition.', tag: 'ongoing' },
+		{ n: 'II', title: 'Demonstrations', desc: 'Visiting elementary and middle schools to show off our robot and get kids excited about STEM.', tag: 'quarterly' },
+		{ n: 'III', title: 'Open Shop', desc: 'Sharing our resources, code, and designs with rookie teams to help grow the FIRST community.', tag: 'always' },
+	];
+
 	let showContent = $state(false);
 </script>
 
 <svelte:head>
-	<title>FTC Team 17113 — Hunga Munga Robotics</title>
+	<title>FTC Team 17113 - Hunga Munga Robotics</title>
 	<meta name="description" content="FTC Team 17113 Hunga Munga — a Westwood Robotics team competing in FiT Central GEMS, building robots and engineers in Austin, TX." />
 </svelte:head>
 
@@ -29,133 +43,154 @@ import Sponsors from '$lib/components/Sponsors.svelte';
 	<Nav />
 	<Hero />
 
+
 	<div use:reveal>
 		<Section id="robot" marker="01" kicker="The build">
 			{#snippet title()}Structure &<br/> Logic.{/snippet}
-			<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-				<Card idx="I" title="Mechanical">
-					We design in Onshape and prototype in our makerspace, creating custom mechanisms tailored to each season's game.
-				</Card>
-				<Card idx="II" title="Software">
-					Writing Java for the Control Hub. We focus on reliable autonomous routines using vision processing and custom odometry.
-				</Card>
-				<div class="md:col-span-2 md:w-2/3 ml-auto mt-6">
-					<Card idx="III" title="Strategy">
-						From scouting to alliance selection, we use data-driven analysis to make smart decisions during competition.
-					</Card>
+			<div class="flex flex-col border-t" style="border-color: var(--color-rule);">
+				<div class="grid grid-cols-1 md:grid-cols-2 border-b" style="border-color: var(--color-rule);">
+					<div class="px-8 py-12 flex flex-col gap-5 border-r" style="border-color: var(--color-rule);">
+						<span class="mono-label" style="color: var(--color-primary);">Software</span>
+						<p class="text-base leading-relaxed" style="color: rgba(229,229,229,0.85); max-width: 38ch;">Java on the Control Hub. RoadRunner odometry, custom vision pipeline for sample detection, PID tuned to tenths-of-a-degree. The autonomous is the thing we're most proud of.</p>
+						<span style="font-family: var(--font-mono); font-size: 11px; color: rgba(122,158,126,0.55);">Java / RoadRunner 1.0 — OpenCV + TFOD</span>
+					</div>
+					<div class="px-8 py-12 flex flex-col gap-3">
+						<span class="mono-label opacity-40">System metrics</span>
+						<div class="flex flex-col gap-2 mt-2">
+							{#each [['Auto score (avg)', '72 pts'], ['Cycle time', '4.2 sec'], ['Autonomous runs', '600+'], ['Vision conf. threshold', '0.78']] as [k, v] (k)}
+								<div class="flex justify-between border-b py-2" style="border-color: var(--color-rule);">
+									<span style="font-family: var(--font-mono); font-size: 11px; color: rgba(229,229,229,0.4);">{k}</span>
+									<span style="font-family: var(--font-mono); font-size: 11px; color: rgba(229,229,229,0.9);">{v}</span>
+								</div>
+							{/each}
+						</div>
+					</div>
+				</div>
+				<div class="grid grid-cols-1 md:grid-cols-3 border-b" style="border-color: var(--color-rule);">
+					<div class="px-8 py-10 md:col-span-2 flex flex-col gap-4 border-r" style="border-color: var(--color-rule);">
+						<span class="mono-label">Mechanical</span>
+						<p class="text-sm leading-relaxed" style="color: rgba(229,229,229,0.7); max-width: 44ch;">Onshape for CAD, CNC router + FDM printers in the makerspace. We've gone through four arm iterations this season. The current one actually works.</p>
+					</div>
+					<div class="px-8 py-10 flex flex-col gap-2 justify-center">
+						<span style="font-family: var(--font-mono); font-size: 11px; color: rgba(122,158,126,0.55);">CAD / Onshape — CNC + FDM</span>
+						<span style="font-family: var(--font-mono); font-size: 10px; color: rgba(229,229,229,0.25);">v4 arm — 127mm reach</span>
+					</div>
+				</div>
+				<div class="px-8 py-7 flex items-baseline gap-10">
+					<span class="mono-label shrink-0">Strategy</span>
+					<p class="text-sm" style="color: rgba(229,229,229,0.5); max-width: 52ch;">Scouting app + OPR analysis. This is newer for us — we started taking it seriously last season. Alliance selection went better for it.</p>
 				</div>
 			</div>
 		</Section>
 	</div>
+
 
 	<div use:reveal>
 		<Section id="season" marker="02" kicker="A calendar">
 			{#snippet title()}Season<br/> Timeline.{/snippet}
-			<div class="flex flex-col gap-6 max-w-2xl">
-				<p class="text-sm text-white/70 leading-relaxed">
-					Our season runs from the September kickoff through the spring championships — a continuous cycle of designing, building, and testing.
-				</p>
-				<div class="flat-panel p-8 flex flex-col gap-0">
-					{#each [
-						{ month: 'September', event: 'Season Kickoff & Prototyping' },
-						{ month: 'October', event: 'Robot Design & Build Phase' },
-						{ month: 'November', event: 'First League Meet' },
-						{ month: 'December', event: 'Iteration & Driver Practice' },
-						{ month: 'January', event: 'Final Refinements' },
-						{ month: 'February', event: 'League Championship' },
-					] as row (row.month)}
-						<div class="flex items-center justify-between py-3 border-b border-white/5 last:border-0">
-							<span class="text-[11px] font-sans font-medium uppercase tracking-widest text-white/40 w-28 shrink-0">{row.month}</span>
-							<span class="text-sm text-white/90 text-right">{row.event}</span>
-						</div>
-					{/each}
+			<div class="w-full border-t-2 border-b-2" style="border-color: rgba(255,255,255,0.2);">
+				<div class="grid border-b-2" style="grid-template-columns: 5rem 1fr 5rem; border-color: rgba(255,255,255,0.2);">
+					<span class="mono-label px-6 py-3 border-r" style="border-color: var(--color-rule);">Mo.</span>
+					<span class="mono-label px-6 py-3 border-r" style="border-color: var(--color-rule);">Notes</span>
+					<span class="mono-label px-6 py-3">Stat</span>
 				</div>
+				{#each timeline as row (row.month)}
+					<div
+						class="grid border-b last:border-0 hover:bg-white/4"
+						style="grid-template-columns: 5rem 1fr 5rem; border-color: var(--color-rule); transition: none;"
+					>
+						<span
+							class="px-6 py-4 border-r"
+							style="font-family: var(--font-mono); font-size: 11px; color: rgba(229,229,229,0.35); border-color: var(--color-rule);"
+						>{row.month}</span>
+						<span class="px-6 py-4 text-sm border-r" style="color: rgba(229,229,229,{row.status === 'active' ? '0.95' : '0.65'}); border-color: var(--color-rule);">{row.event}</span>
+						<span class="px-6 py-4 flex items-center gap-1.5">
+							{#if row.status === 'active'}
+								<span class="relative flex h-1.5 w-1.5">
+									<span class="animate-ping absolute inline-flex h-full w-full opacity-75" style="background: var(--color-primary);"></span>
+									<span class="relative inline-flex h-1.5 w-1.5" style="background: var(--color-primary);"></span>
+								</span>
+								<span style="font-family: var(--font-mono); font-size: 10px; color: var(--color-primary);">LIVE</span>
+							{:else}
+								<span style="font-family: var(--font-mono); font-size: 10px; color: rgba(229,229,229,0.2);">DONE</span>
+							{/if}
+						</span>
+					</div>
+				{/each}
 			</div>
 		</Section>
 	</div>
+
 
 	<div use:reveal>
 		<Section id="outreach" marker="03" kicker="The reach">
 			{#snippet title()}Beyond<br/> Competition.{/snippet}
-			<div class="flex flex-col gap-6">
-				{#each [
-					{ n: 'I', title: 'FLL Mentoring', desc: 'Mentoring local FIRST Lego League teams, helping younger students build their first robots and prepare for competition.', tag: 'ongoing' },
-					{ n: 'II', title: 'Demonstrations', desc: 'Visiting elementary and middle schools to show off our robot and get kids excited about STEM.', tag: 'quarterly' },
-					{ n: 'III', title: 'Open Shop', desc: 'Sharing our resources, code, and designs with rookie teams to help grow the FIRST community.', tag: 'always' }
-				] as item, i (item.n)}
+			<div class="flex flex-col">
+				{#each outreach as item, i (item.n)}
 					{@const offsets = ['', 'md:ml-6', 'md:ml-12']}
-					<div class="liquid-panel p-8 flex flex-col md:flex-row items-start md:items-center gap-8 group {offsets[i]}">
+					<div class="border-b flex flex-col md:flex-row items-start gap-8 py-8 {offsets[i]}" style="border-color: var(--color-rule);">
 						<div class="flex items-baseline gap-6 w-full md:w-1/3">
 							<span class="font-sans text-sm font-medium text-primary w-6">{item.n}</span>
 							<h3 class="text-lg font-heading font-light text-white uppercase tracking-wide">{item.title}</h3>
 						</div>
-						<p class="text-sm text-white/70 max-w-sm flex-1">{item.desc}</p>
-						<span class="uppercase tracking-widest text-[10px] font-sans font-medium text-white/50 bg-white/[0.04] px-4 py-2 rounded-full">{item.tag}</span>
+						<p class="text-sm max-w-sm flex-1" style="color: rgba(229,229,229,0.7);">{item.desc}</p>
+						<span class="mono-label">{item.tag}</span>
 					</div>
 				{/each}
 			</div>
 		</Section>
 	</div>
+
 
 	<div use:reveal>
 		<Section id="team" marker="04" kicker="The roster">
 			{#snippet title()}The<br/> Team.{/snippet}
-			<p class="text-sm text-white/70 leading-relaxed max-w-md mb-16">
-				<span class="text-white">15 students working together.</span> We spend our after-school hours solving tough engineering problems and learning from our mistakes.
-			</p>
-			
-			<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+			<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 border-t" style="border-color: var(--color-rule);">
 				{#each MEMBERS as member (member.name)}
-					<div class="flat-panel p-6 flex flex-col items-center text-center group">
-						<div class="w-20 h-20 mb-6 overflow-hidden bg-white/5 rounded-[16px] flex items-center justify-center grayscale opacity-70 group-hover:opacity-100 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500">
-							{#if member.pfp}
-								<img src={member.pfp} alt={member.name} class="w-full h-full object-cover" />
-							{:else}
-								<span class="font-heading text-2xl font-light text-white/40">{member.name.charAt(0)}</span>
-							{/if}
-						</div>
-						<span class="font-sans text-sm font-medium tracking-wide text-white">{member.name}</span>
-						<span class="text-[10px] uppercase tracking-widest font-medium text-primary mt-2">{member.role}</span>
+					<div
+						class="py-5 px-6 border-b border-r hover:bg-white/[0.03]"
+						style="border-color: var(--color-rule); transition: none;"
+					>
+						<span class="block font-sans font-medium text-base text-white">{member.name}</span>
+						<span class="mono-label mt-1 block">{member.role}</span>
 					</div>
 				{/each}
 			</div>
 		</Section>
 	</div>
 
+
 	<div use:reveal>
-		<Section id="results" marker="05" kicker="Last season" variant="wide">
+		<Section id="results" marker="05" kicker="Last season">
 			{#snippet title()}Season<br/> Results.{/snippet}
 			<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
 				<div class="liquid-panel p-12 lg:col-span-7 flex flex-col justify-between min-h-[360px] group">
-					<span class="text-[11px] font-sans font-medium uppercase tracking-widest text-white/50">Control Award</span>
+					<span class="mono-label">Control Award</span>
 					<div>
-						<h3 class="text-4xl font-heading font-light text-white leading-tight mb-6 group-hover:text-primary transition-colors">Second place —<br/>League Championship</h3>
-						<p class="text-white/70 text-sm leading-relaxed max-w-sm">Recognized for our engineering notebook and software architecture, specifically our reliable autonomous control.</p>
+						<h3 class="text-4xl font-heading font-light text-white leading-tight mb-6 group-hover:text-primary" style="transition: none;">Second place —<br/>League Championship</h3>
+						<p class="text-sm leading-relaxed max-w-sm" style="color: rgba(229,229,229,0.7);">Recognized for our engineering notebook and software architecture, specifically our reliable autonomous control.</p>
 					</div>
 				</div>
-				
 				<div class="lg:col-span-5 flex flex-col gap-6">
 					<div class="flat-panel p-10 flex-1 flex flex-col justify-center">
-						<span class="text-[11px] font-sans font-medium uppercase tracking-widest text-white/50 mb-4">Alliance</span>
+						<span class="mono-label mb-4">Alliance</span>
 						<h3 class="text-2xl font-heading font-light text-white mb-3">Finalist alliance captain</h3>
-						<p class="text-white/70 text-sm">Finals at the FiT Central GEMS League Championship, winning against top-ranked teams.</p>
+						<p class="text-sm" style="color: rgba(229,229,229,0.7);">Finals at the FiT Central GEMS League Championship, winning against top-ranked teams.</p>
 					</div>
 					<div class="flat-panel p-10 flex-1 flex flex-col justify-center">
-						<span class="text-[11px] font-sans font-medium uppercase tracking-widest text-white/50 mb-4">Legacy</span>
+						<span class="mono-label mb-4">Legacy</span>
 						<h3 class="text-2xl font-heading font-light text-white mb-3">Seven seasons</h3>
-						<p class="text-white/70 text-sm">Founded in 2019. Qualifying for League Tournament every season; two trips to Regionals.</p>
+						<p class="text-sm" style="color: rgba(229,229,229,0.7);">Founded in 2019. Qualifying for League Tournament every season; two trips to Regionals.</p>
 					</div>
 				</div>
 			</div>
 		</Section>
 	</div>
 
+
 	<div use:reveal>
 		<Section id="sponsors" marker="06" kicker="With thanks">
 			{#snippet title()}Partners &<br/> Sponsors.{/snippet}
-			<p class="text-sm text-white/70 max-w-md mb-16">
-				Our sponsors make everything we do possible, from buying parts to traveling to competitions. If you're interested in supporting our team, please reach out.
-			</p>
 			<Sponsors />
 		</Section>
 	</div>
@@ -163,7 +198,7 @@ import Sponsors from '$lib/components/Sponsors.svelte';
 	<div use:reveal>
 		<Contact />
 	</div>
-	
+
 	<SiteFooter />
 </div>
 

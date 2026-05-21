@@ -35,44 +35,43 @@
 
 {#if !done}
 	<div
-		class="fixed inset-0 z-intro flex items-center justify-center bg-background overflow-hidden transition-opacity duration-500 {step === 3 ? 'opacity-0 pointer-events-none' : 'opacity-100'}"
+		class="fixed inset-0 flex items-center justify-center overflow-hidden transition-opacity duration-500 {step === 3 ? 'opacity-0 pointer-events-none' : 'opacity-100'}"
+		style="z-index: var(--z-intro); background: #111111;"
 		onclick={skip}
+		onkeydown={(e) => { if (e.key === 'Enter' || e.key === ' ') skip(); }}
 		role="button"
 		tabindex="-1"
 		aria-label="Skip intro"
 	>
-
-		
-		<div class="relative z-10 flex flex-col items-center">
+		<div class="relative flex flex-col items-center" style="z-index: 10;">
 			<div class="overflow-hidden">
-				<span 
-					class="block text-primary text-[10px] uppercase tracking-[0.4em] mb-4 font-sans font-medium transition-all duration-1000 {step >= 1 ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'}"
+				<span
+					class="block mono-label mb-4 transition-all duration-1000 {step >= 1 ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'}"
 				>
 					Loading...
 				</span>
 			</div>
-			
-			<h1 
-				class="text-6xl md:text-9xl font-heading font-light tracking-tighter text-white/90 transition-all duration-[1000ms] ease-out
-				{step === 0 ? 'blur-xl opacity-0 scale-95' : step === 1 ? 'blur-0 opacity-100 scale-100' : 'blur-xl opacity-0 scale-105'}"
+
+			<h1
+				class="font-heading font-light tracking-tighter text-white/90 transition-all duration-1000 ease-out"
+				style="font-family: var(--font-mono); font-size: clamp(4rem, 12vw, 9rem); letter-spacing: 0.05em; {step === 0 ? 'filter: blur(20px); opacity: 0; transform: scale(0.95)' : step === 1 ? 'filter: blur(0); opacity: 1; transform: scale(1)' : 'filter: blur(20px); opacity: 0; transform: scale(1.05)'}"
 			>
 				17113
 			</h1>
-			
+
 			<div class="overflow-hidden mt-6 flex flex-col items-center gap-4">
-				<div 
+				<div
 					class="w-px h-16 bg-white/20 origin-top transition-transform duration-1000 delay-300 {step >= 1 ? 'scale-y-100' : 'scale-y-0'}"
 				></div>
 			</div>
 		</div>
-		
+
 		<button
-			class="absolute bottom-8 right-8 text-[10px] uppercase tracking-widest text-white/30 hover:text-white transition-colors"
+			class="absolute bottom-8 right-8 mono-label hover:text-white transition-colors"
+			style="color: rgba(229,229,229,0.3);"
 			onclick={(e) => { e.stopPropagation(); skip(); }}
 		>
 			click anywhere to skip
 		</button>
-		
-
 	</div>
 {/if}
