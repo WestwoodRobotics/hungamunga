@@ -56,12 +56,12 @@
 			<span
 				bind:this={line1}
 				class="block text-white"
-				style="font-size: var(--text-hero); line-height: 0.88; letter-spacing: -0.04em;"
+				style="font-size: var(--text-hero); line-height: 0.95; letter-spacing: -0.04em;"
 			>Engineering</span>
 			<span
 				bind:this={line2}
 				class="block text-white"
-				style="font-size: var(--text-hero-sub); line-height: 0.88; letter-spacing: -0.04em;"
+				style="font-size: var(--text-hero-sub); line-height: 1.1; letter-spacing: -0.04em;"
 			><em>in</em> Motion.</span>
 		</h1>
 
@@ -70,8 +70,7 @@
 			class="text-sm leading-relaxed"
 			style="max-width: 36ch; color: rgba(229,229,229,0.7);"
 		>
-			FTC Team 17113. Seven seasons, one makerspace, fifteen members. Building robots, building engineers.
-		</p>
+			FTC Team 17113. Seven seasons, one makerspace, fifteen members.
 
 		<div class="flex gap-4 flex-wrap">
 			<span use:magnetic>

@@ -15,7 +15,7 @@
 	});
 </script>
 
-<Section id="contact" marker="07" kicker="Inquiries">
+<Section id="contact">
 	{#snippet title()}Get in<br/> Touch.{/snippet}
 	<div class="liquid-panel p-12 grid grid-cols-1 lg:grid-cols-2 gap-16">
 		<div class="flex flex-col gap-12">

@@ -30,7 +30,7 @@
 
 <svelte:head>
 	<title>FTC Team 17113 - Hunga Munga Robotics</title>
-	<meta name="description" content="FTC Team 17113 Hunga Munga — a Westwood Robotics team competing in FiT Central GEMS, building robots and engineers in Austin, TX." />
+	<meta name="description" content="FTC Team 17113 Hunga Munga — seven seasons, one makerspace, Austin TX." />
 </svelte:head>
 
 <noscript>
@@ -45,7 +45,7 @@
 
 
 	<div use:reveal>
-		<Section id="robot" marker="01" kicker="The build">
+		<Section id="robot" kicker="Java · Onshape · RoadRunner">
 			{#snippet title()}Structure &<br/> Logic.{/snippet}
 			<div class="flex flex-col border-t" style="border-color: var(--color-rule);">
 				<div class="grid grid-cols-1 md:grid-cols-2 border-b" style="border-color: var(--color-rule);">
@@ -86,7 +86,7 @@
 
 
 	<div use:reveal>
-		<Section id="season" marker="02" kicker="A calendar">
+		<Section id="season" kicker="2025–26">
 			{#snippet title()}Season<br/> Timeline.{/snippet}
 			<div class="w-full border-t-2 border-b-2" style="border-color: rgba(255,255,255,0.2);">
 				<div class="grid border-b-2" style="grid-template-columns: 5rem 1fr 5rem; border-color: rgba(255,255,255,0.2);">
@@ -123,7 +123,7 @@
 
 
 	<div use:reveal>
-		<Section id="outreach" marker="03" kicker="The reach">
+		<Section id="outreach">
 			{#snippet title()}Beyond<br/> Competition.{/snippet}
 			<div class="flex flex-col">
 				{#each outreach as item, i (item.n)}
@@ -143,7 +143,7 @@
 
 
 	<div use:reveal>
-		<Section id="team" marker="04" kicker="The roster">
+		<Section id="team" kicker="15 members">
 			{#snippet title()}The<br/> Team.{/snippet}
 			<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 border-t" style="border-color: var(--color-rule);">
 				{#each MEMBERS as member (member.name)}
@@ -161,7 +161,7 @@
 
 
 	<div use:reveal>
-		<Section id="results" marker="05" kicker="Last season">
+		<Section id="results" kicker="2024–25">
 			{#snippet title()}Season<br/> Results.{/snippet}
 			<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
 				<div class="liquid-panel p-12 lg:col-span-7 flex flex-col justify-between min-h-[360px] group">
@@ -189,7 +189,7 @@
 
 
 	<div use:reveal>
-		<Section id="sponsors" marker="06" kicker="With thanks">
+		<Section id="sponsors">
 			{#snippet title()}Partners &<br/> Sponsors.{/snippet}
 			<Sponsors />
 		</Section>

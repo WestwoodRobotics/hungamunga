@@ -1,7 +1,3 @@
-<script lang="ts">
-	import { SPEC_VERSION } from '../config';
-</script>
-
 <footer class="border-t bg-background pt-24 pb-12 relative overflow-hidden" style="border-color: var(--color-rule);">
 	<div class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-3 gap-12 items-baseline relative" style="z-index: var(--z-glass);">
 		<div class="flex items-baseline gap-4">
@@ -21,7 +17,7 @@
 		</div>
 
 		<div class="flex md:justify-end">
-			<span class="mono-label" style="color: rgba(229,229,229,0.3);">SYS.{SPEC_VERSION}</span>
+			<a href="https://ftc-events.firstinspires.org/2025/team/17113" target="_blank" rel="noopener noreferrer" class="mono-label hover:text-white" style="color: rgba(229,229,229,0.3);">FTC Events ↗</a>
 		</div>
 	</div>
 </footer>
