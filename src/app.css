@@ -7,8 +7,8 @@
 	--color-background: #13181d;
 	--color-foreground: #dcdfe4;
 
-	--color-primary: #22d3ee;
-	--color-primary-foreground: #0a1a1f;
+	--color-primary: #7a9e7e;
+	--color-primary-foreground: #0d1a0f;
 
 	--color-card: rgba(255, 255, 255, 0.02);
 	--color-card-foreground: #dcdfe4;
@@ -24,7 +24,7 @@
 
 	--color-border: rgba(255, 255, 255, 0.08);
 	--color-input: rgba(255, 255, 255, 0.08);
-	--color-ring: rgba(34, 211, 238, 0.4);
+	--color-ring: rgba(122, 158, 126, 0.4);
 
 	--radius-lg: 1.5rem;
 	--radius-md: calc(var(--radius-lg) - 4px);

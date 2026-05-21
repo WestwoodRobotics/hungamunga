@@ -13,6 +13,7 @@
 	import { reveal } from '$lib/actions';
 
 	let showContent = $state(false);
+	const showTeam = MEMBERS.some(m => m.pfp);
 </script>
 
 <svelte:head>
@@ -91,8 +92,9 @@
 					{ n: 'I', title: 'FLL Mentoring', desc: 'Mentoring local FIRST Lego League teams, helping younger students build their first robots and prepare for competition.', tag: 'ongoing' },
 					{ n: 'II', title: 'Demonstrations', desc: 'Visiting elementary and middle schools to show off our robot and get kids excited about STEM.', tag: 'quarterly' },
 					{ n: 'III', title: 'Open Shop', desc: 'Sharing our resources, code, and designs with rookie teams to help grow the FIRST community.', tag: 'always' }
-				] as item, i}
-					<div class="liquid-panel p-8 flex flex-col md:flex-row items-start md:items-center gap-8 group" style="margin-left: {i * 5}%;">
+				] as item, i (item.n)}
+					{@const offsets = ['', 'md:ml-6', 'md:ml-12']}
+					<div class="liquid-panel p-8 flex flex-col md:flex-row items-start md:items-center gap-8 group {offsets[i]}">
 						<div class="flex items-baseline gap-6 w-full md:w-1/3">
 							<span class="font-sans text-sm font-medium text-primary w-6">{item.n}</span>
 							<h3 class="text-lg font-heading font-light text-white uppercase tracking-wide">{item.title}</h3>
@@ -105,6 +107,7 @@
 		</Section>
 	</div>
 
+	{#if showTeam}
 	<div use:reveal>
 		<Section id="team" marker="04" kicker="The roster">
 			{#snippet title()}The<br/> Team.{/snippet}
@@ -113,7 +116,7 @@
 			</p>
 			
 			<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
-				{#each MEMBERS as member}
+				{#each MEMBERS as member (member.name)}
 					<div class="flat-panel p-6 flex flex-col items-center text-center group">
 						<div class="w-20 h-20 mb-6 overflow-hidden bg-white/5 rounded-[16px] filter grayscale opacity-70 group-hover:opacity-100 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500 shadow-inner">
 							{#if member.pfp}
@@ -127,9 +130,10 @@
 			</div>
 		</Section>
 	</div>
+	{/if}
 
 	<div use:reveal>
-		<Section id="results" marker="05" kicker="Last season">
+		<Section id="results" marker="05" kicker="Last season" variant="wide">
 			{#snippet title()}Season<br/> Results.{/snippet}
 			<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
 				<div class="liquid-panel p-12 lg:col-span-7 flex flex-col justify-between min-h-[360px] group">
