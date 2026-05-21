@@ -7,116 +7,42 @@
 	];
 </script>
 
-<div class="sponsor-wrap">
-	<div class="tiers">
+<div class="flex flex-col gap-6">
+	<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 		{#each tiers as t, i}
-			<div class="tier" class:featured={i === 0}>
-				<div class="tier-head">
-					<span class="tier-name">{t.name}</span>
-					<span class="tier-amt">{t.amount}</span>
+			<div class="liquid-panel p-8 flex flex-col gap-8 {i === 0 ? 'bg-primary/10 border-primary/30' : ''}">
+				<div class="flex items-baseline justify-between border-b border-white/5 pb-4">
+					<span class="font-sans text-sm tracking-widest uppercase text-white font-medium">{t.name}</span>
+					<span class="text-xs font-sans font-medium text-primary">{t.amount}</span>
 				</div>
-				<ul class="tier-perks">
-					{#each t.perks as p}<li>{p}</li>{/each}
+				<ul class="flex flex-col gap-4">
+					{#each t.perks as p}
+						<li class="text-xs text-white/50 leading-relaxed font-sans text-justify">
+							{p}
+						</li>
+					{/each}
 				</ul>
 			</div>
 		{/each}
 	</div>
-	<p class="sponsor-note">
-		Processed through Westwood Robotics — a 501(c)(3). Funds go to registration, parts, and travel.
-		<a href="mailto:hungamunga17113@gmail.com">Get in touch →</a>
-	</p>
-	<div class="s-strip">
-		<div class="s-cell">Your name here</div>
-		<div class="s-cell">Your name here</div>
-		<div class="s-cell">Your name here</div>
-		<div class="s-cell">Your name here</div>
+	
+	<div class="liquid-panel p-12 grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center mt-8">
+		<div class="text-white/20 text-[11px] font-sans font-medium tracking-widest uppercase hover:text-white/40 transition-colors cursor-pointer text-center w-full">
+			Future Partner
+		</div>
+		<div class="text-white/20 text-[11px] font-sans font-medium tracking-widest uppercase hover:text-white/40 transition-colors cursor-pointer text-center w-full">
+			Your Logo
+		</div>
+		<div class="text-white/20 text-[11px] font-sans font-medium tracking-widest uppercase hover:text-white/40 transition-colors cursor-pointer text-center w-full">
+			Sponsor Level
+		</div>
+		<div class="text-white/20 text-[11px] font-sans font-medium tracking-widest uppercase hover:text-white/40 transition-colors cursor-pointer text-center w-full">
+			Join Us
+		</div>
 	</div>
+	
+	<p class="text-white/40 text-[11px] font-sans font-medium uppercase tracking-widest mt-8">
+		Processed through Westwood Robotics — a 501(c)(3). 
+		<a href="mailto:hungamunga17113@gmail.com" class="text-white/60 hover:text-white transition-colors ml-4 border-b border-white/20 hover:border-white pb-1">Inquire</a>
+	</p>
 </div>
-
-<style>
-	.sponsor-wrap { display: flex; flex-direction: column; gap: 56px; }
-	.tiers {
-		display: grid;
-		grid-template-columns: repeat(4, 1fr);
-		gap: 0;
-	}
-	.tier {
-		padding: 28px 24px 24px;
-		border-left: 1px solid var(--line-strong);
-		display: flex;
-		flex-direction: column;
-		gap: 18px;
-	}
-	.tier:last-child { border-right: 1px solid var(--line-strong); }
-	.tier.featured {
-		background: var(--glass-bg-2);
-		border-top: 2px solid var(--accent);
-		backdrop-filter: var(--glass-blur);
-		-webkit-backdrop-filter: var(--glass-blur);
-		box-shadow: var(--glass-shadow);
-	}
-	.tier-head { display: flex; flex-direction: column; gap: 6px; }
-	.tier-name {
-		font-family: 'Instrument Serif', Georgia, serif;
-		font-style: italic;
-		font-size: 24px;
-		color: var(--ink);
-	}
-	.tier.featured .tier-name { color: var(--accent); }
-	.tier-amt { font-size: 11px; color: var(--ink-2); letter-spacing: 0.06em; }
-	.tier-perks { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
-	.tier-perks li {
-		font-size: 12px;
-		color: var(--ink-2);
-		line-height: 1.55;
-		padding-left: 14px;
-		position: relative;
-	}
-	.tier-perks li::before {
-		content: '—';
-		position: absolute;
-		left: 0;
-		color: var(--accent);
-	}
-
-	.sponsor-note {
-		margin: 0;
-		font-size: 13px;
-		color: var(--ink-2);
-		line-height: 1.65;
-		max-width: 600px;
-		font-style: italic;
-		font-family: 'Instrument Serif', Georgia, serif;
-		font-size: 16px;
-	}
-	.sponsor-note a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent); }
-
-	.s-strip {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-		border-top: 1px solid var(--ink);
-	}
-	.s-cell {
-		min-height: 120px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		padding: 24px;
-		border-right: 1px solid var(--line-strong);
-		border-bottom: 1px solid var(--line-strong);
-		color: var(--muted);
-		font-family: 'Instrument Serif', Georgia, serif;
-		font-style: italic;
-		font-size: 16px;
-	}
-
-	@media (max-width: 860px) {
-		.tiers { grid-template-columns: repeat(2, 1fr); }
-		.tier:nth-child(2) { border-right: 1px solid var(--line-strong); }
-		.tier:nth-child(3), .tier:nth-child(4) { border-top: 1px solid var(--line-strong); }
-	}
-	@media (max-width: 560px) {
-		.tiers { grid-template-columns: 1fr; }
-		.tier { border-right: 1px solid var(--line-strong); border-bottom: 1px solid var(--line-strong); }
-	}
-</style>

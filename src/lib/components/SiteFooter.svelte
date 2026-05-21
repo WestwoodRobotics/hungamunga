@@ -2,55 +2,21 @@
 	import { SPEC_VERSION } from '../config';
 </script>
 
-<footer class="foot">
-	<div class="foot-inner">
-		<div class="col">
-			<span class="serif-i num">17113</span>
-			<span class="mark">Hunga Munga · Westwood Robotics</span>
+<footer class="border-t border-white/5 bg-background pt-24 pb-12 relative overflow-hidden">
+	<div class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-3 gap-12 items-baseline relative z-10">
+		<div class="flex items-baseline gap-4">
+			<span class="font-sans text-sm tracking-widest uppercase font-medium text-primary">17113</span>
+			<span class="text-[11px] font-sans font-medium tracking-widest uppercase text-white/40">Hunga Munga / Westwood</span>
 		</div>
-		<div class="col mid">
-			<span>© 2026</span>
-			<span class="dot">·</span>
-			<a href="https://www.firstinspires.org/robotics/ftc" target="_blank" rel="noopener noreferrer">FIRST Tech Challenge</a>
+		
+		<div class="flex items-center md:justify-center gap-6 text-[11px] font-sans uppercase font-medium tracking-widest text-white/40">
+			<span>2026</span>
+			<span class="w-1 h-1 bg-white/10 rounded-full"></span>
+			<a href="https://www.firstinspires.org/robotics/ftc" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors border-b border-transparent hover:border-white/30 pb-1">FIRST Tech Challenge</a>
 		</div>
-		<div class="col right">
-			<span class="ver">{SPEC_VERSION}</span>
+		
+		<div class="flex md:justify-end text-[11px] font-sans font-medium text-white/30 tracking-widest uppercase">
+			SYS.{SPEC_VERSION}
 		</div>
 	</div>
 </footer>
-
-<style>
-	.foot {
-		border-top: 1px solid var(--ink);
-		background: var(--bg);
-	}
-	.foot-inner {
-		max-width: 1280px;
-		margin: 0 auto;
-		padding: 36px 56px;
-		display: grid;
-		grid-template-columns: 1fr auto 1fr;
-		align-items: baseline;
-		gap: 32px;
-	}
-	.col { display: inline-flex; align-items: baseline; gap: 14px; font-size: 12px; color: var(--ink-2); }
-	.right { justify-content: flex-end; }
-	.mid { font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-size: 14px; }
-	.num {
-		font-family: 'Instrument Serif', Georgia, serif;
-		font-style: italic;
-		font-size: 32px;
-		color: var(--accent);
-		line-height: 1;
-	}
-	.mark { font-size: 12px; color: var(--ink-2); letter-spacing: 0.02em; }
-	.dot { color: var(--muted); }
-	.mid a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line-strong); }
-	.mid a:hover { color: var(--accent); border-color: var(--accent); }
-	.ver { font-size: 11px; color: var(--muted); letter-spacing: 0.06em; }
-
-	@media (max-width: 760px) {
-		.foot-inner { grid-template-columns: 1fr; padding: 28px 24px; gap: 20px; }
-		.right { justify-content: flex-start; }
-	}
-</style>
