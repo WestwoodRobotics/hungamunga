@@ -11,12 +11,11 @@
 	import { reveal } from '$lib/actions';
 
 	const timeline = [
-		{ month: 'Sep', event: 'Kickoff — game reveal, field teardown, first cardboard prototypes', status: 'done' },
-		{ month: 'Oct', event: 'Build phase — drivetrain locked in week 3, two arm iterations scrapped', status: 'done' },
-		{ month: 'Nov', event: 'League Meet 1 — autonomous failed in match 2. Fixed overnight.', status: 'done' },
-		{ month: 'Dec', event: 'Iteration. Vision tuning. 600+ driver practice cycles.', status: 'done' },
-		{ month: 'Jan', event: 'Final refinements — weight cut, cable management, endgame hang added', status: 'done' },
-		{ month: 'Feb', event: 'League Championship', status: 'active' },
+		{ month: 'Sep', event: 'Kickoff: game reveal, brainstorm, first prototypes', status: 'active' },
+		{ month: 'Oct', event: 'Build season: robot development, CADs for main systems', status: 'future' },
+		{ month: 'Nov-Dec', event: 'League Meets: iterate on autonomous and driver performance', status: 'future' },
+		{ month: 'Jan', event: 'Final refinements: either redesign or refine current', status: 'future' },
+		{ month: 'Feb', event: 'League Championship', status: 'future' },
 	];
 
 	const outreach = [
@@ -45,19 +44,19 @@
 
 
 	<div use:reveal>
-		<Section id="robot" kicker="Java · Onshape · RoadRunner">
+		<Section id="robot" kicker="Java · Onshape · PedroPathing">
 			{#snippet title()}Structure &<br/> Logic.{/snippet}
 			<div class="flex flex-col border-t" style="border-color: var(--color-rule);">
 				<div class="grid grid-cols-1 md:grid-cols-2 border-b" style="border-color: var(--color-rule);">
 					<div class="px-8 py-12 flex flex-col gap-5 border-r" style="border-color: var(--color-rule);">
 						<span class="mono-label" style="color: var(--color-primary);">Software</span>
-						<p class="text-base leading-relaxed" style="color: rgba(229,229,229,0.85); max-width: 38ch;">Java on the Control Hub. RoadRunner odometry, custom vision pipeline for sample detection, PID tuned to tenths-of-a-degree. The autonomous is the thing we're most proud of.</p>
-						<span style="font-family: var(--font-mono); font-size: 11px; color: rgba(122,158,126,0.55);">Java / RoadRunner 1.0 — OpenCV + TFOD</span>
+						<p class="text-base leading-relaxed" style="color: rgba(229,229,229,0.85); max-width: 38ch;">FTC SDK Java, PedroPathing + MCL odometry, PID rigorously tuned. The autonomous is the thing we're most proud of.</p>
+						<span style="font-family: var(--font-mono); font-size: 11px; color: rgba(122,158,126,0.55);">Java / PedroPathing - MCL Extension</span>
 					</div>
 					<div class="px-8 py-12 flex flex-col gap-3">
-						<span class="mono-label opacity-40">System metrics</span>
+						<span class="mono-label opacity-40">Specs</span>
 						<div class="flex flex-col gap-2 mt-2">
-							{#each [['Auto score (avg)', '72 pts'], ['Cycle time', '4.2 sec'], ['Autonomous runs', '600+'], ['Vision conf. threshold', '0.78']] as [k, v] (k)}
+							{#each [['Auto score (avg)', '# pts'], ['Cycle time', '# sec'], ['Autonomous runs', '#+'], ['Season W/L/T', 'a-b-c']] as [k, v] (k)}
 								<div class="flex justify-between border-b py-2" style="border-color: var(--color-rule);">
 									<span style="font-family: var(--font-mono); font-size: 11px; color: rgba(229,229,229,0.4);">{k}</span>
 									<span style="font-family: var(--font-mono); font-size: 11px; color: rgba(229,229,229,0.9);">{v}</span>
@@ -68,17 +67,23 @@
 				</div>
 				<div class="grid grid-cols-1 md:grid-cols-3 border-b" style="border-color: var(--color-rule);">
 					<div class="px-8 py-10 md:col-span-2 flex flex-col gap-4 border-r" style="border-color: var(--color-rule);">
-						<span class="mono-label">Mechanical</span>
-						<p class="text-sm leading-relaxed" style="color: rgba(229,229,229,0.7); max-width: 44ch;">Onshape for CAD, CNC router + FDM printers in the makerspace. We've gone through four arm iterations this season. The current one actually works.</p>
+						<span class="mono-label">Hardware</span>
+						<p class="text-sm leading-relaxed" style="color: rgba(229,229,229,0.7); max-width: 44ch;">Onshape for CAD, CNC router + FDM printers in the makerspace. We've gone through # iterations this season.</p>
 					</div>
 					<div class="px-8 py-10 flex flex-col gap-2 justify-center">
-						<span style="font-family: var(--font-mono); font-size: 11px; color: rgba(122,158,126,0.55);">CAD / Onshape — CNC + FDM</span>
-						<span style="font-family: var(--font-mono); font-size: 10px; color: rgba(229,229,229,0.25);">v4 arm — 127mm reach</span>
+						<span style="font-family: var(--font-mono); font-size: 11px; color: rgba(122,158,126,0.55);">CAD / Onshape</span>
+						<span style="font-family: var(--font-mono); font-size: 10px; color: rgba(229,229,229,0.25);">version - spec idk</span>
 					</div>
 				</div>
-				<div class="px-8 py-7 flex items-baseline gap-10">
-					<span class="mono-label shrink-0">Strategy</span>
-					<p class="text-sm" style="color: rgba(229,229,229,0.5); max-width: 52ch;">Scouting app + OPR analysis. This is newer for us — we started taking it seriously last season. Alliance selection went better for it.</p>
+				<div class="grid grid-cols-1 md:grid-cols-3 border-b" style="border-color: var(--color-rule);">
+					<div class="px-8 py-10 md:col-span-2 flex flex-col gap-4 border-r" style="border-color: var(--color-rule);">
+						<span class="mono-label">Strategy</span>
+						<p class="text-sm leading-relaxed" style="color: rgba(229,229,229,0.7); max-width: 44ch;">Scouting app + match analysis. We've improved #x points because of it.</p>
+					</div>
+					<div class="px-8 py-10 flex flex-col gap-2 justify-center">
+						<span style="font-family: var(--font-mono); font-size: 11px; color: rgba(122,158,126,0.55);">asdsad / asdasd</span>
+						<span style="font-family: var(--font-mono); font-size: 10px; color: rgba(229,229,229,0.25);">version - spec idk</span>
+					</div>
 				</div>
 			</div>
 		</Section>

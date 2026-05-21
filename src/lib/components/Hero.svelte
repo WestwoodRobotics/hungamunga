@@ -86,10 +86,10 @@
 		class="absolute mono-label flex gap-6 flex-wrap"
 		style="bottom: 2rem; left: max(4vw, 2rem); color: rgba(229,229,229,0.4);"
 	>
-		<span>Location / Austin, TX</span>
-		<span>—</span>
-		<span>League / FiT Central GEMS</span>
-		<span>—</span>
+		<span>Austin, TX</span>
+		<span>·</span>
+		<span>FiT Central GEMS</span>
+		<span>·</span>
 		<span style="color: var(--color-primary);">17113</span>
 	</div>
 </section>
