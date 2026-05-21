@@ -148,11 +148,18 @@
 			<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 border-t" style="border-color: var(--color-rule);">
 				{#each MEMBERS as member (member.name)}
 					<div
-						class="py-5 px-6 border-b border-r hover:bg-white/[0.03]"
+						class="py-6 px-6 border-b border-r hover:bg-white/4 flex flex-col gap-4"
 						style="border-color: var(--color-rule); transition: none;"
 					>
-						<span class="block font-sans font-medium text-base text-white">{member.name}</span>
-						<span class="mono-label mt-1 block">{member.role}</span>
+						<div class="w-12 h-12 overflow-hidden" style="border-radius: 2px; background: rgba(255,255,255,0.05); border: 1px solid var(--color-rule);">
+							{#if member.pfp}
+								<img src={member.pfp} alt={member.name} class="w-full h-full object-cover" />
+							{/if}
+						</div>
+						<div>
+							<span class="block font-sans font-medium text-base text-white">{member.name}</span>
+							<span class="mono-label mt-1 block">{member.role}</span>
+						</div>
 					</div>
 				{/each}
 			</div>
