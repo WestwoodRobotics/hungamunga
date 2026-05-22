@@ -33,7 +33,7 @@ export function reveal(node: HTMLElement) {
 
 export function magnetic(
 	node: HTMLElement,
-	{ strength = 0.18, radius = 50 }: { strength?: number; radius?: number } = {}
+	{ strength = 0.18 }: { strength?: number } = {}
 ) {
 	if (prefersReducedMotion) return;
 
@@ -45,35 +45,25 @@ export function magnetic(
 		yTo = gsap.quickTo(node, 'y', { duration: 0.6, ease: 'power3' }) as (v: number) => void;
 	});
 
-	function onMouseMove(e: MouseEvent) {
+	function onPointerMove(e: PointerEvent) {
 		if (!xTo || !yTo) return;
 		const rect = node.getBoundingClientRect();
-		const cx = rect.left + rect.width / 2;
-		const cy = rect.top + rect.height / 2;
-		const dx = e.clientX - cx;
-		const dy = e.clientY - cy;
-		const dist = Math.sqrt(dx * dx + dy * dy);
-		if (dist < radius) {
-			xTo(dx * strength);
-			yTo(dy * strength);
-		} else {
-			xTo(0);
-			yTo(0);
-		}
+		xTo((e.clientX - (rect.left + rect.width / 2)) * strength);
+		yTo((e.clientY - (rect.top + rect.height / 2)) * strength);
 	}
 
-	function onMouseLeave() {
+	function onPointerLeave() {
 		xTo?.(0);
 		yTo?.(0);
 	}
 
-	window.addEventListener('mousemove', onMouseMove);
-	node.addEventListener('mouseleave', onMouseLeave);
+	node.addEventListener('pointermove', onPointerMove);
+	node.addEventListener('pointerleave', onPointerLeave);
 
 	return {
 		destroy() {
-			window.removeEventListener('mousemove', onMouseMove);
-			node.removeEventListener('mouseleave', onMouseLeave);
+			node.removeEventListener('pointermove', onPointerMove);
+			node.removeEventListener('pointerleave', onPointerLeave);
 		}
 	};
 }

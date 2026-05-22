@@ -5,7 +5,7 @@
 	import Section from '$lib/components/Section.svelte';
 	import Sponsors from '$lib/components/Sponsors.svelte';
 	import Contact from '$lib/components/Contact.svelte';
-	import SiteFooter from '$lib/components/SiteFooter.svelte';
+	import Footer from '$lib/components/Footer.svelte';
 
 	import { MEMBERS } from '$lib/config';
 	import { reveal } from '$lib/actions';
@@ -72,7 +72,6 @@
 					</div>
 					<div class="px-8 py-10 flex flex-col gap-2 justify-center">
 						<span style="font-family: var(--font-mono); font-size: 11px; color: rgba(122,158,126,0.55);">CAD / Onshape</span>
-						<span style="font-family: var(--font-mono); font-size: 10px; color: rgba(229,229,229,0.25);">version - spec idk</span>
 					</div>
 				</div>
 				<div class="grid grid-cols-1 md:grid-cols-3 border-b" style="border-color: var(--color-rule);">
@@ -81,8 +80,7 @@
 						<p class="text-sm leading-relaxed" style="color: rgba(229,229,229,0.7); max-width: 44ch;">Scouting app + match analysis. We've improved #x points because of it.</p>
 					</div>
 					<div class="px-8 py-10 flex flex-col gap-2 justify-center">
-						<span style="font-family: var(--font-mono); font-size: 11px; color: rgba(122,158,126,0.55);">asdsad / asdasd</span>
-						<span style="font-family: var(--font-mono); font-size: 10px; color: rgba(229,229,229,0.25);">version - spec idk</span>
+						<span style="font-family: var(--font-mono); font-size: 11px; color: rgba(122,158,126,0.55);">Strategy / Scouting</span>
 					</div>
 				</div>
 			</div>
@@ -211,7 +209,7 @@
 		<Contact />
 	</div>
 
-	<SiteFooter />
+	<Footer />
 </div>
 
 <IntroAnimation onComplete={() => (showContent = true)} />

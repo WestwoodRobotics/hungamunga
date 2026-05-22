@@ -3,39 +3,52 @@ import { vi, describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { flushSync } from 'svelte';
 import IntroAnimation from '../components/IntroAnimation.svelte';
 
-const mockCtx = {
-	scale: vi.fn(), beginPath: vi.fn(), moveTo: vi.fn(),
-	lineTo: vi.fn(), stroke: vi.fn(),
-};
-HTMLCanvasElement.prototype.getContext = vi.fn().mockReturnValue(mockCtx) as never;
-
 describe('IntroAnimation', () => {
-	beforeEach(() => { vi.useFakeTimers(); });
-	afterEach(() => { flushSync(); cleanup(); vi.useRealTimers(); });
+	beforeEach(() => {
+		vi.useFakeTimers();
+		sessionStorage.clear();
+	});
 
-	it('does not call onComplete before T_IRIS', async () => {
+	afterEach(() => {
+		flushSync();
+		cleanup();
+		vi.useRealTimers();
+	});
+
+	it('renders intro overlay on mount', () => {
+		render(IntroAnimation, {});
+		expect(document.querySelector('[aria-label="Skip intro"]')).toBeInTheDocument();
+	});
+
+	it('does not call onComplete before 1800ms', async () => {
 		const onComplete = vi.fn();
 		render(IntroAnimation, { onComplete });
-		await vi.advanceTimersByTimeAsync(1499);
+		await vi.advanceTimersByTimeAsync(1799);
 		expect(onComplete).not.toHaveBeenCalled();
 	});
 
-	it('calls onComplete at T_IRIS and applies iris-out simultaneously', async () => {
+	it('calls onComplete at 1800ms', async () => {
 		const onComplete = vi.fn();
 		render(IntroAnimation, { onComplete });
-		await vi.advanceTimersByTimeAsync(1050);
-		await vi.advanceTimersByTimeAsync(450);
+		await vi.advanceTimersByTimeAsync(1800);
 		expect(onComplete).toHaveBeenCalledOnce();
-		expect(document.querySelector('#intro')).toHaveClass('iris-out');
 	});
 
-	it('intro is in DOM on mount and removed after T_DONE', async () => {
-		render(IntroAnimation, {});
-		expect(document.querySelector('#intro')).toBeInTheDocument();
-		await vi.advanceTimersByTimeAsync(1050);
-		await vi.advanceTimersByTimeAsync(450);
-		await vi.advanceTimersByTimeAsync(1200);
-		expect(document.querySelector('#intro')).not.toBeInTheDocument();
+	it('skip() calls onComplete immediately and sets sessionStorage', async () => {
+		const onComplete = vi.fn();
+		const { getByRole } = render(IntroAnimation, { onComplete });
+		await vi.advanceTimersByTimeAsync(500);
+		getByRole('button', { name: 'Skip intro' }).click();
+		expect(onComplete).toHaveBeenCalledOnce();
+		expect(sessionStorage.getItem('introPlayed')).toBe('true');
+	});
+
+	it('skips intro immediately when sessionStorage flag is set', async () => {
+		sessionStorage.setItem('introPlayed', 'true');
+		const onComplete = vi.fn();
+		render(IntroAnimation, { onComplete });
+		await vi.advanceTimersByTimeAsync(0);
+		expect(onComplete).toHaveBeenCalledOnce();
 	});
 
 	it('clears all timeouts on destroy', () => {

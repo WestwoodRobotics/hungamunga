@@ -13,6 +13,7 @@
 		const { ScrollTrigger } = await import('gsap/ScrollTrigger');
 		gsap.registerPlugin(ScrollTrigger);
 
+		[line1, line2, subtitleRef].forEach((el) => (el.style.willChange = 'transform'));
 		const base = { trigger: section, start: 'top top', end: 'bottom top', scrub: true };
 		gsap.to(line1, { yPercent: -35, ease: 'none', scrollTrigger: base });
 		gsap.to(line2, { yPercent: -20, ease: 'none', scrollTrigger: base });

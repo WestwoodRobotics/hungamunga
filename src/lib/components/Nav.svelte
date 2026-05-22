@@ -31,12 +31,11 @@
 		}
 	}
 
-	function openMenu() { mobileMenuOpen = true; }
 	function closeMenu() { animateMenu(false); }
-	function toggleMenu() { mobileMenuOpen ? closeMenu() : openMenu(); }
+	function toggleMenu() { mobileMenuOpen ? closeMenu() : (mobileMenuOpen = true); }
 </script>
 
-<div class="fixed top-0 w-full px-3 md:px-6 transition-all duration-500 {scrolled ? 'pt-3 md:pt-4' : 'pt-4 md:pt-8'} pointer-events-none" style="z-index: var(--z-nav);">
+<div class="fixed top-0 w-full px-3 md:px-6 transition-[padding] duration-300 {scrolled ? 'pt-3 md:pt-4' : 'pt-4 md:pt-8'} pointer-events-none" style="z-index: var(--z-nav);">
 	<nav class="max-w-4xl mx-auto liquid-panel liquid-panel-blur flex items-center justify-between px-6 py-3 pointer-events-auto shadow-2xl relative" style="background: rgba(17,17,17,0.6); border-color: rgba(255,255,255,0.1);">
 		<a href="/" class="flex items-center gap-3 group shrink-0">
 			<img src="/favicon.png" alt="Hunga Munga logo" class="h-6 w-6 shrink-0 object-contain" />
