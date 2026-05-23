@@ -1,4 +1,4 @@
-export const CLUB_EMAIL = 'hungamunga17113@gmail.com';
+export const CLUB_EMAIL = 'hungamunga2026@gmail.com';
 
 export interface TimelineRow {
 	month: string;
