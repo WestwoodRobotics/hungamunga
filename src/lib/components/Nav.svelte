@@ -50,19 +50,19 @@
 </script>
 
 <div class="fixed top-0 w-full px-3 md:px-6 transition-[padding] duration-300 {scrolled ? 'pt-3 md:pt-4' : 'pt-4 md:pt-8'} pointer-events-none" style="z-index: var(--z-nav);">
-	<nav class="max-w-4xl mx-auto liquid-panel liquid-panel-blur flex items-center justify-between px-6 py-3 pointer-events-auto shadow-2xl relative" style="background: rgba(17,17,17,0.6); border-color: rgba(255,255,255,0.1);">
+	<nav class="max-w-5xl mx-auto liquid-panel liquid-panel-blur flex items-center justify-between px-6 py-3 pointer-events-auto shadow-2xl relative" style="background: rgba(17,17,17,0.6); border-color: rgba(255,255,255,0.1);">
 		<a href={resolve('/')} class="flex items-center gap-3 group shrink-0">
 			<img src="/favicon.png" alt="Hunga Munga logo" class="h-6 w-6 shrink-0 object-contain" />
 			<span class="mono-label group-hover:text-white transition-colors" style="color: rgba(229,229,229,0.9);">17113</span>
 			<span class="font-heading text-sm font-light tracking-wide text-white/70 hidden sm:block group-hover:text-white transition-colors">Hunga Munga</span>
 		</a>
 
-		<div class="hidden md:flex items-center gap-6">
+		<div class="hidden md:flex items-center gap-4">
 			{#each NAV_LINKS as { href, label } (href)}
-				<span use:magnetic><a {href} class="text-[11px] font-sans tracking-widest uppercase text-white/70 hover:text-white transition-colors font-medium">{label}</a></span>
+				<span use:magnetic><a {href} class="text-[11px] font-sans tracking-wider uppercase text-white/70 hover:text-white transition-colors font-medium">{label}</a></span>
 			{/each}
 			<span use:magnetic>
-				<a href="#contact" class="text-[11px] font-sans tracking-widest uppercase text-white bg-white/10 hover:bg-white/20 px-4 py-2 transition-none font-medium border border-white/5 ml-2">
+				<a href="#contact" class="text-[11px] font-sans tracking-wider uppercase text-white bg-white/10 hover:bg-white/20 px-4 py-2 transition-none font-medium border border-white/5 ml-2">
 					Contact
 				</a>
 			</span>
