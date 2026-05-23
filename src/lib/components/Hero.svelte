@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import GlassButton from './GlassButton.svelte';
 	import { magnetic } from '$lib/actions';
+	import { loadGsap } from '$lib/gsap';
 
 	let section: HTMLElement;
 	let line1: HTMLSpanElement;
@@ -9,9 +10,7 @@
 	let subtitleRef: HTMLParagraphElement;
 
 	onMount(async () => {
-		const { gsap } = await import('gsap');
-		const { ScrollTrigger } = await import('gsap/ScrollTrigger');
-		gsap.registerPlugin(ScrollTrigger);
+		const gsap = await loadGsap();
 
 		[line1, line2, subtitleRef].forEach((el) => (el.style.willChange = 'transform'));
 		const base = { trigger: section, start: 'top top', end: 'bottom top', scrub: true };

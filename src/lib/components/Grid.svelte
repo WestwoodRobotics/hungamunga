@@ -1,17 +1,17 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { loadGsap } from '$lib/gsap';
 
 	let container: HTMLDivElement;
 
 	onMount(async () => {
-		const { gsap } = await import('gsap');
+		const gsap = await loadGsap();
 		const { ScrollTrigger } = await import('gsap/ScrollTrigger');
-		gsap.registerPlugin(ScrollTrigger);
 
-		const lines = container.querySelectorAll<SVGGeometryElement>('[data-draw]');
+		const lines = Array.from(container.querySelectorAll<SVGGeometryElement>('[data-draw]'));
+		const lengths = lines.map((l) => l.getTotalLength?.() ?? 1000);
 		lines.forEach((line, i) => {
-			const length = line.getTotalLength?.() ?? 1000;
-			gsap.set(line, { strokeDasharray: length, strokeDashoffset: length });
+			gsap.set(line, { strokeDasharray: lengths[i], strokeDashoffset: lengths[i] });
 			gsap.to(line, {
 				strokeDashoffset: 0,
 				ease: 'none',

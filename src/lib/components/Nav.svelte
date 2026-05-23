@@ -24,7 +24,8 @@
 	});
 
 	async function animateMenu(open: boolean) {
-		const { gsap } = await import('gsap');
+		const { loadGsap } = await import('$lib/gsap');
+		const gsap = await loadGsap();
 		if (!menuEl) {
 			if (!open) mobileMenuOpen = false;
 			return;

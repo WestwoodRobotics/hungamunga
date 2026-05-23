@@ -1,28 +1,27 @@
+import { loadGsap } from '$lib/gsap';
+
 const prefersReducedMotion =
 	typeof window !== 'undefined'
 		? window.matchMedia('(prefers-reduced-motion: reduce)').matches
 		: false;
 
 export function reveal(node: HTMLElement) {
-	if (prefersReducedMotion) {
-		return;
-	}
+	if (prefersReducedMotion) return;
 
 	let cleanup: (() => void) | undefined;
 
-	import('gsap').then(({ gsap }) =>
-		import('gsap/ScrollTrigger').then(({ ScrollTrigger }) => {
-			gsap.registerPlugin(ScrollTrigger);
-			gsap.set(node, { opacity: 0, y: 40 });
-			const t = ScrollTrigger.create({
-				trigger: node,
-				start: 'top 88%',
-				once: true,
-				onEnter: () => gsap.to(node, { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out' })
-			});
-			cleanup = () => t.kill();
-		})
-	);
+	(async () => {
+		const gsap = await loadGsap();
+		const { ScrollTrigger } = await import('gsap/ScrollTrigger');
+		gsap.set(node, { opacity: 0, y: 40 });
+		const t = ScrollTrigger.create({
+			trigger: node,
+			start: 'top 88%',
+			once: true,
+			onEnter: () => gsap.to(node, { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out' })
+		});
+		cleanup = () => t.kill();
+	})();
 
 	return {
 		destroy() {
@@ -40,7 +39,7 @@ export function magnetic(
 	let xTo: ((v: number) => void) | undefined;
 	let yTo: ((v: number) => void) | undefined;
 
-	import('gsap').then(({ gsap }) => {
+	loadGsap().then((gsap) => {
 		xTo = gsap.quickTo(node, 'x', { duration: 0.6, ease: 'power3' }) as (v: number) => void;
 		yTo = gsap.quickTo(node, 'y', { duration: 0.6, ease: 'power3' }) as (v: number) => void;
 	});

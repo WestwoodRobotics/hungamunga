@@ -4,15 +4,15 @@
 	import Grid from '$lib/components/Grid.svelte';
 	import { onMount } from 'svelte';
 	import { initLenis } from '$lib/scroll';
+	import { loadGsap } from '$lib/gsap';
 
 	let { children } = $props();
 
 	onMount(() => {
 		let cleanup: (() => void) | undefined;
 		(async () => {
-			const { gsap } = await import('gsap');
+			const gsap = await loadGsap();
 			const { ScrollTrigger } = await import('gsap/ScrollTrigger');
-			gsap.registerPlugin(ScrollTrigger);
 
 			const lenis = await initLenis();
 			gsap.ticker.add((t) => lenis.raf(t * 1000));
