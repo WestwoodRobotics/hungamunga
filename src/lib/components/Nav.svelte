@@ -61,7 +61,7 @@
 			<span use:magnetic><a href="#team" class="text-[11px] font-sans tracking-widest uppercase text-white/70 hover:text-white transition-colors font-medium">Roster</a></span>
 			<span use:magnetic><a href="#sponsors" class="text-[11px] font-sans tracking-widest uppercase text-white/70 hover:text-white transition-colors font-medium">Sponsors</a></span>
 			<span use:magnetic>
-				<a href="#contact" class="text-[11px] font-sans tracking-widest uppercase text-white bg-white/10 hover:bg-white/20 px-4 py-2 transition-none font-medium border border-white/5 ml-2" style="transition: none;">
+				<a href="#contact" class="text-[11px] font-sans tracking-widest uppercase text-white bg-white/10 hover:bg-white/20 px-4 py-2 transition-none font-medium border border-white/5 ml-2">
 					Contact
 				</a>
 			</span>

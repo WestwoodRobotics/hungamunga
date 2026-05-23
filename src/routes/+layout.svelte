@@ -27,6 +27,6 @@
 <svelte:head>
 	<link rel="icon" href="/favicon.png" />
 </svelte:head>
-<a class="skip-link" href="#robot">Skip to content</a>
+<a class="skip-link" href="#main-content">Skip to content</a>
 <Grid />
 {@render children()}

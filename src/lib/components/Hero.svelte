@@ -41,6 +41,7 @@
 			mask-composite: intersect;
 		"
 	>
+	<!-- change to robot cad later -->
 		<img
 			src="/favicon.png"
 			alt=""
