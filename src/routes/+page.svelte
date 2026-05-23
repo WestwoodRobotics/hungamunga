@@ -3,12 +3,20 @@
 	import Nav from '$lib/components/Nav.svelte';
 	import Hero from '$lib/components/Hero.svelte';
 	import Section from '$lib/components/Section.svelte';
-	import Sponsors from '$lib/components/Sponsors.svelte';
 	import Contact from '$lib/components/Contact.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 
-	import { MEMBERS, TIMELINE, OUTREACH } from '$lib/config';
+	import { MEMBERS, TIMELINE, OUTREACH, CLUB_EMAIL } from '$lib/config';
 	import { reveal } from '$lib/actions';
+
+	const memberCount = MEMBERS.length;
+
+	const sponsorTiers = [
+		{ name: 'Gold', amount: '$500+', perks: ['Logo on robot, team shirt & website', 'Name in notebook'] },
+		{ name: 'Silver', amount: '$250–499', perks: ['Logo on team shirt & website', 'Named in notebook'] },
+		{ name: 'Bronze', amount: '$100–249', perks: ['Logo on website', 'Name in notebook'] },
+		{ name: 'Community', amount: 'Any', perks: ['Name in notebook', 'Our thanks'] }
+	];
 
 	let showContent = $state(false);
 </script>
@@ -36,6 +44,13 @@
 	<main id="main-content">
 		<Hero />
 
+		<div use:reveal>
+			<Section id="about" kicker="FTC Team 17113">
+				{#snippet title()}About Us{/snippet}
+				<p class="text-base leading-relaxed text-white/85 max-w-2xl">We are Hunga Munga 17113, an FTC Robotics team from Westwood High School in Austin, Texas. Our {memberCount} members are passionate about engineering, designing, and innovating.</p>
+				<p class="text-base leading-relaxed text-white/85 max-w-2xl mt-4">Our mission is to <b>build a strong engineering community</b> and inspire the next generation of creators, thinkers, and innovators.</p>
+			</Section>
+		</div>
 
 		<div use:reveal>
 			<Section id="robot" kicker="Java · Onshape · PedroPathing">
@@ -96,10 +111,7 @@
 							class="grid border-b last:border-0 hover:bg-white/4 transition-none"
 							style="grid-template-columns: 5rem 1fr 5rem; border-color: var(--color-rule);"
 						>
-							<span
-								class="mono-text text-white/35 px-6 py-4 border-r"
-								style="border-color: var(--color-rule);"
-							>{row.month}</span>
+							<span class="mono-text text-white/35 px-6 py-4 border-r" style="border-color: var(--color-rule);">{row.month}</span>
 							<span class="px-6 py-4 text-sm border-r {row.status === 'active' ? 'text-white/95' : 'text-white/65'}" style="border-color: var(--color-rule);">{row.event}</span>
 							<span class="px-6 py-4 flex items-center gap-1.5">
 								{#if row.status === 'active'}
@@ -142,7 +154,7 @@
 
 
 		<div use:reveal>
-			<Section id="team" kicker="15 members">
+			<Section id="team" kicker="{memberCount} members">
 				{#snippet title()}The<br/> Team.{/snippet}
 				<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 border-t" style="border-color: var(--color-rule);">
 					{#each MEMBERS as member (member.name)}
@@ -195,9 +207,47 @@
 
 
 		<div use:reveal>
-			<Section id="sponsors">
-				{#snippet title()}Partners &<br/> Sponsors.{/snippet}
-				<Sponsors />
+			<Section id="sponsors" kicker="Support the team">
+				{#snippet title()}Sponsor<br/> Us.{/snippet}
+				<div class="flex flex-col border-t" style="border-color: var(--color-rule);">
+
+					<div class="grid grid-cols-1 md:grid-cols-2 border-b" style="border-color: var(--color-rule);">
+						<div class="px-8 py-12 flex flex-col gap-5 border-r" style="border-color: var(--color-rule);">
+							<p class="text-base leading-relaxed text-white/85" style="max-width: 42ch;">Your support funds robot parts, competition fees, and outreach events that bring STEM to our community. Helping build the next generation of engineers.</p>
+							<p class="text-sm leading-relaxed text-white/60" style="max-width: 42ch;">Processed through Westwood Robotics, a 501(c)(3). <a href="mailto:{CLUB_EMAIL}" class="text-link" style="color: rgba(229,229,229,0.7);">Get in touch →</a></p>
+						</div>
+						<div class="px-8 py-12 flex flex-col gap-8">
+							<div class="flex flex-col gap-3">
+								<span class="mono-label">Mentorship</span>
+								<p class="text-sm leading-relaxed text-white/60" style="max-width: 38ch;">Opportunities to teach us robotics, project management, or real-world engineering skills are always welcome.</p>
+							</div>
+							<div class="border-t" style="border-color: var(--color-rule);"></div>
+							<div class="flex flex-col gap-3">
+								<span class="mono-label">Facility Tours</span>
+								<p class="text-sm leading-relaxed text-white/60" style="max-width: 38ch;">Showing us a real workspace, whatever your industry, is invaluable to a team of high schoolers building real things.</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="w-full border-b" style="border-color: rgba(255,255,255,0.2);">
+						<div class="grid border-b" style="grid-template-columns: 8rem 8rem 1fr; border-color: rgba(255,255,255,0.2);">
+							<span class="mono-label px-6 py-3 border-r" style="border-color: var(--color-rule);">Tier</span>
+							<span class="mono-label px-6 py-3 border-r" style="border-color: var(--color-rule);">Investment</span>
+							<span class="mono-label px-6 py-3">Inclusions</span>
+						</div>
+						{#each sponsorTiers as t (t.name)}
+							<div
+								class="grid border-b last:border-0 hover:bg-white/4 {t.name === 'Gold' ? 'bg-primary/5' : ''}"
+								style="grid-template-columns: 8rem 8rem 1fr; border-color: var(--color-rule); transition: none;"
+							>
+								<span class="px-6 py-4 border-r font-sans text-sm font-medium text-white" style="border-color: var(--color-rule);">{t.name}</span>
+								<span class="px-6 py-4 border-r" style="font-family: var(--font-mono); font-size: 11px; color: var(--color-primary); border-color: var(--color-rule);">{t.amount}</span>
+								<span class="px-6 py-4 text-sm" style="color: rgba(229,229,229,0.7);">{t.perks.join(' · ')}</span>
+							</div>
+						{/each}
+					</div>
+
+				</div>
 			</Section>
 		</div>
 
