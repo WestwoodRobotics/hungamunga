@@ -3,6 +3,7 @@
 	import { resolve } from '$app/paths';
 	import { Menu, X } from 'lucide-svelte';
 	import { magnetic } from '$lib/actions';
+	import { NAV_LINKS } from '$lib/config';
 
 	let scrolled = $state(false);
 	let mobileMenuOpen = $state(false);
@@ -57,10 +58,9 @@
 		</a>
 
 		<div class="hidden md:flex items-center gap-6">
-			<span use:magnetic><a href="#robot" class="text-[11px] font-sans tracking-widest uppercase text-white/70 hover:text-white transition-colors font-medium">The Build</a></span>
-			<span use:magnetic><a href="#season" class="text-[11px] font-sans tracking-widest uppercase text-white/70 hover:text-white transition-colors font-medium">Season</a></span>
-			<span use:magnetic><a href="#team" class="text-[11px] font-sans tracking-widest uppercase text-white/70 hover:text-white transition-colors font-medium">Roster</a></span>
-			<span use:magnetic><a href="#sponsors" class="text-[11px] font-sans tracking-widest uppercase text-white/70 hover:text-white transition-colors font-medium">Sponsors</a></span>
+			{#each NAV_LINKS as { href, label } (href)}
+				<span use:magnetic><a {href} class="text-[11px] font-sans tracking-widest uppercase text-white/70 hover:text-white transition-colors font-medium">{label}</a></span>
+			{/each}
 			<span use:magnetic>
 				<a href="#contact" class="text-[11px] font-sans tracking-widest uppercase text-white bg-white/10 hover:bg-white/20 px-4 py-2 transition-none font-medium border border-white/5 ml-2">
 					Contact
@@ -83,10 +83,9 @@
 
 	{#if mobileMenuOpen}
 		<div bind:this={menuEl} class="absolute top-full left-6 right-6 mt-4 liquid-panel liquid-panel-blur p-6 flex flex-col gap-6 md:hidden pointer-events-auto">
-			<a href="#robot" onclick={closeMenu} class="text-sm font-sans tracking-widest uppercase text-white/80 hover:text-white font-medium">The Build</a>
-			<a href="#season" onclick={closeMenu} class="text-sm font-sans tracking-widest uppercase text-white/80 hover:text-white font-medium">Season</a>
-			<a href="#team" onclick={closeMenu} class="text-sm font-sans tracking-widest uppercase text-white/80 hover:text-white font-medium">Roster</a>
-			<a href="#sponsors" onclick={closeMenu} class="text-sm font-sans tracking-widest uppercase text-white/80 hover:text-white font-medium">Sponsors</a>
+			{#each NAV_LINKS as { href, label } (href)}
+				<a {href} onclick={closeMenu} class="text-sm font-sans tracking-widest uppercase text-white/80 hover:text-white font-medium">{label}</a>
+			{/each}
 			<a href="#contact" onclick={closeMenu} class="text-sm font-sans tracking-widest uppercase text-primary font-medium mt-2">Contact Us</a>
 		</div>
 	{/if}

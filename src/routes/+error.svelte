@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import { ArrowLeft } from 'lucide-svelte';
 </script>
 
 <div class="card">
@@ -12,7 +13,7 @@
 			{$page.error?.message ?? 'An unexpected error occurred.'}
 		{/if}
 	</p>
-	<a href="/">← Back to home</a>
+	<a href="/"><ArrowLeft size={14} />Back to home</a>
 </div>
 
 <style>

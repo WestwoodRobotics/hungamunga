@@ -1,5 +1,15 @@
 export const CLUB_EMAIL = 'hungamunga2026@gmail.com';
 
+export const NAV_LINKS: { href: string; label: string }[] = [
+	{ href: '#about',    label: 'About'    },
+	{ href: '#robot',    label: 'The Build' },
+	{ href: '#season',   label: 'Season'   },
+	{ href: '#outreach', label: 'Outreach' },
+	{ href: '#team',     label: 'Roster'   },
+	{ href: '#results',  label: 'Results'  },
+	{ href: '#sponsors', label: 'Sponsors' },
+];
+
 interface TimelineRow {
 	month: string;
 	event: string;

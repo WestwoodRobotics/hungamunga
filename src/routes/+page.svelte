@@ -8,6 +8,7 @@
 
 	import { MEMBERS, TIMELINE, OUTREACH, CLUB_EMAIL } from '$lib/config';
 	import { reveal } from '$lib/actions';
+	import { ArrowRight, Dot } from 'lucide-svelte';
 
 	const memberCount = MEMBERS.length;
 
@@ -214,7 +215,7 @@
 					<div class="grid grid-cols-1 md:grid-cols-2 border-b" style="border-color: var(--color-rule);">
 						<div class="px-8 py-12 flex flex-col gap-5 border-r" style="border-color: var(--color-rule);">
 							<p class="text-base leading-relaxed text-white/85" style="max-width: 42ch;">Your support funds robot parts, competition fees, and outreach events that bring STEM to our community. Helping build the next generation of engineers.</p>
-							<p class="text-sm leading-relaxed text-white/60" style="max-width: 42ch;">Processed through Westwood Robotics, a 501(c)(3). <a href="mailto:{CLUB_EMAIL}" class="text-link" style="color: rgba(229,229,229,0.7);">Get in touch →</a></p>
+							<p class="text-sm leading-relaxed text-white/60" style="max-width: 42ch;">Processed through Westwood Robotics, a 501(c)(3). <br /><a href="mailto:{CLUB_EMAIL}" class="text-link inline-flex items-center gap-1" style="color: rgba(229,229,229,0.7);">Get in touch <ArrowRight size={13} /></a></p>
 						</div>
 						<div class="px-8 py-12 flex flex-col gap-8">
 							<div class="flex flex-col gap-3">
@@ -242,7 +243,7 @@
 							>
 								<span class="px-6 py-4 border-r font-sans text-sm font-medium text-white" style="border-color: var(--color-rule);">{t.name}</span>
 								<span class="px-6 py-4 border-r" style="font-family: var(--font-mono); font-size: 11px; color: var(--color-primary); border-color: var(--color-rule);">{t.amount}</span>
-								<span class="px-6 py-4 text-sm" style="color: rgba(229,229,229,0.7);">{t.perks.join(' · ')}</span>
+								<span class="px-6 py-4 text-sm flex items-center flex-wrap gap-1" style="color: rgba(229,229,229,0.7);">{#each t.perks as perk, i (perk)}{#if i > 0}<Dot size={14} />{/if}{perk}{/each}</span>
 							</div>
 						{/each}
 					</div>

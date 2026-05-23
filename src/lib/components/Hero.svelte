@@ -3,6 +3,7 @@
 	import GlassButton from './GlassButton.svelte';
 	import { magnetic } from '$lib/actions';
 	import { loadGsap } from '$lib/gsap';
+	import { Dot } from 'lucide-svelte';
 
 	let section: HTMLElement;
 	let line1: HTMLSpanElement;
@@ -89,9 +90,9 @@
 		style="bottom: 2rem; left: max(4vw, 2rem); color: rgba(229,229,229,0.4);"
 	>
 		<span>Austin, TX</span>
-		<span>·</span>
+		<Dot size={14} />
 		<span>FiT Central GEMS</span>
-		<span>·</span>
+		<Dot size={14} />
 		<span style="color: var(--color-primary);">17113</span>
 	</div>
 </section>
