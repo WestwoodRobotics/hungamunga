@@ -29,7 +29,7 @@
 
 <svelte:head>
 	<title>FTC Team 17113 - Hunga Munga Robotics</title>
-	<meta name="description" content="FTC Team 17113 Hunga Munga — seven seasons, one makerspace, Austin TX." />
+	<meta name="description" content="FTC Team 17113 Hunga Munga - seven seasons, one makerspace, Austin TX." />
 </svelte:head>
 
 <noscript>
@@ -115,7 +115,7 @@
 								</span>
 								<span style="font-family: var(--font-mono); font-size: 10px; color: var(--color-primary);">LIVE</span>
 							{:else if row.status === 'future'}
-								<span style="font-family: var(--font-mono); font-size: 10px; color: rgba(229,229,229,0.2);">TBD</span>
+								<span style="font-family: var(--font-mono); font-size: 10px; color: rgba(229,229,229,0.2);">FUTURE</span>
 							{:else}
 								<span style="font-family: var(--font-mono); font-size: 10px; color: rgba(229,229,229,0.2);">DONE</span>
 							{/if}

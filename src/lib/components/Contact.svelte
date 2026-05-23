@@ -23,14 +23,14 @@
 			</p>
 
 			<div class="flex flex-col gap-6">
-				<div class="flex flex-col gap-2">
+				<dl class="flex flex-col gap-2">
 					<dt class="mono-label">Email</dt>
 					<dd class="text-sm font-sans wrap-break-word" style="color: rgba(229,229,229,0.9);">{emailDisplay}</dd>
-				</div>
-				<div class="flex flex-col gap-2">
+				</dl>
+				<dl class="flex flex-col gap-2">
 					<dt class="mono-label">Location</dt>
 					<dd class="text-sm font-sans" style="color: rgba(229,229,229,0.9);">Austin, Texas</dd>
-				</div>
+				</dl>
 			</div>
 		</div>
 

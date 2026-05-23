@@ -69,10 +69,10 @@
 		<p
 			bind:this={subtitleRef}
 			class="text-sm leading-relaxed"
-			style="max-width: 36ch; color: rgba(229,229,229,0.7);"
+			style="max-width: 35ch; color: rgba(229,229,229,0.7);"
 		>
-			FTC Team 17113. Seven seasons, one makerspace, fifteen members.
-
+			Westwood Robotics FIRST® Tech Challenge team 17113 Hunga Munga.
+		</p>
 		<div class="flex gap-4 flex-wrap">
 			<span use:magnetic>
 				<GlassButton variant="primary" href="#robot">The Build</GlassButton>

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { resolve } from '$app/paths';
 	import { Menu, X } from 'lucide-svelte';
 	import { magnetic } from '$lib/actions';
 
@@ -24,6 +25,11 @@
 
 	async function animateMenu(open: boolean) {
 		const { gsap } = await import('gsap');
+		if (!menuEl) {
+			if (!open) mobileMenuOpen = false;
+			return;
+		}
+
 		if (open) {
 			gsap.fromTo(menuEl, { opacity: 0, y: -8 }, { opacity: 1, y: 0, duration: 0.35, ease: 'back.out(1.7)' });
 		} else {
@@ -31,13 +37,19 @@
 		}
 	}
 
-	function closeMenu() { animateMenu(false); }
-	function toggleMenu() { mobileMenuOpen ? closeMenu() : (mobileMenuOpen = true); }
+	function closeMenu() { void animateMenu(false); }
+	function toggleMenu() {
+		if (mobileMenuOpen) {
+			closeMenu();
+		} else {
+			mobileMenuOpen = true;
+		}
+	}
 </script>
 
 <div class="fixed top-0 w-full px-3 md:px-6 transition-[padding] duration-300 {scrolled ? 'pt-3 md:pt-4' : 'pt-4 md:pt-8'} pointer-events-none" style="z-index: var(--z-nav);">
 	<nav class="max-w-4xl mx-auto liquid-panel liquid-panel-blur flex items-center justify-between px-6 py-3 pointer-events-auto shadow-2xl relative" style="background: rgba(17,17,17,0.6); border-color: rgba(255,255,255,0.1);">
-		<a href="/" class="flex items-center gap-3 group shrink-0">
+		<a href={resolve('/')} class="flex items-center gap-3 group shrink-0">
 			<img src="/favicon.png" alt="Hunga Munga logo" class="h-6 w-6 shrink-0 object-contain" />
 			<span class="mono-label group-hover:text-white transition-colors" style="color: rgba(229,229,229,0.9);">17113</span>
 			<span class="font-heading text-sm font-light tracking-wide text-white/70 hidden sm:block group-hover:text-white transition-colors">Hunga Munga</span>
