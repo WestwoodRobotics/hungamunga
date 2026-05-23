@@ -180,7 +180,7 @@
 
 
 		<div use:reveal>
-			<Section id="results" kicker="2024–25">
+			<Section id="results" kicker="PAST SEASONS">
 				{#snippet title()}Season<br/> Results.{/snippet}
 				<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
 					<div class="liquid-panel p-12 lg:col-span-7 flex flex-col justify-between min-h-[360px] group">
