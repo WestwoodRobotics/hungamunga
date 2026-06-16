@@ -28,8 +28,8 @@
 	<meta property="og:title" content="FTC Team 17113 - Hunga Munga Robotics" />
 	<meta property="og:description" content="FTC Team 17113 Hunga Munga - seven seasons, one makerspace, Austin TX." />
 	<meta property="og:type" content="website" />
-	<meta property="og:image" content="/favicon.png" />
-	<meta name="twitter:card" content="summary" />
+	<meta property="og:image" content="/og.png" />
+	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:title" content="FTC Team 17113 - Hunga Munga Robotics" />
 	<meta name="twitter:description" content="FTC Team 17113 Hunga Munga - seven seasons, one makerspace, Austin TX." />
 </svelte:head>
@@ -53,7 +53,7 @@
 					<p class="text-base leading-relaxed text-white/85">Our mission is to <b>build a strong engineering community</b> and inspire the next generation of creators, thinkers, and innovators.</p>
 				</div>
 				<div class="grid grid-cols-2 md:grid-cols-4 border-t mt-10" style="border-color: var(--color-rule);">
-					{#each [['15', 'Members'], ['7', 'Seasons'], ['2', 'Semi-Area trips'], ['2019', 'Founded']] as [val, label] (label)}
+					{#each [['15', 'Members'], ['7', 'Seasons'], ['2', 'Regionals'], ['2019', 'Founded']] as [val, label] (label)}
 						<div class="py-8 px-6 border-r last:border-r-0 flex flex-col gap-2" style="border-color: var(--color-rule);">
 							<span class="font-heading font-light text-white" style="font-size: clamp(2rem, 4vw, 3rem); line-height: 1;">{val}</span>
 							<span class="mono-label">{label}</span>

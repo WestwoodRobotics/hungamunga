@@ -36,8 +36,8 @@
 			right: -5%;
 			top: 4%;
 			bottom: 0;
-			-webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0.4) 20%, rgba(0,0,0,0) 90%), linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 8%, rgba(0,0,0,1) 92%, rgba(0,0,0,0) 100%);
-			mask-image: linear-gradient(to right, rgba(0,0,0,0.4) 20%, rgba(0,0,0,0) 90%), linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 8%, rgba(0,0,0,1) 92%, rgba(0,0,0,0) 100%);
+			-webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0.55) 10%, rgba(0,0,0,0) 90%), linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 8%, rgba(0,0,0,1) 92%, rgba(0,0,0,0) 100%);
+			mask-image: linear-gradient(to right, rgba(0,0,0,0.55) 10%, rgba(0,0,0,0) 90%), linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 8%, rgba(0,0,0,1) 92%, rgba(0,0,0,0) 100%);
 			-webkit-mask-composite: intersect;
 			mask-composite: intersect;
 		"
@@ -50,7 +50,7 @@
 			width="1200"
 			height="1600"
 			fetchpriority="low"
-			style="height: 75%; width: auto; display: block; opacity: 0.28; mix-blend-mode: screen; filter: saturate(0) brightness(2);"
+			style="height: 75%; width: auto; display: block; opacity: 0.38; mix-blend-mode: screen; filter: saturate(0.15) brightness(1.6);"
 		/>
 	</div>
 
