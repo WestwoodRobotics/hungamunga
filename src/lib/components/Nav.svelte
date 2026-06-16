@@ -59,7 +59,7 @@
 
 		<div class="hidden md:flex items-center gap-4">
 			{#each NAV_LINKS as { href, label } (href)}
-				<span use:magnetic><a {href} class="text-[11px] font-sans tracking-wider uppercase text-white/70 hover:text-white transition-colors font-medium">{label}</a></span>
+				<span use:magnetic><a {href} class="text-[11px] font-sans tracking-wider uppercase text-white/70 hover:text-white transition-colors font-medium focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring">{label}</a></span>
 			{/each}
 			<span use:magnetic>
 				<a href="#contact" class="text-[11px] font-sans tracking-wider uppercase text-white bg-white/10 hover:bg-white/20 px-4 py-2 transition-none font-medium border border-white/5 ml-2">

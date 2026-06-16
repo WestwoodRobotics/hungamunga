@@ -7,7 +7,13 @@ const config = {
 	},
 	kit: {
 		adapter: adapter({ fallback: '404.html' }),
-		prerender: { handleMissingId: 'warn' }
+		prerender: {
+				handleMissingId: 'warn',
+				handleHttpError: ({ path, referrer, message }) => {
+					if (path === '/og.png') return;
+					throw new Error(message);
+				}
+			}
 	}
 };
 

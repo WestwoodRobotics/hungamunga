@@ -11,6 +11,7 @@
 	let subtitleRef: HTMLParagraphElement;
 
 	onMount(async () => {
+		if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 		const gsap = await loadGsap();
 
 		[line1, line2, subtitleRef].forEach((el) => (el.style.willChange = 'transform'));

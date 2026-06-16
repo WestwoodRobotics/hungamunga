@@ -21,7 +21,7 @@
 		</div>
 
 		<div class="flex md:justify-end">
-			<a href="https://ftc-events.firstinspires.org/2025/team/17113" target="_blank" rel="noopener noreferrer" class="mono-label hover:text-white inline-flex items-center gap-1" style="color: rgba(229,229,229,0.3);">FTC Events <ExternalLink size={11} /></a>
+			<a href="https://ftc-events.firstinspires.org/2025/team/17113" target="_blank" rel="noopener noreferrer" class="mono-label hover:text-white inline-flex items-center gap-1" style="color: rgba(229,229,229,0.55);">FTC Events <ExternalLink size={11} /></a>
 		</div>
 	</div>
 </footer>

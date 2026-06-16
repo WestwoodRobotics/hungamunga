@@ -40,7 +40,7 @@
 	</style>
 </noscript>
 
-<div class="js-hide transition-opacity duration-[2000ms]" style={!showContent ? 'opacity: 0; pointer-events: none; height: 100vh; overflow: hidden;' : 'opacity: 1;'}>
+<div class="js-hide transition-opacity duration-500" style={!showContent ? 'opacity: 0; pointer-events: none; height: 100vh; overflow: hidden;' : 'opacity: 1;'}>
 	<Nav />
 	<main id="main-content">
 		<Hero />
@@ -78,7 +78,7 @@
 							<div class="flex flex-col gap-2 mt-2">
 								{#each [['Auto score (avg)', '# pts'], ['Cycle time', '# sec'], ['Autonomous runs', '#+'], ['Season W/L/T', 'a-b-c']] as [k, v] (k)}
 									<div class="flex justify-between border-b py-2" style="border-color: var(--color-rule);">
-										<span class="mono-text text-white/40">{k}</span>
+										<span class="mono-text text-white/55">{k}</span>
 										<span class="mono-text text-white/90">{v}</span>
 									</div>
 								{/each}
@@ -116,7 +116,7 @@
 							class="grid border-b last:border-0 hover:bg-white/4 transition-none"
 							style="grid-template-columns: 5rem 1fr 5rem; border-color: var(--color-rule);"
 						>
-							<span class="mono-text text-white/35 px-6 py-4 border-r" style="border-color: var(--color-rule);">{row.month}</span>
+							<span class="mono-text text-white/55 px-6 py-4 border-r" style="border-color: var(--color-rule);">{row.month}</span>
 							<span class="px-6 py-4 text-sm border-r {row.status === 'active' ? 'text-white/95' : 'text-white/65'}" style="border-color: var(--color-rule);">{row.event}</span>
 							<span class="px-6 py-4 flex items-center gap-1.5">
 								{#if row.status === 'active'}
@@ -126,9 +126,9 @@
 									</span>
 									<span class="mono-text text-[10px] text-primary">LIVE</span>
 								{:else if row.status === 'future'}
-									<span class="mono-text text-[10px] text-white/20">FUTURE</span>
+									<span class="mono-text text-[10px] text-white/50">FUTURE</span>
 								{:else}
-									<span class="mono-text text-[10px] text-white/20">DONE</span>
+									<span class="mono-text text-[10px] text-white/50">DONE</span>
 								{/if}
 							</span>
 						</div>
