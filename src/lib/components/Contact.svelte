@@ -30,16 +30,11 @@
 			fd.append('name', name);
 			fd.append('email', email);
 			fd.append('message', message);
-			const res = await fetch(CONTACT_SCRIPT_URL, { method: 'POST', body: fd });
-			const data = await res.json();
-			if (data.result === 'success') {
-				status = 'success';
-				name = '';
-				email = '';
-				message = '';
-			} else {
-				status = 'error';
-			}
+			await fetch(CONTACT_SCRIPT_URL, { method: 'POST', body: fd, mode: 'no-cors' });
+			status = 'success';
+			name = '';
+			email = '';
+			message = '';
 		} catch {
 			status = 'error';
 		}
