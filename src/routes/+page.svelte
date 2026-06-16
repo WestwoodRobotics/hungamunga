@@ -8,7 +8,7 @@
 
 	import { MEMBERS, TIMELINE, OUTREACH, CLUB_EMAIL } from '$lib/config';
 	import { reveal } from '$lib/actions';
-	import { ArrowRight, Dot } from 'lucide-svelte';
+	import { ArrowRight } from 'lucide-svelte';
 
 	const memberCount = MEMBERS.length;
 
@@ -65,7 +65,7 @@
 
 		<div use:reveal>
 			<Section id="robot" kicker="Java · Onshape · PedroPathing">
-				{#snippet title()}Structure &<br/> Logic.{/snippet}
+				{#snippet title()}Structure & Logic.{/snippet}
 				<div class="flex flex-col border-t" style="border-color: var(--color-rule);">
 					<div class="grid grid-cols-1 md:grid-cols-2 border-b" style="border-color: var(--color-rule);">
 						<div class="px-8 py-12 flex flex-col gap-5 border-r" style="border-color: var(--color-rule);">
@@ -104,7 +104,7 @@
 
 		<div use:reveal>
 			<Section id="season" kicker="2025–26">
-				{#snippet title()}Season<br/> Timeline.{/snippet}
+				{#snippet title()}Season Timeline.{/snippet}
 				<div class="w-full border-t-2 border-b-2" style="border-color: rgba(255,255,255,0.2);">
 					<div class="grid border-b-2" style="grid-template-columns: 5rem 1fr 5rem; border-color: rgba(255,255,255,0.2);">
 						<span class="mono-label px-6 py-3 border-r" style="border-color: var(--color-rule);">Mo.</span>
@@ -140,7 +140,7 @@
 
 		<div use:reveal>
 			<Section id="outreach">
-				{#snippet title()}Beyond<br/> Competition.{/snippet}
+				{#snippet title()}Beyond Competition.{/snippet}
 				<div class="flex flex-col border-t" style="border-color: var(--color-rule);">
 					{#each OUTREACH as item (item.n)}
 						<div class="border-b flex flex-col md:flex-row items-start gap-8 py-10" style="border-color: var(--color-rule);">
@@ -159,7 +159,7 @@
 
 		<div use:reveal>
 			<Section id="team" kicker="{memberCount} members">
-				{#snippet title()}The<br/> Team.{/snippet}
+				{#snippet title()}The Team.{/snippet}
 				<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 border-t" style="border-color: var(--color-rule);">
 					{#each MEMBERS as member (member.name)}
 						{@const initials = member.name.split(' ').map((n) => n[0]).join('')}
@@ -186,7 +186,7 @@
 
 		<div use:reveal>
 			<Section id="results" kicker="PAST SEASONS">
-				{#snippet title()}Season<br/> Results.{/snippet}
+				{#snippet title()}Season Results.{/snippet}
 				<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
 					<div class="liquid-panel p-12 lg:col-span-7 flex flex-col justify-between min-h-[360px] group">
 						<span class="mono-label">Control Award</span>
@@ -214,7 +214,7 @@
 
 		<div use:reveal>
 			<Section id="sponsors" kicker="Support the team">
-				{#snippet title()}Sponsor<br/> Us.{/snippet}
+				{#snippet title()}Sponsor Us.{/snippet}
 				<div class="flex flex-col border-t" style="border-color: var(--color-rule);">
 
 					<div class="grid grid-cols-1 md:grid-cols-2 border-b" style="border-color: var(--color-rule);">
@@ -248,7 +248,7 @@
 							>
 								<span class="px-6 py-4 border-r font-sans text-sm font-medium text-white" style="border-color: var(--color-rule);">{t.name}</span>
 								<span class="px-6 py-4 border-r" style="font-family: var(--font-mono); font-size: 11px; color: var(--color-primary); border-color: var(--color-rule);">{t.amount}</span>
-								<span class="px-6 py-4 text-sm flex items-center flex-wrap gap-1" style="color: rgba(229,229,229,0.7);">{#each t.perks as perk, i (perk)}{#if i > 0}<Dot size={14} />{/if}{perk}{/each}</span>
+								<span class="px-6 py-4 text-sm" style="color: rgba(229,229,229,0.7);">{#each t.perks as perk, i (perk)}{#if i > 0}<span class="mx-1 opacity-30">·</span>{/if}{perk}{/each}</span>
 							</div>
 						{/each}
 					</div>

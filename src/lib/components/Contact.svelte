@@ -42,7 +42,7 @@
 </script>
 
 <Section id="contact">
-	{#snippet title()}Get in<br/> Touch.{/snippet}
+	{#snippet title()}Get in Touch.{/snippet}
 	<div class="liquid-panel p-12 grid grid-cols-1 lg:grid-cols-2 gap-16">
 		<div class="flex flex-col gap-12">
 			<p class="text-sm leading-relaxed max-w-sm" style="color: rgba(229,229,229,0.7);">

@@ -4,6 +4,14 @@
 	import { Menu, X } from 'lucide-svelte';
 	import { magnetic } from '$lib/actions';
 	import { NAV_LINKS } from '$lib/config';
+	import { lenisScrollTo } from '$lib/scroll';
+
+	function handleAnchor(e: MouseEvent, href: string) {
+		if (!href.startsWith('#')) return;
+		e.preventDefault();
+		const target = document.querySelector(href);
+		if (target) lenisScrollTo(target);
+	}
 
 	let scrolled = $state(false);
 	let mobileMenuOpen = $state(false);
@@ -59,10 +67,10 @@
 
 		<div class="hidden md:flex items-center gap-4">
 			{#each NAV_LINKS as { href, label } (href)}
-				<span use:magnetic><a {href} class="text-[11px] font-sans tracking-wider uppercase text-white/70 hover:text-white transition-colors font-medium focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring">{label}</a></span>
+				<span use:magnetic><a {href} onclick={(e) => handleAnchor(e, href)} class="text-[11px] font-sans tracking-wider uppercase text-white/70 hover:text-white transition-colors font-medium focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring">{label}</a></span>
 			{/each}
 			<span use:magnetic>
-				<a href="#contact" class="text-[11px] font-sans tracking-wider uppercase text-white bg-white/10 hover:bg-white/20 px-4 py-2 transition-none font-medium border border-white/5 ml-2">
+				<a href="#contact" onclick={(e) => handleAnchor(e, '#contact')} class="text-[11px] font-sans tracking-wider uppercase text-white bg-white/10 hover:bg-white/20 px-4 py-2 transition-none font-medium border border-white/5 ml-2">
 					Contact
 				</a>
 			</span>
@@ -84,9 +92,9 @@
 	{#if mobileMenuOpen}
 		<div bind:this={menuEl} class="absolute top-full left-6 right-6 mt-4 liquid-panel liquid-panel-blur p-6 flex flex-col gap-6 md:hidden pointer-events-auto">
 			{#each NAV_LINKS as { href, label } (href)}
-				<a {href} onclick={closeMenu} class="text-sm font-sans tracking-widest uppercase text-white/80 hover:text-white font-medium">{label}</a>
+				<a {href} onclick={(e) => { handleAnchor(e, href); closeMenu(); }} class="text-sm font-sans tracking-widest uppercase text-white/80 hover:text-white font-medium">{label}</a>
 			{/each}
-			<a href="#contact" onclick={closeMenu} class="text-sm font-sans tracking-widest uppercase text-primary font-medium mt-2">Contact Us</a>
+			<a href="#contact" onclick={(e) => { handleAnchor(e, '#contact'); closeMenu(); }} class="text-sm font-sans tracking-widest uppercase text-primary font-medium mt-2">Contact Us</a>
 		</div>
 	{/if}
 </div>
