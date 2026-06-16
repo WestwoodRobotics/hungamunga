@@ -70,10 +70,10 @@
 
 		<p
 			bind:this={subtitleRef}
-			class="text-sm leading-relaxed"
-			style="max-width: 35ch; color: rgba(229,229,229,0.7);"
+			class="text-base leading-relaxed"
+			style="max-width: 46ch; color: rgba(229,229,229,0.65);"
 		>
-			Westwood Robotics FIRST® Tech Challenge team 17113 Hunga Munga.
+			Westwood Robotics FIRST® Tech Challenge team 17113 Hunga Munga, based in Austin, TX.
 		</p>
 		<div class="flex gap-4 flex-wrap">
 			<span use:magnetic>
