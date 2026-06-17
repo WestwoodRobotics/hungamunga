@@ -5,7 +5,7 @@
 	import type { HTMLButtonAttributes } from 'svelte/elements';
 
 	const glassButtonVariants = tv({
-		base: 'relative isolate cursor-pointer flex items-center justify-center outline-none border overflow-hidden',
+		base: 'relative isolate cursor-pointer flex items-center justify-center outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 focus-visible:ring-offset-background border overflow-hidden',
 		variants: {
 			size: {
 				default: 'px-6 py-3 text-sm font-medium tracking-wide',

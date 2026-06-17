@@ -15,10 +15,12 @@
 			const { ScrollTrigger } = await import('gsap/ScrollTrigger');
 
 			const lenis = await initLenis();
-			gsap.ticker.add((t) => lenis.raf(t * 1000));
-			gsap.ticker.lagSmoothing(0);
-			lenis.on('scroll', ScrollTrigger.update);
-			cleanup = () => lenis.destroy();
+			if (lenis) {
+				gsap.ticker.add((t) => lenis.raf(t * 1000));
+				gsap.ticker.lagSmoothing(0);
+				lenis.on('scroll', ScrollTrigger.update);
+				cleanup = () => lenis.destroy();
+			}
 		})();
 		return () => cleanup?.();
 	});

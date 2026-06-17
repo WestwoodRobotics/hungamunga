@@ -1,4 +1,5 @@
 export const CLUB_EMAIL = 'hungamunga2026@gmail.com';
+export const CONTACT_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyWWJuwae_o64qSKEHWMIWeRswcEECCKS3zysHpd1wjQYbB4DvBwNaDMu12yKVHc8V4/exec';
 
 export const NAV_LINKS: { href: string; label: string }[] = [
 	{ href: '#about',    label: 'About'    },

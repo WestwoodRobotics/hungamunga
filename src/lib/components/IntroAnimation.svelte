@@ -16,7 +16,7 @@
 	}
 
 	onMount(() => {
-		if (sessionStorage.getItem('introPlayed')) {
+		if (sessionStorage.getItem('introPlayed') || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
 			done = true;
 			onComplete?.();
 			return;
@@ -38,10 +38,7 @@
 		class="fixed inset-0 flex items-center justify-center overflow-hidden transition-opacity duration-500 {step === 3 ? 'opacity-0 pointer-events-none' : 'opacity-100'}"
 		style="z-index: var(--z-intro); background: #111111;"
 		onclick={skip}
-		onkeydown={(e) => { if (e.key === 'Enter' || e.key === ' ') skip(); }}
-		role="button"
-		tabindex="-1"
-		aria-label="Skip intro"
+		role="presentation"
 	>
 		<div class="relative flex flex-col items-center" style="z-index: 10;">
 			<div class="overflow-hidden">
@@ -67,8 +64,8 @@
 		</div>
 
 		<button
-			class="absolute bottom-8 right-8 mono-label hover:text-white transition-colors"
-			style="color: rgba(229,229,229,0.3);"
+			class="absolute bottom-8 right-8 mono-label hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+			style="color: rgba(229,229,229,0.6);"
 			onclick={(e) => { e.stopPropagation(); skip(); }}
 		>
 			click anywhere to skip

@@ -27,7 +27,7 @@
 	.card {
 		background: rgba(255, 255, 255, 0.02);
 		border: 1px solid rgba(255, 255, 255, 0.08);
-		border-radius: 4px;
+		border-radius: 0;
 		padding: 3rem 3.5rem;
 		max-width: 480px;
 		width: 100%;
@@ -67,7 +67,7 @@
 		color: #dcdfe4;
 		text-decoration: none;
 		border: 1px solid rgba(255, 255, 255, 0.08);
-		border-radius: 3px;
+		border-radius: 0;
 		padding: 0.55rem 1rem;
 		transition: border-color 0.15s, color 0.15s;
 	}

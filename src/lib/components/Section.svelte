@@ -31,7 +31,7 @@
 				{/if}
 				<h2
 					class="font-heading font-light tracking-tight text-white"
-					style="font-size: var(--text-section-title); line-height: 0.95;"
+					style="font-size: var(--text-section-title); line-height: 0.95; text-wrap: balance;"
 				>
 					{@render title()}
 				</h2>
