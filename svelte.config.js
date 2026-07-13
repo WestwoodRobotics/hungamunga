@@ -10,7 +10,7 @@ const config = {
 		prerender: {
 				handleMissingId: 'warn',
 				handleHttpError: ({ path, referrer, message }) => {
-					if (path === '/og.png') return;
+					if (path === '/favicon.png') return;
 					throw new Error(message);
 				}
 			}

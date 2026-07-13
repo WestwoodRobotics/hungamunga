@@ -28,7 +28,7 @@
 	<meta property="og:title" content="FTC Team 17113 - Hunga Munga Robotics" />
 	<meta property="og:description" content="FTC Team 17113 Hunga Munga - seven seasons, one makerspace, Austin TX." />
 	<meta property="og:type" content="website" />
-	<meta property="og:image" content="/og.png" />
+	<meta property="og:image" content="/favicon.png" />
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:title" content="FTC Team 17113 - Hunga Munga Robotics" />
 	<meta name="twitter:description" content="FTC Team 17113 Hunga Munga - seven seasons, one makerspace, Austin TX." />
