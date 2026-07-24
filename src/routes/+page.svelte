@@ -20,6 +20,37 @@
 	];
 
 	let showContent = $state(false);
+
+	const subsystems = [
+		{ id: 'launch', label: 'Launcher', x: 40, y: 22, desc: 'Dual-stage flywheel on a printed truss frame. Fixed hood angle, velocity held under PIDF so shot distance stays repeatable across a match.' },
+		{ id: 'intake', label: 'Intake', x: 78, y: 48, desc: 'Compliant star-wheel rollers on a sprung axle. Sweeps game elements off the floor at full drive speed and centers them for transfer.' },
+		{ id: 'transfer', label: 'Transfer Linkage', x: 56, y: 66, desc: 'Four-bar linkage that hands off from the intake to the launcher. Single motion, no stall points, keeps the path short and jam-free.' },
+		{ id: 'chassis', label: 'Chassis', x: 40, y: 74, desc: 'Welded-profile frame with a low, centered mass. Bolt-on plate panels let a damaged section swap out between matches in under two minutes.' },
+		{ id: 'drive', label: 'Mecanum Drive', x: 13, y: 73, desc: 'Four mecanum wheels for holonomic motion, paired with dead-wheel odometry pods feeding the localizer.' }
+	];
+
+	let activeSub = $state('launch');
+	const activeIdx = $derived(Math.max(0, subsystems.findIndex((s) => s.id === activeSub)));
+	const active = $derived(subsystems[activeIdx]);
+	const activeIndex = $derived(String(activeIdx + 1).padStart(2, '0'));
+
+	const specs = [
+		['Auto score (avg)', '# pts'],
+		['Cycle time', '# sec'],
+		['Autonomous runs', '#+'],
+		['Season W/L/T', 'a-b-c'],
+		['Drivetrain', 'Mecanum'],
+		['Weight', '# lbs']
+	];
+
+	const software = [
+		['Control', 'FTC SDK · Java'],
+		['Autonomy', 'PedroPathing'],
+		['Localization', 'MCL + odometry'],
+		['Tuning', 'PIDF / feedforward'],
+		['Vision', 'AprilTag pose solve'],
+		['Tooling', 'FTC Dashboard']
+	];
 </script>
 
 <svelte:head>
@@ -65,21 +96,93 @@
 
 		<div use:reveal>
 			<Section id="robot" kicker="Java · Onshape · PedroPathing">
-				{#snippet title()}Structure & Logic.{/snippet}
+				{#snippet title()}The Robot{/snippet}
 				<div class="flex flex-col border-t" style="border-color: var(--color-rule);">
-					<div class="grid grid-cols-1 md:grid-cols-2 border-b" style="border-color: var(--color-rule);">
-						<div class="px-8 py-12 flex flex-col gap-5 border-r" style="border-color: var(--color-rule);">
-							<span class="mono-label">Software</span>
-							<p class="text-base leading-relaxed text-white/85" style="max-width: 38ch;">FTC SDK Java, PedroPathing + MCL odometry, PID rigorously tuned. The autonomous is the thing we're most proud of.</p>
-							<span class="mono-text text-primary/55">Java / PedroPathing - MCL Extension</span>
+					<div class="grid grid-cols-1 lg:grid-cols-12 border-b" style="border-color: var(--color-rule);">
+						<div
+							class="lg:col-span-7 border-b lg:border-b-0 lg:border-r"
+							style="border-color: var(--color-rule);"
+						>
+							<div class="relative w-full" style="aspect-ratio: 23 / 20;">
+								<img
+									src="/robot.png"
+									alt="Team 17113 competition robot"
+									loading="lazy"
+									class="absolute inset-0 w-full h-full object-contain p-8"
+									style="filter: grayscale(1) brightness(1.3) contrast(1.15) drop-shadow(0 0 60px rgba(255, 255, 255, 0.07));"
+								/>
+								{#each subsystems as s, i (s.id)}
+									{@const on = activeSub === s.id}
+									<button
+										type="button"
+										class="marker absolute -translate-x-1/2 -translate-y-1/2 flex items-center justify-center"
+										class:is-active={on}
+										style="left: {s.x}%; top: {s.y}%;"
+										aria-label={s.label}
+										aria-pressed={on}
+										onmouseenter={() => (activeSub = s.id)}
+										onfocus={() => (activeSub = s.id)}
+										onclick={() => (activeSub = s.id)}
+									>
+										<span class="marker-ring"></span>
+										<span class="mono-text" style="font-size: 10px;">{String(i + 1).padStart(2, '0')}</span>
+									</button>
+								{/each}
+							</div>
 						</div>
-						<div class="px-8 py-12 flex flex-col gap-3">
-							<span class="mono-label opacity-40">Specs</span>
-							<div class="flex flex-col gap-2 mt-2">
-								{#each [['Auto score (avg)', '# pts'], ['Cycle time', '# sec'], ['Autonomous runs', '#+'], ['Season W/L/T', 'a-b-c']] as [k, v] (k)}
-									<div class="flex justify-between border-b py-2" style="border-color: var(--color-rule);">
+						<div class="lg:col-span-5 flex flex-col">
+							<div class="px-8 py-10 border-b" style="border-color: var(--color-rule);">
+								<span class="mono-label">Subsystems</span>
+								{#key activeSub}
+									<div class="detail">
+										<div class="flex items-baseline gap-4 mt-5">
+											<span class="mono-text text-primary/60">{activeIndex}</span>
+											<h3 class="font-heading font-light text-white" style="font-size: 1.6rem; line-height: 1.15;">{active.label}</h3>
+										</div>
+										<p class="text-base leading-relaxed text-white/75 mt-3" style="max-width: 42ch;">{active.desc}</p>
+									</div>
+								{/key}
+							</div>
+							<div class="flex flex-col">
+								{#each subsystems as s, i (s.id)}
+									{@const on = activeSub === s.id}
+									<button
+										type="button"
+										class="sub-row text-left px-8 py-3.5 border-b last:border-b-0 grid items-center gap-4"
+										class:is-active={on}
+										style="border-color: var(--color-rule); grid-template-columns: 1.75rem 1fr auto;"
+										onmouseenter={() => (activeSub = s.id)}
+										onfocus={() => (activeSub = s.id)}
+										onclick={() => (activeSub = s.id)}
+									>
+										<span class="mono-text {on ? 'text-primary' : 'text-white/45'}">{String(i + 1).padStart(2, '0')}</span>
+										<span class="mono-text {on ? 'text-white' : 'text-white/70'}">{s.label}</span>
+										<ArrowRight size={13} class="sub-row-arrow" />
+									</button>
+								{/each}
+							</div>
+						</div>
+					</div>
+					<div class="grid grid-cols-1 md:grid-cols-2 border-b" style="border-color: var(--color-rule);">
+						<div class="px-8 py-12 flex flex-col gap-3 border-r" style="border-color: var(--color-rule);">
+							<span class="mono-label">Robot Specs</span>
+							<div class="flex flex-col mt-3">
+								{#each specs as [k, v] (k)}
+									<div class="flex justify-between gap-4 border-b py-2.5" style="border-color: var(--color-rule);">
 										<span class="mono-text text-white/55">{k}</span>
 										<span class="mono-text text-white/90">{v}</span>
+									</div>
+								{/each}
+							</div>
+						</div>
+						<div class="px-8 py-12 flex flex-col gap-3">
+							<span class="mono-label">Software</span>
+							<p class="text-base leading-relaxed text-white/75 mt-1" style="max-width: 40ch;">Java on the FTC SDK, path-following autonomy with Monte Carlo localization over dead-wheel odometry. The autonomous is what we're most proud of.</p>
+							<div class="flex flex-col mt-3">
+								{#each software as [k, v] (k)}
+									<div class="flex justify-between gap-4 border-b py-2.5" style="border-color: var(--color-rule);">
+										<span class="mono-text text-white/55">{k}</span>
+										<span class="mono-text text-primary/70">{v}</span>
 									</div>
 								{/each}
 							</div>
@@ -266,3 +369,53 @@
 </div>
 
 <IntroAnimation onComplete={() => (showContent = true)} />
+
+<style>
+	.marker {
+		width: 1.75rem;
+		height: 1.75rem;
+		color: rgba(229, 229, 229, 0.85);
+		border: 1px solid rgba(255, 255, 255, 0.28);
+		background: rgba(10, 10, 10, 0.88);
+		box-shadow: 0 0 0 3px rgba(10, 10, 10, 0.45);
+		transition: color 200ms ease, border-color 200ms ease, transform 260ms cubic-bezier(0.2, 0.7, 0.3, 1);
+	}
+	.marker:hover { transform: translate(-50%, -50%) scale(1.08); }
+	.marker.is-active {
+		color: var(--color-primary);
+		border-color: rgba(122, 158, 126, 0.9);
+	}
+	.marker-ring {
+		position: absolute;
+		inset: -5px;
+		border: 1px solid rgba(122, 158, 126, 0.55);
+		opacity: 0;
+		transform: scale(0.82);
+		transition: opacity 260ms ease, transform 260ms cubic-bezier(0.2, 0.7, 0.3, 1);
+	}
+	.marker.is-active .marker-ring { opacity: 1; transform: scale(1); }
+
+	.detail { animation: detail-in 320ms cubic-bezier(0.2, 0.7, 0.3, 1) both; }
+	@keyframes detail-in {
+		from { opacity: 0; transform: translateY(6px); }
+		to { opacity: 1; transform: none; }
+	}
+
+	.sub-row { transition: background-color 180ms ease, padding-left 220ms cubic-bezier(0.2, 0.7, 0.3, 1); }
+	.sub-row:hover, .sub-row.is-active { background: rgba(255, 255, 255, 0.03); }
+	.sub-row.is-active { padding-left: 2.5rem; }
+	.sub-row :global(.sub-row-arrow) {
+		color: var(--color-primary);
+		opacity: 0;
+		transform: translateX(-6px);
+		transition: opacity 200ms ease, transform 220ms cubic-bezier(0.2, 0.7, 0.3, 1);
+	}
+	.sub-row.is-active :global(.sub-row-arrow) { opacity: 0.8; transform: none; }
+
+	@media (prefers-reduced-motion: reduce) {
+		.marker, .marker-ring, .sub-row, .sub-row :global(.sub-row-arrow) { transition: none; }
+		.marker:hover { transform: translate(-50%, -50%); }
+		.sub-row.is-active { padding-left: 2rem; }
+		.detail { animation: none; }
+	}
+</style>

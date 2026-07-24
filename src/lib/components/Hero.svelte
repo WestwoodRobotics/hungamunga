@@ -28,30 +28,26 @@
 	class="relative min-h-screen flex items-start overflow-hidden border-b"
 	style="border-color: var(--color-rule); padding-left: max(4vw, 2rem); padding-top: clamp(6rem, 12vh, 9rem); z-index: var(--z-glass);"
 >
-	<!-- robot image -->
+	<!-- team logo -->
 	<div
-		class="absolute pointer-events-none select-none"
+		class="absolute pointer-events-none select-none flex items-center justify-center"
 		style="
-			height: 90vh;
-			width: auto;
-			right: -5%;
-			top: 4%;
+			right: max(4vw, 2rem);
+			top: 0;
 			bottom: 0;
-			-webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0.55) 10%, rgba(0,0,0,0) 90%), linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 8%, rgba(0,0,0,1) 92%, rgba(0,0,0,0) 100%);
-			mask-image: linear-gradient(to right, rgba(0,0,0,0.55) 10%, rgba(0,0,0,0) 90%), linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 8%, rgba(0,0,0,1) 92%, rgba(0,0,0,0) 100%);
-			-webkit-mask-composite: intersect;
-			mask-composite: intersect;
+			width: min(38vw, 34rem);
+			-webkit-mask-image: radial-gradient(ellipse 75% 70% at 50% 50%, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 100%);
+			mask-image: radial-gradient(ellipse 75% 70% at 50% 50%, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 100%);
 		"
 	>
-	<!-- change to robot cad later -->
 		<img
-			src="/robot.png"
+			src="/og.png"
 			alt=""
 			aria-hidden="true"
 			width="1200"
 			height="1600"
 			fetchpriority="low"
-			style="height: 75%; width: auto; display: block; opacity: 0.38; mix-blend-mode: screen; filter: saturate(0.15) brightness(1.6);"
+			style="max-width: 100%; max-height: 62vh; width: auto; height: auto; display: block; opacity: 0.3; mix-blend-mode: screen; filter: saturate(0) brightness(1.25) contrast(0.9);"
 		/>
 	</div>
 
