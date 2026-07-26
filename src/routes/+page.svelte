@@ -177,7 +177,7 @@
 						</div>
 						<div class="px-8 py-12 flex flex-col gap-3">
 							<span class="mono-label">Software</span>
-							<p class="text-base leading-relaxed text-white/75 mt-1" style="max-width: 40ch;">Java on the FTC SDK, path-following autonomy with Monte Carlo localization over dead-wheel odometry. The autonomous is what we're most proud of.</p>
+							<p class="text-base leading-relaxed text-white/75 mt-1" style="max-width: 40ch;">FTC SDK Java, PedroPathing Ivy over dead-wheel odometry.</p>
 							<div class="flex flex-col mt-3">
 								{#each software as [k, v] (k)}
 									<div class="flex justify-between gap-4 border-b py-2.5" style="border-color: var(--color-rule);">
@@ -191,13 +191,13 @@
 					<div class="grid grid-cols-1 md:grid-cols-2 border-b" style="border-color: var(--color-rule);">
 						<div class="px-8 py-10 flex flex-col gap-4 border-r" style="border-color: var(--color-rule);">
 							<span class="mono-label">Hardware</span>
-							<p class="text-base leading-relaxed text-white/75" style="max-width: 44ch;">Onshape for CAD, CNC router + FDM printers in the makerspace. We've gone through # iterations this season.</p>
-							<span class="mono-text text-primary/55">CAD / Onshape</span>
+							<p class="text-base leading-relaxed text-white/75" style="max-width: 44ch;">Onshape for CAD, GoBUILDA parts.</p>
+							<span class="mono-text text-primary/55">CAD / Build</span>
 						</div>
 						<div class="px-8 py-10 flex flex-col gap-4">
 							<span class="mono-label">Strategy</span>
-							<p class="text-base leading-relaxed text-white/75" style="max-width: 44ch;">Scouting app + match analysis. We've improved #x points because of it.</p>
-							<span class="mono-text text-primary/55">Strategy / Scouting</span>
+							<p class="text-base leading-relaxed text-white/75" style="max-width: 44ch;">Scoring app + match analysis. We've improved x points because of it.</p>
+							<span class="mono-text text-primary/55">Analysis / Scouting</span>
 						</div>
 					</div>
 				</div>

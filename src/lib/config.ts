@@ -3,8 +3,8 @@ export const CONTACT_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyWWJ
 
 export const NAV_LINKS: { href: string; label: string }[] = [
 	{ href: '#about',    label: 'About'    },
-	{ href: '#robot',    label: 'The Build' },
-	{ href: '#season',   label: 'Season'   },
+	{ href: '#robot',    label: 'Robot' },
+	{ href: '#season',   label: 'Timeline'   },
 	{ href: '#outreach', label: 'Outreach' },
 	{ href: '#team',     label: 'Roster'   },
 	{ href: '#results',  label: 'Results'  },
@@ -48,8 +48,8 @@ export const MEMBERS: Member[] = [
 	{ name: 'Arnav Saraf',     role: 'Captain', pfp: 'favicon.png' },
 	{ name: 'Jayan Patel',     role: 'Member',  pfp: 'favicon.png' },
 	{ name: 'Owen Cassidy',    role: 'Member',  pfp: 'favicon.png' },
-	{ name: 'Reeyansh Hande',  role: 'Member',  pfp: 'favicon.png' },
 	{ name: 'Vibha Pulluru',   role: 'Member',  pfp: 'favicon.png' },
+	{ name: 'Reeyansh Hande',  role: 'Member',  pfp: 'favicon.png' },
 	{ name: 'James Harker',    role: 'Member',  pfp: 'favicon.png' },
 	{ name: 'Aiden Chrisman',  role: 'Member',  pfp: 'favicon.png' },
 	{ name: 'Bhaskara Bosuru', role: 'Member',  pfp: 'favicon.png' },
